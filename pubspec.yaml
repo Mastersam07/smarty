@@ -36,6 +36,7 @@ dependencies:
   google_fonts: ^3.0.1
   pin_code_fields: ^7.4.0
   pulse_widget: ^0.0.2
+  sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

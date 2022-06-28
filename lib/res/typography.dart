@@ -40,7 +40,7 @@ class TextStyles {
 
   static TextStyle subtitle = GoogleFonts.heebo(
     fontSize: 12,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w400,
     color: SmartyColors.black,
     height: 1.4,
   );

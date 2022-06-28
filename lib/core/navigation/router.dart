@@ -7,6 +7,7 @@ import 'package:smarty/features/login/presentation/views/login.dart';
 
 import '../../features/app_home.dart';
 import '../../features/devices/domain/models/devices.dart';
+import '../../features/devices/presentation/views/ac.dart';
 import '../../features/devices/presentation/views/light.dart';
 import '../../features/register/presentation/views/otp_screen.dart';
 import '../../features/register/presentation/views/register.dart';
@@ -49,6 +50,12 @@ abstract class AppRouter {
         return getPageRoute(
           settings: settings,
           view: LightScreen(device: settings.arguments as Device),
+        );
+
+      case acRoute:
+        return getPageRoute(
+          settings: settings,
+          view: AcScreen(device: settings.arguments as Device),
         );
 
       default:
