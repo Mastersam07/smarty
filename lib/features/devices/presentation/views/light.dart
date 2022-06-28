@@ -4,13 +4,20 @@ import 'package:smarty/utils/enums.dart';
 import '../../../../core/navigation/navigator.dart';
 import '../../../../res/res.dart';
 import '../../domain/models/devices.dart';
+import '../widgets/gradient_progress_indicator.dart';
 
-class LightScreen extends StatelessWidget {
+class LightScreen extends StatefulWidget {
   final Device device;
   LightScreen({Key? key, required this.device})
       : assert(device.type == DeviceType.light),
         super(key: key);
 
+  @override
+  State<LightScreen> createState() => _LightScreenState();
+}
+
+class _LightScreenState extends State<LightScreen> {
+  bool _isOn = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +25,7 @@ class LightScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 32 + MediaQuery.of(context).padding.top),
               Row(
@@ -39,24 +46,65 @@ class LightScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 36),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Living Room',
-                    style:
-                        TextStyles.headline4.copyWith(color: SmartyColors.grey),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Living Room',
+                        style: TextStyles.headline4
+                            .copyWith(color: SmartyColors.grey),
+                      ),
+                      Switch.adaptive(
+                        value: _isOn,
+                        onChanged: (bool v) {
+                          setState(() {
+                            _isOn = v;
+                          });
+                        },
+                        activeColor: SmartyColors.primary,
+                      )
+                    ],
                   ),
-                  Switch.adaptive(
-                    value: true,
-                    onChanged: (bool v) {},
-                    activeColor: SmartyColors.primary,
-                  )
+                  Text(
+                    'Light Intesity',
+                    style: TextStyles.body.copyWith(color: SmartyColors.grey60),
+                  ),
                 ],
               ),
-              Text(
-                'Light Intesity',
-                style: TextStyles.body.copyWith(color: SmartyColors.grey60),
+              const SizedBox(height: 24),
+              if (_isOn)
+                Image.asset(
+                  'assets/images/light_on.png',
+                  width: 159,
+                )
+              else
+                Image.asset(
+                  'assets/images/light_off.png',
+                  width: 75,
+                ),
+              const SizedBox(height: 40),
+              GradientCircularProgressIndicator(
+                radius: 100,
+                gradientColors: [
+                  const Color(0XFFE89D0D),
+                  const Color(0XFFFCFBC3),
+                  SmartyColors.primary,
+                  SmartyColors.secondary,
+                ],
+                strokeWidth: 28.0,
+              ),
+              const SizedBox(height: 80),
+              Center(
+                child: FloatingActionButton(
+                    onPressed: () {
+                      setState(() {
+                        _isOn = !_isOn;
+                      });
+                    },
+                    child: const Icon(Icons.power_settings_new_rounded)),
               ),
             ],
           ),
