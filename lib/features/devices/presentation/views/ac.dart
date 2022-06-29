@@ -3,7 +3,8 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:smarty/utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
+import '../../../../shared/widgets/power_btn.dart';
 import '../../domain/models/devices.dart';
 
 class AcScreen extends StatefulWidget {
@@ -271,11 +272,7 @@ class _AcScreenState extends State<AcScreen> {
                 ),
               ),
               const SizedBox(height: 80),
-              Center(
-                child: FloatingActionButton(
-                    onPressed: () {},
-                    child: const Icon(Icons.power_settings_new_rounded)),
-              ),
+              const PowerButton(),
             ],
           ),
         ),

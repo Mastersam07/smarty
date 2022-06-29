@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smarty/core/navigation/navigator.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 
 class RoutineHomeScreen extends StatelessWidget {
   const RoutineHomeScreen({Key? key}) : super(key: key);

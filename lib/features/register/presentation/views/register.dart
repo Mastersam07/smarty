@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smarty/res/res.dart';
 
 import '../../../../core/navigation/navigator.dart';
+import '../../../../shared/res/res.dart';
 import '../../../../widgets/widgets.dart';
 
 class RegisterScreen extends StatelessWidget {

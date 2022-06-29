@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';
 import '../widgets/widgets.dart';
 

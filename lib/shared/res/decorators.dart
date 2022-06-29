@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smarty/res/res.dart';
+
+import 'res.dart';
 
 class Decorators {
   Decorators._();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 
 class SummaryHeader extends StatelessWidget {
   const SummaryHeader({

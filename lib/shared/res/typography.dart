@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smarty/res/res.dart';
+
+import 'res.dart';
 
 class TextStyles {
   static TextStyle headline1 = GoogleFonts.heebo(

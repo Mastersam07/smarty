@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smarty/shared/widgets/power_btn.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 import '../../../../utils/enums.dart';
 import '../../domain/models/devices.dart';
 
@@ -275,14 +276,12 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                 ],
               ),
               const SizedBox(height: 51),
-              Center(
-                child: FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        _isOn = !_isOn;
-                      });
-                    },
-                    child: const Icon(Icons.power_settings_new_rounded)),
+              PowerButton(
+                onPressed: () {
+                  setState(() {
+                    _isOn = !_isOn;
+                  });
+                },
               ),
             ],
           ),

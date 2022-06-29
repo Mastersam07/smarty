@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smarty/features/devices/domain/models/devices.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 import '../../../../widgets/widgets.dart';
 import '../../../home/presentation/widgets/widgets.dart';
 

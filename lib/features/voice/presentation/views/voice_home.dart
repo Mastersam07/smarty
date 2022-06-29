@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 
 class VoiceHomeScreen extends StatefulWidget {
   const VoiceHomeScreen({Key? key}) : super(key: key);

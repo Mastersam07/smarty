@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 
 class QuickAction extends StatelessWidget {
   final String action;

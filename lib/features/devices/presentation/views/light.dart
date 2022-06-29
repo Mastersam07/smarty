@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smarty/utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
+import '../../../../shared/widgets/power_btn.dart';
 import '../../domain/models/devices.dart';
 import '../widgets/gradient_progress_indicator.dart';
 
@@ -97,14 +98,12 @@ class _LightScreenState extends State<LightScreen> {
                 strokeWidth: 28.0,
               ),
               const SizedBox(height: 80),
-              Center(
-                child: FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        _isOn = !_isOn;
-                      });
-                    },
-                    child: const Icon(Icons.power_settings_new_rounded)),
+              PowerButton(
+                onPressed: () {
+                  setState(() {
+                    _isOn = !_isOn;
+                  });
+                },
               ),
             ],
           ),

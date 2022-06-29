@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smarty/core/navigation/navigator.dart';
-import 'package:smarty/res/res.dart';
 
+import '../../../../shared/res/res.dart';
 import '../../../../widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {

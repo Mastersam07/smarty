@@ -4,7 +4,7 @@ import 'package:smarty/core/navigation/navigator.dart';
 import 'package:smarty/features/devices/domain/models/devices.dart';
 import 'package:smarty/utils/enums.dart';
 
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 
 class StatsHomeScreen extends StatefulWidget {
   const StatsHomeScreen({Key? key}) : super(key: key);

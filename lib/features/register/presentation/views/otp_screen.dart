@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 import '../../../../widgets/widgets.dart';
 
 class OtpScreen extends StatefulWidget {

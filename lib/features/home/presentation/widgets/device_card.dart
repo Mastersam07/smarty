@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../res/res.dart';
+import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';
 import '../../../../utils/enums.dart';
 
