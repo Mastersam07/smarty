@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smarty/core/navigation/route.dart';
+import 'package:smarty/features/devices/presentation/views/tv.dart';
 import 'package:smarty/features/login/presentation/views/login.dart';
 
 import '../../features/app_home.dart';
@@ -56,6 +57,12 @@ abstract class AppRouter {
         return getPageRoute(
           settings: settings,
           view: AcScreen(device: settings.arguments as Device),
+        );
+
+      case smartTvRoute:
+        return getPageRoute(
+          settings: settings,
+          view: SmartTvScreen(device: settings.arguments as Device),
         );
 
       default:
