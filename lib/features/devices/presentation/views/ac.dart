@@ -69,7 +69,7 @@ class _AcScreenState extends State<AcScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Temoerature',
+                        'Temperature',
                         style: TextStyles.body
                             .copyWith(color: SmartyColors.grey60),
                       ),

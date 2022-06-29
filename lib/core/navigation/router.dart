@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:smarty/core/navigation/route.dart';
 import 'package:smarty/features/devices/presentation/views/tv.dart';
 import 'package:smarty/features/login/presentation/views/login.dart';
+import 'package:smarty/features/stats/presentation/views/stats_home.dart';
 
 import '../../features/app_home.dart';
 import '../../features/devices/domain/models/devices.dart';
@@ -63,6 +64,12 @@ abstract class AppRouter {
         return getPageRoute(
           settings: settings,
           view: SmartTvScreen(device: settings.arguments as Device),
+        );
+
+      case statsRoute:
+        return getPageRoute(
+          settings: settings,
+          view: const StatsHomeScreen(),
         );
 
       default:

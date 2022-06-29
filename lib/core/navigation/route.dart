@@ -7,6 +7,7 @@ const String loginRoute = '/login';
 const String registerRoute = '/register';
 const String otpRoute = '/otp';
 const String routineRoute = '/routine';
+const String statsRoute = '/stats';
 const String lightRoute = '/light';
 const String acRoute = '/ac';
 const String smartTvRoute = '/smartTv';

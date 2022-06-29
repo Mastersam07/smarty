@@ -73,7 +73,7 @@ class SummaryHeader extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    Icons.lightbulb_outlined,
+                    Icons.bolt_sharp,
                     size: 24,
                     color: SmartyColors.tertiary,
                   ),

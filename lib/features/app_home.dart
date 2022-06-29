@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'devices/presentation/views/device_home.dart';
 import 'home/presentation/views/home.dart';
 import 'routine/presentation/views/routine_home.dart';
+import 'stats/presentation/views/stats_home.dart';
 import 'voice/presentation/views/voice_home.dart';
 
 class Dashboard extends StatefulWidget {
@@ -22,7 +23,7 @@ class _DashboardState extends State<Dashboard>
     DevicesScreen(),
     VoiceHomeScreen(),
     RoutineHomeScreen(),
-    Center(child: Text('Stats')),
+    StatsHomeScreen(),
   ];
 
   @override
