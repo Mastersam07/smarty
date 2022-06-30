@@ -5,6 +5,7 @@ import 'package:smarty/features/devices/domain/models/devices.dart';
 import 'package:smarty/utils/enums.dart';
 
 import '../../../../shared/res/res.dart';
+import '../widgets/summary_tile.dart';
 
 class StatsHomeScreen extends StatefulWidget {
   const StatsHomeScreen({Key? key}) : super(key: key);
@@ -166,80 +167,20 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: SmartyColors.primary,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 24,
-                                backgroundColor: SmartyColors.secondary60,
-                                child: Icon(
-                                  Icons.bolt_outlined,
-                                  color: SmartyColors.tertiary,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '2500',
-                                    style: TextStyles.headline4.copyWith(
-                                        color: SmartyColors.tertiary,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    'KWh used',
-                                    style: TextStyles.body.copyWith(
-                                      color: SmartyColors.tertiary60,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
+                        SummaryTile(
+                          title: '2500',
+                          subTitle: 'KWh used',
+                          icon: Icon(
+                            Icons.bolt_outlined,
+                            color: SmartyColors.tertiary,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: SmartyColors.primary,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 24,
-                                backgroundColor: SmartyColors.secondary60,
-                                child: Icon(
-                                  Icons.currency_pound_sharp,
-                                  color: SmartyColors.tertiary,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '850',
-                                    style: TextStyles.headline4.copyWith(
-                                        color: SmartyColors.tertiary,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    'USD spent',
-                                    style: TextStyles.body.copyWith(
-                                      color: SmartyColors.tertiary60,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
+                        SummaryTile(
+                          title: '850',
+                          subTitle: 'USD spent',
+                          icon: Icon(
+                            Icons.currency_pound_sharp,
+                            color: SmartyColors.tertiary,
                           ),
                         ),
                       ],

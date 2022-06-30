@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smarty/core/navigation/navigator.dart';
 
 import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';
@@ -23,9 +24,18 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyles.headline4,
                 ),
               ),
-              const CircleAvatar(
-                radius: 24,
-                child: Icon(Icons.person, size: 48),
+              GestureDetector(
+                onTap: () => AppNavigator.pushNamed(
+                  profileRoute,
+                  arguments: Icon(
+                    Icons.notifications_outlined,
+                    color: SmartyColors.grey,
+                  ),
+                ),
+                child: const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage('assets/images/profile.png'),
+                ),
               ),
             ],
           ),
