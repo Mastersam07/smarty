@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smarty/features/devices/domain/models/devices.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../shared/widgets/widgets.dart';
 import '../../../home/presentation/widgets/widgets.dart';
 
 class DevicesScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class DevicesScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,12 +33,12 @@ class DevicesScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 16.h),
               Text(
                 'Living Room',
                 style: TextStyles.body,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -45,12 +46,12 @@ class DevicesScreen extends StatelessWidget {
                   children: [...devices.map((e) => DeviceCard(device: e))],
                 ),
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 16.h),
               Text(
                 'Bed Room',
                 style: TextStyles.body,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -58,12 +59,12 @@ class DevicesScreen extends StatelessWidget {
                   children: [...devices.map((e) => DeviceCard(device: e))],
                 ),
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 16.h),
               Text(
                 'Kitchen',
                 style: TextStyles.body,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -71,12 +72,12 @@ class DevicesScreen extends StatelessWidget {
                   children: [...devices.map((e) => DeviceCard(device: e))],
                 ),
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 16.h),
               Text(
                 'Dining Room',
                 style: TextStyles.body,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -84,12 +85,12 @@ class DevicesScreen extends StatelessWidget {
                   children: [...devices.map((e) => DeviceCard(device: e))],
                 ),
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: 48.h),
               AppButtonPrimary(
                 label: 'Add Device',
                 onPressed: () {},
               ),
-              const SizedBox(height: 64),
+              SizedBox(height: 64.h),
             ],
           ),
         ),

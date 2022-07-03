@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
+import '../widgets/general_tile.dart';
+import '../widgets/member_tile.dart';
 import '../widgets/summary_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -13,11 +16,11 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+              SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
               Row(
                 children: [
                   if (AppNavigator.canPop)
@@ -33,15 +36,16 @@ class ProfileScreen extends StatelessWidget {
                   trailing
                 ],
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
               Center(
                 child: Column(
                   children: [
-                    const CircleAvatar(
-                      radius: 32,
-                      backgroundImage: AssetImage('assets/images/profile.png'),
+                    CircleAvatar(
+                      radius: 32.r,
+                      backgroundImage:
+                          const AssetImage('assets/images/profile.png'),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text(
                       'Tosin',
                       style: TextStyles.body.copyWith(color: SmartyColors.grey),
@@ -54,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: 48.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -82,16 +86,16 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: 48.h),
               Text(
                 'General Settings',
                 style: TextStyles.body,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               GeneralTile(
                 leading: Icon(
                   Icons.settings_outlined,
-                  size: 24,
+                  size: 24.w,
                   color: SmartyColors.grey,
                 ),
                 title: 'Settings',
@@ -100,19 +104,20 @@ class ProfileScreen extends StatelessWidget {
                   color: SmartyColors.grey60,
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               GeneralTile(
-                  leading: Icon(
-                    Icons.explore_outlined,
-                    size: 24,
-                    color: SmartyColors.grey,
-                  ),
-                  title: 'My Activity',
-                  trailing: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: SmartyColors.grey,
-                  )),
-              const SizedBox(height: 52),
+                leading: Icon(
+                  Icons.explore_outlined,
+                  size: 24.w,
+                  color: SmartyColors.grey,
+                ),
+                title: 'My Activity',
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: SmartyColors.grey60,
+                ),
+              ),
+              SizedBox(height: 52.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -131,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
@@ -140,118 +145,22 @@ class ProfileScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       var names = ['Jay', 'Posi', 'Kike'];
-                      return MemberTile(
-                        name: names[index],
-                      );
+                      if (index == names.length - 1) {
+                        return Column(
+                          children: [
+                            MemberTile(name: names[index]),
+                            SizedBox(height: 24.h)
+                          ],
+                        );
+                      }
+                      return MemberTile(name: names[index]);
                     },
-                    separatorBuilder: (_, __) => const SizedBox(height: 8),
+                    separatorBuilder: (_, __) => SizedBox(height: 8.h),
                     itemCount: 3),
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class MemberTile extends StatelessWidget {
-  final String name;
-  const MemberTile({
-    Key? key,
-    required this.name,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: SmartyColors.secondary10,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                'assets/images/profile.png',
-                width: 32,
-              ),
-              const SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyles.subtitle.copyWith(
-                        color: SmartyColors.grey, fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    'Guest',
-                    style: TextStyles.subtitle
-                        .copyWith(color: SmartyColors.grey60),
-                  )
-                ],
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '$name\'s Iphone',
-                style: TextStyles.subtitle.copyWith(color: SmartyColors.grey),
-              ),
-              Text(
-                '192.168.137.19',
-                style: TextStyles.subtitle.copyWith(color: SmartyColors.grey60),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class GeneralTile extends StatelessWidget {
-  final Widget leading;
-  final String title;
-  final Widget trailing;
-  const GeneralTile({
-    Key? key,
-    required this.leading,
-    required this.title,
-    required this.trailing,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: SmartyColors.grey10)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              leading,
-              const SizedBox(width: 6),
-              Text(
-                title,
-                style: TextStyles.body.copyWith(color: SmartyColors.grey60),
-              ),
-            ],
-          ),
-          trailing
-        ],
       ),
     );
   }

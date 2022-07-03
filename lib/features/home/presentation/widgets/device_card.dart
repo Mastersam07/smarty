@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
@@ -23,11 +24,11 @@ class _DeviceCardState extends State<DeviceCard> {
       onTap: () => AppNavigator.pushNamed(widget.device.type.routeName,
           arguments: widget.device),
       child: Container(
-        padding: const EdgeInsets.all(16),
-        margin: const EdgeInsets.only(right: 16),
+        padding: EdgeInsets.all(16.r),
+        margin: EdgeInsets.only(right: 16.w),
         decoration: BoxDecoration(
           color: SmartyColors.secondary10,
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(6.r),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,9 +37,9 @@ class _DeviceCardState extends State<DeviceCard> {
               children: [
                 Image.asset(
                   widget.device.type.icon ?? 'assets/icons/ac.png',
-                  width: 48,
+                  width: 48.w,
                 ),
-                const SizedBox(width: 32),
+                SizedBox(width: 32.w),
                 Switch.adaptive(
                   activeColor: SmartyColors.primary,
                   value: widget.device.active,
@@ -51,12 +52,12 @@ class _DeviceCardState extends State<DeviceCard> {
                 ),
               ],
             ),
-            const SizedBox(height: 32),
+            SizedBox(height: 32.h),
             Text(
               widget.device.name ?? widget.device.type.name,
               style: TextStyles.body.copyWith(color: SmartyColors.grey),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Text(
               widget.device.room,
               style: TextStyles.body.copyWith(color: SmartyColors.grey60),

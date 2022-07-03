@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../shared/widgets/widgets.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -11,20 +12,20 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 109),
+            SizedBox(height: 109.h),
             Image.asset("assets/images/logo.png",
-                color: SmartyColors.primary, width: 174),
-            const SizedBox(height: 64),
+                color: SmartyColors.primary, width: 174.w),
+            SizedBox(height: 64.h),
             Text(
               'Create an account',
               style: TextStyles.headline4.copyWith(
                   color: SmartyColors.primary, fontWeight: FontWeight.w500),
             ),
-            const SizedBox(height: 48),
+            SizedBox(height: 48.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
@@ -41,10 +42,10 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Password'),
-                SizedBox(height: 8),
-                TextField(
+              children: [
+                const Text('Password'),
+                SizedBox(height: 8.h),
+                const TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter your password',
@@ -52,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 64),
+            SizedBox(height: 64.h),
             AppButtonPrimary(
               label: 'Sign up',
               onPressed: () => AppNavigator.pushNamed(otpRoute),
@@ -65,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                 style: TextStyles.body,
               ),
             ),
-            const SizedBox(height: 58),
+            SizedBox(height: MediaQuery.of(context).padding.bottom),
           ],
         ),
       ),

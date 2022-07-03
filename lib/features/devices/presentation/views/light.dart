@@ -98,7 +98,8 @@ class _LightScreenState extends State<LightScreen> {
                 strokeWidth: 28.0,
               ),
               const SizedBox(height: 80),
-              PowerButton(
+              ChipButton(
+                child: const Icon(Icons.power_settings_new_rounded),
                 onPressed: () {
                   setState(() {
                     _isOn = !_isOn;

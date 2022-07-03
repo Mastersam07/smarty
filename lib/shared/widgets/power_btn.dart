@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
-class PowerButton extends StatelessWidget {
+import '../res/res.dart';
+
+class ChipButton extends StatelessWidget {
   final Function()? onPressed;
-  const PowerButton({
+  final Widget? child;
+  const ChipButton({
     Key? key,
     this.onPressed,
+    this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: FloatingActionButton(
-          onPressed: onPressed ?? () {},
-          child: const Icon(Icons.power_settings_new_rounded)),
+        backgroundColor: SmartyColors.primary,
+        onPressed: onPressed ?? () {},
+        child: child,
+      ),
     );
   }
 }

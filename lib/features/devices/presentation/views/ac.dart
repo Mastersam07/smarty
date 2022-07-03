@@ -272,7 +272,9 @@ class _AcScreenState extends State<AcScreen> {
                 ),
               ),
               const SizedBox(height: 80),
-              const PowerButton(),
+              const ChipButton(
+                child: Icon(Icons.power_settings_new_rounded),
+              ),
             ],
           ),
         ),

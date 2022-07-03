@@ -276,7 +276,8 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                 ],
               ),
               const SizedBox(height: 51),
-              PowerButton(
+              ChipButton(
+                child: const Icon(Icons.power_settings_new_rounded),
                 onPressed: () {
                   setState(() {
                     _isOn = !_isOn;

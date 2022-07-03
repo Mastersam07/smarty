@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smarty/core/navigation/navigator.dart';
 
 import '../../../../shared/res/res.dart';
@@ -12,9 +13,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+          SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -39,9 +40,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           const SummaryHeader(),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -60,7 +61,7 @@ class HomeScreen extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                   .map((e) => QuickAction(action: e))
             ],
           ),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           Text(
             'Active Devices',
             style: TextStyles.body.copyWith(
@@ -76,7 +77,7 @@ class HomeScreen extends StatelessWidget {
               color: SmartyColors.grey,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -84,7 +85,7 @@ class HomeScreen extends StatelessWidget {
               children: [...devices.map((e) => DeviceCard(device: e))],
             ),
           ),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           MediaQuery.removePadding(
             context: context,
             removeTop: true,

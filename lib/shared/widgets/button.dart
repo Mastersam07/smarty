@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared/res/res.dart';
+import '../res/res.dart';
 
 enum BtnState { active, inactive }
 

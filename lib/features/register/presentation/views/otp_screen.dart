@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../shared/widgets/widgets.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -36,20 +37,20 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(children: [
-          const SizedBox(height: 144),
-          Image.asset("assets/images/phone.png", width: 163),
-          const SizedBox(height: 75),
+          SizedBox(height: 144.h),
+          Image.asset("assets/images/phone.png", width: 163.w),
+          SizedBox(height: 75.h),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 56),
+            padding: EdgeInsets.symmetric(horizontal: 56.w),
             child: Column(children: [
               Text(
                 'Enter OTP',
                 style:
                     TextStyles.headline4.copyWith(fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Text(
                 'Enter the 6 digits code sent to your email address for verification',
                 style: TextStyles.body.copyWith(
@@ -58,7 +59,7 @@ class _OtpScreenState extends State<OtpScreen> {
               ),
             ]),
           ),
-          const SizedBox(height: 48),
+          SizedBox(height: 48.h),
           PinCodeTextField(
             appContext: context,
             length: 6,
@@ -66,8 +67,8 @@ class _OtpScreenState extends State<OtpScreen> {
             animationType: AnimationType.fade,
             pinTheme: PinTheme(
               shape: PinCodeFieldShape.underline,
-              fieldHeight: 50,
-              fieldWidth: 50,
+              fieldHeight: 50.h,
+              fieldWidth: 50.w,
               activeFillColor: SmartyColors.tertiary,
               activeColor: SmartyColors.grey60,
               inactiveFillColor: SmartyColors.tertiary,
@@ -86,7 +87,7 @@ class _OtpScreenState extends State<OtpScreen> {
               return true;
             },
           ),
-          const SizedBox(height: 51),
+          SizedBox(height: 51.h),
           AppButtonPrimary(
             label: 'Verify',
             onPressed: () => AppNavigator.pushNamedReplacement(loginRoute),
@@ -99,7 +100,7 @@ class _OtpScreenState extends State<OtpScreen> {
               style: TextStyles.body,
             ),
           ),
-          const SizedBox(height: 58),
+          SizedBox(height: MediaQuery.of(context).padding.bottom),
         ]),
       ),
     );
