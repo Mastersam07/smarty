@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smarty/shared/widgets/power_btn.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../shared/widgets/power_btn.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
@@ -24,11 +25,11 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+              SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
               Row(
                 children: [
                   if (AppNavigator.canPop)
@@ -46,7 +47,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -61,9 +62,9 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
               Container(
-                padding: const EdgeInsets.all(24),
+                padding: EdgeInsets.all(24.r),
                 decoration: BoxDecoration(
                   color: SmartyColors.grey10,
                   borderRadius: BorderRadius.circular(24),
@@ -79,7 +80,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset('assets/icons/netflix.png', width: 28),
-                            const SizedBox(width: 8),
+                            SizedBox(width: 8.w),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,8 +100,8 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                           ],
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 8.w, vertical: 4.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             border: Border.all(color: SmartyColors.grey60),
@@ -113,7 +114,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                         )
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24.h),
                     Text(
                       'TV Shows',
                       style: TextStyles.subtitle,
@@ -131,8 +132,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                             child: Align(
                               alignment: Alignment.center,
                               child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 24),
+                                padding: EdgeInsets.symmetric(horizontal: 24.w),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   color: SmartyColors.black,
@@ -148,9 +148,9 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                         )
                       ]),
                     ),
-                    const SizedBox(height: 21),
+                    SizedBox(height: 21.h),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 19),
+                      padding: EdgeInsets.symmetric(horizontal: 19.w),
                       child: Column(
                         children: [
                           Row(
@@ -166,58 +166,67 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 12),
+                          SizedBox(height: 12.h),
                           ClipRRect(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(100)),
+                                BorderRadius.all(Radius.circular(100.r)),
                             child: LinearProgressIndicator(
                               color: SmartyColors.primary,
                               backgroundColor: SmartyColors.grey10,
                               value: 0.4,
-                              minHeight: 8,
+                              minHeight: 8.h,
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                height: 40,
+                                // height: 40.h,
+                                padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(100.r),
                                   border:
                                       Border.all(color: SmartyColors.grey30),
                                 ),
                                 child: Row(
                                   children: [
                                     IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                            Icons.skip_previous_rounded)),
+                                      onPressed: () {},
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: const Icon(
+                                          Icons.skip_previous_rounded),
+                                    ),
                                     IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(_isOn
-                                            ? Icons.pause
-                                            : Icons.play_arrow_rounded)),
+                                      onPressed: () {},
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: Icon(_isOn
+                                          ? Icons.pause
+                                          : Icons.play_arrow_rounded),
+                                    ),
                                     IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                            Icons.skip_next_rounded)),
+                                      onPressed: () {},
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: const Icon(Icons.skip_next_rounded),
+                                    ),
                                   ],
                                 ),
                               ),
                               Container(
-                                height: 40,
-                                padding: const EdgeInsets.all(8),
+                                // height: 40.h,
+                                padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(100.r),
                                   border:
                                       Border.all(color: SmartyColors.grey30),
                                 ),
                                 child: Row(
                                   children: [
                                     const Icon(Icons.volume_up_rounded),
-                                    const SizedBox(width: 10),
+                                    SizedBox(width: 10.w),
                                     Text(
                                       '72%',
                                       style: TextStyles.subtitle
@@ -227,13 +236,13 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 ),
                               ),
                               Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(100.r),
                                   border:
                                       Border.all(color: SmartyColors.grey30),
                                 ),
-                                child: const Icon(Icons.chat, size: 18),
+                                child: Icon(Icons.chat, size: 18.w),
                               )
                             ],
                           ),
@@ -243,16 +252,16 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 51),
+              SizedBox(height: 51.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    height: 48,
-                    width: 48,
-                    padding: const EdgeInsets.all(8),
+                    height: 48.w,
+                    width: 48.w,
+                    padding: EdgeInsets.all(8.r),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(100.r),
                       border: Border.all(color: SmartyColors.grey30),
                     ),
                     child: Icon(
@@ -261,11 +270,11 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                     ),
                   ),
                   Container(
-                    height: 48,
-                    width: 48,
-                    padding: const EdgeInsets.all(8),
+                    height: 48.w,
+                    width: 48.w,
+                    padding: EdgeInsets.all(8.r),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(100.r),
                       border: Border.all(color: SmartyColors.grey30),
                     ),
                     child: Icon(
@@ -275,7 +284,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                   )
                 ],
               ),
-              const SizedBox(height: 51),
+              SizedBox(height: 51.h),
               ChipButton(
                 child: const Icon(Icons.power_settings_new_rounded),
                 onPressed: () {

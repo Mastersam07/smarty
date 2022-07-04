@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smarty/utils/enums.dart';
+import '../../../../utils/enums.dart';
 
 import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';

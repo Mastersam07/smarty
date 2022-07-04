@@ -2,12 +2,12 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smarty/core/navigation/route.dart';
-import 'package:smarty/features/devices/presentation/views/device_home.dart';
-import 'package:smarty/features/devices/presentation/views/tv.dart';
-import 'package:smarty/features/login/presentation/views/login.dart';
-import 'package:smarty/features/profile/presentation/views/profile.dart';
-import 'package:smarty/features/stats/presentation/views/stats_home.dart';
+import 'route.dart';
+import '../../features/devices/presentation/views/device_home.dart';
+import '../../features/devices/presentation/views/tv.dart';
+import '../../features/login/presentation/views/login.dart';
+import '../../features/profile/presentation/views/profile.dart';
+import '../../features/stats/presentation/views/stats_home.dart';
 
 import '../../features/app_home.dart';
 import '../../features/devices/domain/models/devices.dart';

@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smarty/core/navigation/navigator.dart';
+import 'core/navigation/navigator.dart';
 
 import 'shared/res/res.dart';
 import 'shared/widgets/widgets.dart';
@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: SmartyThemeData.lightTheme,
+            darkTheme: SmartyThemeData.darkTheme,
             home: const MyHomePage(),
             onGenerateRoute: AppRouter.generateRoutes,
             navigatorKey: AppNavigator.key,

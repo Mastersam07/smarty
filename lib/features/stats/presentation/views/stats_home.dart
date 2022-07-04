@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smarty/core/navigation/navigator.dart';
-import 'package:smarty/features/devices/domain/models/devices.dart';
+import '../../../../core/navigation/navigator.dart';
+import '../../../devices/domain/models/devices.dart';
 
 import '../../../../shared/res/res.dart';
 import '../widgets/chip_tab.dart';

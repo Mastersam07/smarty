@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smarty/utils/enums.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
@@ -24,11 +25,11 @@ class _LightScreenState extends State<LightScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+              SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
               Row(
                 children: [
                   if (AppNavigator.canPop)
@@ -46,7 +47,7 @@ class _LightScreenState extends State<LightScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -75,29 +76,29 @@ class _LightScreenState extends State<LightScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
               if (_isOn)
                 Image.asset(
                   'assets/images/light_on.png',
-                  width: 159,
+                  width: 159.w,
                 )
               else
                 Image.asset(
                   'assets/images/light_off.png',
-                  width: 75,
+                  width: 75.w,
                 ),
-              const SizedBox(height: 40),
+              SizedBox(height: 40.h),
               GradientCircularProgressIndicator(
-                radius: 100,
+                radius: 100.r,
                 gradientColors: [
                   const Color(0XFFE89D0D),
                   const Color(0XFFFCFBC3),
                   SmartyColors.primary,
                   SmartyColors.secondary,
                 ],
-                strokeWidth: 28.0,
+                strokeWidth: 28.0.w,
               ),
-              const SizedBox(height: 80),
+              SizedBox(height: 80.h),
               ChipButton(
                 child: const Icon(Icons.power_settings_new_rounded),
                 onPressed: () {

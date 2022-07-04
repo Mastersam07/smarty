@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:smarty/utils/enums.dart';
+import '../../../../utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
@@ -25,11 +26,11 @@ class _AcScreenState extends State<AcScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+              SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
               Row(
                 children: [
                   if (AppNavigator.canPop)
@@ -47,7 +48,7 @@ class _AcScreenState extends State<AcScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 36),
+              SizedBox(height: 36.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -89,16 +90,16 @@ class _AcScreenState extends State<AcScreen> {
                   max: 31,
                   initialValue: temp,
                   appearance: CircularSliderAppearance(
-                    size: 300,
+                    size: 300.r,
                     customColors: CustomSliderColors(
                       progressBarColor: SmartyColors.primary,
                       trackColor: SmartyColors.grey30,
                       dotColor: SmartyColors.primary,
                     ),
                     customWidths: CustomSliderWidths(
-                      progressBarWidth: 8,
-                      trackWidth: 8,
-                      handlerSize: 16,
+                      progressBarWidth: 8.w,
+                      trackWidth: 8.w,
+                      handlerSize: 16.r,
                     ),
                   ),
                   onChange: (double value) {
@@ -124,7 +125,7 @@ class _AcScreenState extends State<AcScreen> {
                             style: TextStyles.body
                                 .copyWith(color: SmartyColors.grey60),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -143,7 +144,7 @@ class _AcScreenState extends State<AcScreen> {
                                         },
                                 ),
                               ),
-                              const SizedBox(width: 16),
+                              SizedBox(width: 16.w),
                               Text(
                                 "${value.toStringAsFixed(1)}°C",
                                 style: TextStyles.headline4.copyWith(
@@ -151,7 +152,7 @@ class _AcScreenState extends State<AcScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              const SizedBox(width: 16),
+                              SizedBox(width: 16.w),
                               CircleAvatar(
                                 backgroundColor: temp.round() == 31
                                     ? SmartyColors.grey30
@@ -169,10 +170,10 @@ class _AcScreenState extends State<AcScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 56),
+                          SizedBox(height: 56.h),
                           Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 27.5, vertical: 6.5),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 27.5.w, vertical: 6.5.h),
                             decoration: BoxDecoration(
                               color: SmartyColors.grey10,
                               borderRadius: BorderRadius.circular(100),
@@ -184,7 +185,7 @@ class _AcScreenState extends State<AcScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                         ],
                       ),
                     );
@@ -192,39 +193,39 @@ class _AcScreenState extends State<AcScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 62),
+                padding: EdgeInsets.symmetric(horizontal: 62.w),
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 48, vertical: 10),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 48.w, vertical: 10.h),
                       decoration: BoxDecoration(
                         color: SmartyColors.secondary10,
-                        borderRadius: BorderRadius.circular(100),
+                        borderRadius: BorderRadius.circular(100.r),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.sunny,
-                              color: SmartyColors.primary, size: 32),
+                              color: SmartyColors.primary, size: 32.w),
                           Icon(Icons.water_drop_outlined,
-                              color: SmartyColors.primary, size: 32),
+                              color: SmartyColors.primary, size: 32.w),
                           Icon(Icons.cloud_rounded,
-                              color: SmartyColors.primary, size: 32),
+                              color: SmartyColors.primary, size: 32.w),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 56),
+                    SizedBox(height: 56.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           children: [
                             CircleAvatar(
-                              radius: 24,
+                              radius: 24.r,
                               backgroundColor: SmartyColors.secondary10,
                               child: Icon(Icons.wb_sunny,
-                                  color: SmartyColors.primary, size: 24),
+                                  color: SmartyColors.primary, size: 24.w),
                             ),
                             Text(
                               "Sleep",
@@ -237,10 +238,10 @@ class _AcScreenState extends State<AcScreen> {
                         Column(
                           children: [
                             CircleAvatar(
-                              radius: 24,
+                              radius: 24.r,
                               backgroundColor: SmartyColors.secondary10,
                               child: Icon(Icons.wb_cloudy,
-                                  color: SmartyColors.primary, size: 24),
+                                  color: SmartyColors.primary, size: 24.w),
                             ),
                             Text(
                               "Cold",
@@ -253,10 +254,10 @@ class _AcScreenState extends State<AcScreen> {
                         Column(
                           children: [
                             CircleAvatar(
-                              radius: 24,
+                              radius: 24.r,
                               backgroundColor: SmartyColors.secondary10,
                               child: Icon(Icons.refresh,
-                                  color: SmartyColors.primary, size: 24),
+                                  color: SmartyColors.primary, size: 24.w),
                             ),
                             Text(
                               "Routine",
@@ -271,7 +272,7 @@ class _AcScreenState extends State<AcScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 80),
+              SizedBox(height: 80.h),
               const ChipButton(
                 child: Icon(Icons.power_settings_new_rounded),
               ),

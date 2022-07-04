@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smarty/core/navigation/navigator.dart';
-import 'package:smarty/shared/widgets/power_btn.dart';
+import '../../../../core/navigation/navigator.dart';
+import '../../../../shared/widgets/power_btn.dart';
 
 import '../../../../shared/res/res.dart';
 

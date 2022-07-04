@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smarty/features/devices/domain/models/devices.dart';
+import '../../domain/models/devices.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
