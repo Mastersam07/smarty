@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/navigation/navigator.dart';
 
 import 'shared/res/res.dart';
+import 'shared/widgets/onboarding_widget.dart';
 import 'shared/widgets/page_indicator.dart';
 import 'shared/widgets/widgets.dart';
 
@@ -88,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              flex: 8,
+              flex: 9,
               child: PageView(
                 controller: _pageController,
                 onPageChanged: (newPage) {
@@ -96,78 +97,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     _page = newPage;
                   });
                 },
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 46.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/home1.png'),
-                        SizedBox(height: 96.h),
-                        Text(
-                          'Smart',
-                          style: TextStyles.headline3.copyWith(
-                              color: SmartyColors.primary,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(height: 16.h),
-                        Text(
-                          'Manage the power usage of all your electronic device at your convinience',
-                          style: TextStyles.body.copyWith(
-                              color: SmartyColors.grey80,
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                children: const [
+                  OnboardingWidget(
+                    image: 'assets/images/home1.png',
+                    title: 'Smart',
+                    subtitle:
+                        'Manage the power usage of all your electronic device at your convinience',
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 46.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/home2.png'),
-                        SizedBox(height: 96.h),
-                        Text(
-                          'Control',
-                          style: TextStyles.headline3.copyWith(
-                              color: SmartyColors.primary,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(height: 16.h),
-                        Text(
-                          'Control all your electronic devices with at a single click with just your smart phone',
-                          style: TextStyles.body.copyWith(
-                              color: SmartyColors.grey80,
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                  OnboardingWidget(
+                    image: 'assets/images/home2.png',
+                    title: 'Control',
+                    subtitle:
+                        'Control all your electronic devices with at a single click with just your smart phone',
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 46.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/home3.png'),
-                        SizedBox(height: 96.h),
-                        Text(
-                          'Automate',
-                          style: TextStyles.headline3.copyWith(
-                              color: SmartyColors.primary,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        SizedBox(height: 16.h),
-                        Text(
-                          'Create routines and schedule devices to run along with your routine',
-                          style: TextStyles.body.copyWith(
-                              color: SmartyColors.grey80,
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                  OnboardingWidget(
+                    image: 'assets/images/home3.png',
+                    title: 'Autoomate',
+                    subtitle:
+                        'Create routines and schedule devices to run along with your routine',
                   ),
                 ],
               ),
@@ -188,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () =>
                           AppNavigator.pushNamedReplacement(loginRoute),
                     ),
-                    SizedBox(height: 42.h),
+                    // SizedBox(height: 42.h),
                   ],
                 ))
           ],

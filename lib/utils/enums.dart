@@ -35,7 +35,7 @@ extension DeviceTypeExtension on DeviceType {
       case DeviceType.microwave:
         return 'assets/icons/oven.png';
       case DeviceType.light:
-        return 'assets/icons/cctv.png';
+        return 'assets/icons/light.png';
       default:
         return null;
     }
