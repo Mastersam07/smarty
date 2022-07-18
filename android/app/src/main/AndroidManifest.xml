@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smarty">
+    package="tech.mastersam.smarty">
    <application
         android:label="smarty"
         android:name="${applicationName}"
