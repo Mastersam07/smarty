@@ -2,20 +2,21 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'route.dart';
-import '../../features/devices/presentation/views/device_home.dart';
-import '../../features/devices/presentation/views/tv.dart';
-import '../../features/login/presentation/views/login.dart';
-import '../../features/profile/presentation/views/profile.dart';
-import '../../features/stats/presentation/views/stats_home.dart';
 
 import '../../features/app_home.dart';
 import '../../features/devices/domain/models/devices.dart';
 import '../../features/devices/presentation/views/ac.dart';
+import '../../features/devices/presentation/views/device_home.dart';
 import '../../features/devices/presentation/views/light.dart';
+import '../../features/devices/presentation/views/tv.dart';
+import '../../features/login/presentation/views/login.dart';
+import '../../features/profile/presentation/views/profile.dart';
+import '../../features/profile/presentation/views/settings.dart';
 import '../../features/register/presentation/views/otp_screen.dart';
 import '../../features/register/presentation/views/register.dart';
 import '../../features/routine/presentation/views/routine_home.dart';
+import '../../features/stats/presentation/views/stats_home.dart';
+import 'route.dart';
 
 abstract class AppRouter {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
@@ -78,14 +79,20 @@ abstract class AppRouter {
         return getPageRoute(
           settings: settings,
           view: ProfileScreen(
-              trailing:
-                  (settings.arguments ?? const SizedBox.shrink()) as Widget),
+            trailing: (settings.arguments ?? const SizedBox.shrink()) as Widget,
+          ),
         );
 
       case devicesRoute:
         return getPageRoute(
           settings: settings,
           view: const DevicesScreen(),
+        );
+
+      case settingsRoute:
+        return getPageRoute(
+          settings: settings,
+          view: const SettingsScreen(),
         );
 
       default:

@@ -93,6 +93,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               GeneralTile(
+                onTap: () => AppNavigator.pushNamed(settingsRoute),
                 leading: Icon(
                   Icons.settings_outlined,
                   size: 24.w,

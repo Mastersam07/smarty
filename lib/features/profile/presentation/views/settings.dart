@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/widgets/power_btn.dart';
-
 import '../../../../shared/res/res.dart';
-import '../widgets/routine_tile.dart';
+import '../widgets/settings_tile.dart';
 
-class RoutineHomeScreen extends StatelessWidget {
-  const RoutineHomeScreen({Key? key}) : super(key: key);
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,39 +28,34 @@ class RoutineHomeScreen extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Text(
-                        'Routine',
+                        'Settings',
                         style: TextStyles.headline4,
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 36.h),
-              Text(
-                'Active Routines',
-                style: TextStyles.body,
-              ),
-              SizedBox(height: 16.h),
-              const RoutineTile(name: 'Wake up', active: true),
               SizedBox(height: 24.h),
-              const RoutineTile(name: 'Clean', active: true),
-              SizedBox(height: 24.h),
-              const RoutineTile(name: 'Laundry'),
-              SizedBox(height: 24.h),
-              const RoutineTile(name: 'Work'),
-              SizedBox(height: 24.h),
-              const RoutineTile(name: 'Sleep'),
-              SizedBox(height: 24.h),
-              const RoutineTile(name: 'Gym'),
-              SizedBox(height: 40.h),
-              ChipButton(
-                onPressed: () {},
-                child: Icon(
-                  Icons.add,
-                  size: 48.w,
-                  color: SmartyColors.tertiary,
+              const SettingsTile(title: 'Personal information'),
+              const SettingsTile(title: 'Account and security'),
+              const SettingsTile(title: 'App Notification'),
+              const SettingsTile(title: 'Activate Safe Mode'),
+              SettingsTile(
+                title: 'Dark Mode',
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Off', style: TextStyles.body),
+                    SizedBox(width: 8.w),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 14,
+                    ),
+                  ],
                 ),
               ),
+              const SettingsTile(title: 'Temperature Unit'),
+              const SettingsTile(title: 'Privacy Settings'),
             ],
           ),
         ),

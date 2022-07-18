@@ -16,3 +16,4 @@ const String cctvRoute = '/cctv';
 const String refridgeratorRoute = '/refridgerator';
 const String microwaveRoute = '/microwave';
 const String profileRoute = '/profileRoute';
+const String settingsRoute = '/settingsRoute';
