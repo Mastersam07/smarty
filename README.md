@@ -1,45 +1,39 @@
-# 🔥🔥 Flutter Smart Home App Concept 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
-[![Twitter Follow](https://img.shields.io/twitter/follow/mastersam_.svg?style=social)](https://twitter.com/mastersam_)
+<!--
+This README describes the package. If you publish this package to pub.dev,
+this README's contents appear on the landing page for your package.
 
-Flutter representation of a Smart Home App Concept designed by [Retro](https://twitter.com/tohsin_vibes).
+For information about how to write a good package README, see the guide for
+[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
-Star⭐ the repo if you like what you see😉.
+For general information about developing packages, see the Dart guide for
+[creating packages](https://dart.dev/guides/libraries/create-library-packages)
+and the Flutter guide for
+[developing packages and plugins](https://flutter.dev/developing-packages).
+-->
 
+TODO: Put a short description of the package here that helps potential users
+know whether this package might be useful for them.
 
-<!-- <a href="ss/app.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a> -->
+## Features
 
-[Link to Mockup](https://www.ls.graphics/free/simple-iphone-x-mockups)
+TODO: List what your package can do. Maybe include images, gifs, or videos.
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/mastersam_.svg?style=social)](https://twitter.com/mastersam_)
+## Getting started
 
-## ✨ Requirements
-* Any Operating System (ie. MacOS X, Linux, Windows)
-* Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
-* A little knowledge of Dart and Flutter
-* A brain to think 🤓🤓
+TODO: List prerequisites and provide or point to information on how to
+start using the package.
 
+## Usage
 
-## 📸 ScreenShots
+TODO: Include short and useful examples for package users. Add longer examples
+to `/example` folder.
 
-<img src="ss/smarty_light.png"/>
+```dart
+const like = 'sample';
+```
 
-| Image| Image|
-|------|-------|
-|<img src="ss/1.png" width="400">|<img src="ss/2.png" width="400">|
-|<img src="ss/3.png" width="400">|<img src="ss/4.png" width="400">|
-|<img src="ss/5.png" width="400">|<img src="ss/6.png" width="400">|
-|<img src="ss/7.png" width="400">|<img src="ss/8.png" width="400">|
-|<img src="ss/9.png" width="400">|<img src="ss/10.png" width="400">|
-|<img src="ss/11.png" width="400">|<img src="ss/12.png" width="400">|
-|<img src="ss/13.png" width="400">|<img src="ss/14.png" width="400">|
+## Additional information
 
-
-## 🌗 Dark theme
->>> WIP
-
-## 🤓 Designer(s)
-**Tosin** [![Twitter Follow](https://img.shields.io/twitter/follow/tohsin_vibes.svg?style=social)](https://twitter.com/tohsin_vibes)
-
-## 🤓 Author(s)
-**Samuel Abada** [![Twitter Follow](https://img.shields.io/twitter/follow/mastersam_.svg?style=social)](https://twitter.com/mastersam_)
+TODO: Tell users more about the package: where to find more information, how to
+contribute to the package, how to file issues, what response they can expect
+from the package authors, and more.
