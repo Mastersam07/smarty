@@ -12,85 +12,88 @@ class DevicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 32 + MediaQuery.of(context).padding.top),
-            Row(
-              children: [
-                if (AppNavigator.canPop)
-                  GestureDetector(
-                    onTap: () => AppNavigator.pop(),
-                    child: const Icon(Icons.arrow_back_ios),
+    return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 32 + MediaQuery.of(context).padding.top),
+              Row(
+                children: [
+                  if (AppNavigator.canPop)
+                    GestureDetector(
+                      onTap: () => AppNavigator.pop(),
+                      child: const Icon(Icons.arrow_back_ios),
+                    ),
+                  Text(
+                    'Devices',
+                    style: BatThemeData.of(context).typography.headline4,
                   ),
-                Text(
-                  'Devices',
-                  style: BatThemeData.of(context).typography.headline4,
+                ],
+              ),
+              SizedBox(height: 16.h),
+              Text(
+                'Living Room',
+                style: BatThemeData.of(context).typography.bodyCopy,
+              ),
+              SizedBox(height: 16.h),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [...devices.map((e) => DeviceCard(device: e))],
                 ),
-              ],
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'Living Room',
-              style: BatThemeData.of(context).typography.bodyCopy,
-            ),
-            SizedBox(height: 16.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [...devices.map((e) => DeviceCard(device: e))],
               ),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'Bed Room',
-              style: BatThemeData.of(context).typography.bodyCopy,
-            ),
-            SizedBox(height: 16.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [...devices.map((e) => DeviceCard(device: e))],
+              SizedBox(height: 16.h),
+              Text(
+                'Bed Room',
+                style: BatThemeData.of(context).typography.bodyCopy,
               ),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'Kitchen',
-              style: BatThemeData.of(context).typography.bodyCopy,
-            ),
-            SizedBox(height: 16.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [...devices.map((e) => DeviceCard(device: e))],
+              SizedBox(height: 16.h),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [...devices.map((e) => DeviceCard(device: e))],
+                ),
               ),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'Dining Room',
-              style: BatThemeData.of(context).typography.bodyCopy,
-            ),
-            SizedBox(height: 16.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [...devices.map((e) => DeviceCard(device: e))],
+              SizedBox(height: 16.h),
+              Text(
+                'Kitchen',
+                style: BatThemeData.of(context).typography.bodyCopy,
               ),
-            ),
-            SizedBox(height: 48.h),
-            AppButtonPrimary(
-              label: 'Add Device',
-              onPressed: () {},
-            ),
-            SizedBox(height: 64.h),
-          ],
+              SizedBox(height: 16.h),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [...devices.map((e) => DeviceCard(device: e))],
+                ),
+              ),
+              SizedBox(height: 16.h),
+              Text(
+                'Dining Room',
+                style: BatThemeData.of(context).typography.bodyCopy,
+              ),
+              SizedBox(height: 16.h),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [...devices.map((e) => DeviceCard(device: e))],
+                ),
+              ),
+              SizedBox(height: 48.h),
+              AppButtonPrimary(
+                label: 'Add Device',
+                onPressed: () {},
+              ),
+              SizedBox(height: 64.h),
+            ],
+          ),
         ),
       ),
     );

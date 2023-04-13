@@ -38,6 +38,18 @@ Star⭐ the repo if you like what you see😉.
 ## 🌗 Dark theme
 >>> WIP
 
+<img src="ss/smarty_light.png"/>
+
+| Image| Image|
+|------|-------|
+|<img src="ss/dark1.png" width="400">|<img src="ss/dark2.png" width="400">|
+|<img src="ss/dark3.png" width="400">|<img src="ss/dark4.png" width="400">|
+|<img src="ss/dark5.png" width="400">|<img src="ss/dark6.png" width="400">|
+|<img src="ss/dark7.png" width="400">|<img src="ss/dark8.png" width="400">|
+|<img src="ss/dark9.png" width="400">|<img src="ss/dark10.png" width="400">|
+|<img src="ss/dark11.png" width="400">|<img src="ss/dark12.png" width="400">|
+|<img src="ss/dark13.png" width="400">|<img src="ss/dark14.png" width="400">|
+
 ## 🤓 Designer(s)
 **Tosin** [![Twitter Follow](https://img.shields.io/twitter/follow/tohsin_vibes.svg?style=social)](https://twitter.com/tohsin_vibes)
 
