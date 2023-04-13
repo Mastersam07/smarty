@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'devices/presentation/views/device_home.dart';
@@ -41,29 +42,25 @@ class _DashboardState extends State<Dashboard>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         children: _children,
         controller: _tabController,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: BatPalette.white,
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         currentIndex: _tabController.index,
         unselectedFontSize: 14,
         elevation: 2.0,
-        // selectedItemColor: ShuttlersColors.shuttlersGreen,
-        // selectedIconTheme: ShuttlersThemes.iconThemeData,
-        // selectedLabelStyle: TextStyle(
-        //   fontWeight: FontWeight.w600,
-        //   letterSpacing: 0.0,
-        //   fontSize: 12.0,
-        // ),
-        // unselectedLabelStyle: TextStyle(
-        //   letterSpacing: 0.0,
-        //   fontSize: 12.0,
-        // ),
-        // backgroundColor: Colors.white,
+        selectedIconTheme: IconThemeData(color: BatPalette.primary),
+        unselectedIconTheme: IconThemeData(color: BatPalette.grey60),
+        selectedLabelStyle: BatThemeData.of(context).typography.bodyCopyMedium,
+        unselectedLabelStyle: BatThemeData.of(context).typography.bodyCopy,
+        selectedItemColor: BatPalette.primary,
+        unselectedItemColor: BatPalette.grey60,
         enableFeedback: true,
         items: const [
           BottomNavigationBarItem(

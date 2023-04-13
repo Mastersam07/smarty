@@ -1,8 +1,10 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../shared/res/res.dart';
+import '../../../../main.dart';
 
 class PowerChart extends StatefulWidget {
   const PowerChart({Key? key}) : super(key: key);
@@ -19,6 +21,13 @@ class _PowerChartState extends State<PowerChart> {
   ];
 
   bool showAvg = false;
+  late ThemeProvider theme;
+
+  @override
+  void initState() {
+    theme = context.read<ThemeProvider>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,8 @@ class _PowerChartState extends State<PowerChart> {
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     TextStyle style = TextStyle(
-      color: SmartyColors.grey80,
+      fontFamily: 'Roboto',
+      color: theme.isDark ? BatPalette.white80 : BatPalette.grey80,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     );
@@ -73,7 +83,8 @@ class _PowerChartState extends State<PowerChart> {
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     TextStyle style = TextStyle(
-      color: SmartyColors.grey80,
+      fontFamily: 'Roboto',
+      color: theme.isDark ? BatPalette.white80 : BatPalette.grey80,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     );
@@ -104,14 +115,14 @@ class _PowerChartState extends State<PowerChart> {
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: theme.isDark ? BatPalette.white30 : BatPalette.grey30,
             strokeWidth: 0.2,
             dashArray: [2, 2],
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: theme.isDark ? BatPalette.white30 : BatPalette.grey30,
             strokeWidth: 0.2,
             dashArray: [2, 2],
           );
@@ -145,7 +156,7 @@ class _PowerChartState extends State<PowerChart> {
       borderData: FlBorderData(
         show: true,
         border: Border.all(
-          color: SmartyColors.grey30,
+          color: theme.isDark ? BatPalette.white30 : BatPalette.grey30,
           width: 0.5,
           style: BorderStyle.solid,
         ),

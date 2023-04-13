@@ -1,5 +1,8 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:smarty/main.dart';
 import '../../../../core/navigation/navigator.dart';
 
 import '../../../../shared/res/res.dart';
@@ -11,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = context.read<ThemeProvider>();
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -22,21 +26,30 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   'Good Morning, Tosin',
-                  style: TextStyles.headline4,
+                  style: BatThemeData.of(context).typography.headline4,
                 ),
               ),
-              GestureDetector(
-                onTap: () => AppNavigator.pushNamed(
-                  profileRoute,
-                  arguments: Icon(
-                    Icons.notifications_outlined,
-                    color: SmartyColors.grey,
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        provider.changeMode();
+                      },
+                      icon: const Icon(Icons.lightbulb)),
+                  GestureDetector(
+                    onTap: () => AppNavigator.pushNamed(
+                      profileRoute,
+                      arguments: Icon(
+                        Icons.notifications_outlined,
+                        color: SmartyColors.grey,
+                      ),
+                    ),
+                    child: const CircleAvatar(
+                      radius: 24,
+                      backgroundImage: AssetImage('assets/images/profile.png'),
+                    ),
                   ),
-                ),
-                child: const CircleAvatar(
-                  radius: 24,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
+                ],
               ),
             ],
           ),
@@ -48,16 +61,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Quick Action',
-                style: TextStyles.body.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: SmartyColors.grey,
-                ),
+                style: BatThemeData.of(context).typography.bodyCopyMedium,
               ),
               Text(
                 'Edit',
-                style: TextStyles.body.copyWith(
-                  color: SmartyColors.grey60,
-                ),
+                style: BatThemeData.of(context).typography.bodyCopy,
               )
             ],
           ),
@@ -72,10 +80,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 32.h),
           Text(
             'Active Devices',
-            style: TextStyles.body.copyWith(
-              fontWeight: FontWeight.w500,
-              color: SmartyColors.grey,
-            ),
+            style: BatThemeData.of(context).typography.bodyCopyMedium,
           ),
           SizedBox(height: 16.h),
           SingleChildScrollView(
@@ -91,16 +96,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Rooms',
-                style: TextStyles.body.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: SmartyColors.grey,
-                ),
+                style: BatThemeData.of(context).typography.bodyCopyMedium,
               ),
               Text(
                 'Edit',
-                style: TextStyles.body.copyWith(
-                  color: SmartyColors.grey60,
-                ),
+                style: BatThemeData.of(context).typography.bodyCopy,
               )
             ],
           ),

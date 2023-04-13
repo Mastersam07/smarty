@@ -1,10 +1,12 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:smarty/main.dart';
 import '../../../../utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../../../../shared/widgets/power_btn.dart';
 import '../../domain/models/devices.dart';
 
@@ -23,7 +25,9 @@ class _AcScreenState extends State<AcScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -42,7 +46,8 @@ class _AcScreenState extends State<AcScreen> {
                     child: Center(
                       child: Text(
                         'Air Conditioner',
-                        style: TextStyles.headline4,
+                        style:
+                            BatThemeData.of(context).typography.headline4Medium,
                       ),
                     ),
                   ),
@@ -57,13 +62,12 @@ class _AcScreenState extends State<AcScreen> {
                     children: [
                       Text(
                         'AC',
-                        style: TextStyles.headline4
-                            .copyWith(color: SmartyColors.grey),
+                        style:
+                            BatThemeData.of(context).typography.headline4Medium,
                       ),
                       Text(
                         widget.device.room,
-                        style: TextStyles.body
-                            .copyWith(color: SmartyColors.grey60),
+                        style: BatThemeData.of(context).typography.bodyCopy,
                       ),
                     ],
                   ),
@@ -72,13 +76,11 @@ class _AcScreenState extends State<AcScreen> {
                     children: [
                       Text(
                         'Temperature',
-                        style: TextStyles.body
-                            .copyWith(color: SmartyColors.grey60),
+                        style: BatThemeData.of(context).typography.bodyCopy,
                       ),
                       Text(
                         '25°C',
-                        style: TextStyles.body
-                            .copyWith(color: SmartyColors.grey60),
+                        style: BatThemeData.of(context).typography.bodyCopy,
                       ),
                     ],
                   ),
@@ -92,9 +94,10 @@ class _AcScreenState extends State<AcScreen> {
                   appearance: CircularSliderAppearance(
                     size: 300.r,
                     customColors: CustomSliderColors(
-                      progressBarColor: SmartyColors.primary,
-                      trackColor: SmartyColors.grey30,
-                      dotColor: SmartyColors.primary,
+                      progressBarColor: BatPalette.primary,
+                      trackColor:
+                          theme.isDark ? BatPalette.white30 : BatPalette.grey30,
+                      dotColor: BatPalette.primary,
                     ),
                     customWidths: CustomSliderWidths(
                       progressBarWidth: 8.w,
@@ -121,9 +124,8 @@ class _AcScreenState extends State<AcScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "cool",
-                            style: TextStyles.body
-                                .copyWith(color: SmartyColors.grey60),
+                            "COOL",
+                            style: BatThemeData.of(context).typography.bodyCopy,
                           ),
                           SizedBox(height: 20.h),
                           Row(
@@ -131,8 +133,10 @@ class _AcScreenState extends State<AcScreen> {
                             children: [
                               CircleAvatar(
                                 backgroundColor: temp.floor() <= 16
-                                    ? SmartyColors.grey30
-                                    : SmartyColors.primary,
+                                    ? theme.isDark
+                                        ? BatPalette.white30
+                                        : BatPalette.grey30
+                                    : BatPalette.primary,
                                 child: IconButton(
                                   icon: const Icon(Icons.remove),
                                   onPressed: temp.floor() <= 16
@@ -147,16 +151,17 @@ class _AcScreenState extends State<AcScreen> {
                               SizedBox(width: 16.w),
                               Text(
                                 "${value.toStringAsFixed(1)}°C",
-                                style: TextStyles.headline4.copyWith(
-                                  color: SmartyColors.grey80,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: BatThemeData.of(context)
+                                    .typography
+                                    .headline4Medium,
                               ),
                               SizedBox(width: 16.w),
                               CircleAvatar(
                                 backgroundColor: temp.round() == 31
-                                    ? SmartyColors.grey30
-                                    : SmartyColors.primary,
+                                    ? theme.isDark
+                                        ? BatPalette.white30
+                                        : BatPalette.grey30
+                                    : BatPalette.primary,
                                 child: IconButton(
                                   icon: const Icon(Icons.add),
                                   onPressed: temp.round() == 31
@@ -175,14 +180,15 @@ class _AcScreenState extends State<AcScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 27.5.w, vertical: 6.5.h),
                             decoration: BoxDecoration(
-                              color: SmartyColors.grey10,
+                              color: theme.isDark
+                                  ? BatPalette.white10
+                                  : BatPalette.grey10,
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: Text(
                               "Auto Adjust",
-                              style: TextStyles.subtitle.copyWith(
-                                color: SmartyColors.primary,
-                              ),
+                              style:
+                                  BatThemeData.of(context).typography.subtitle,
                             ),
                           ),
                           SizedBox(height: 20.h),
@@ -200,18 +206,29 @@ class _AcScreenState extends State<AcScreen> {
                       padding: EdgeInsets.symmetric(
                           horizontal: 48.w, vertical: 10.h),
                       decoration: BoxDecoration(
-                        color: SmartyColors.secondary10,
+                        color: theme.isDark
+                            ? BatPalette.white10
+                            : BatPalette.secondary10,
                         borderRadius: BorderRadius.circular(100.r),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.sunny,
-                              color: SmartyColors.primary, size: 32.w),
+                              color: theme.isDark
+                                  ? BatPalette.white
+                                  : BatPalette.primary,
+                              size: 32.w),
                           Icon(Icons.water_drop_outlined,
-                              color: SmartyColors.primary, size: 32.w),
+                              color: theme.isDark
+                                  ? BatPalette.white
+                                  : BatPalette.primary,
+                              size: 32.w),
                           Icon(Icons.cloud_rounded,
-                              color: SmartyColors.primary, size: 32.w),
+                              color: theme.isDark
+                                  ? BatPalette.white
+                                  : BatPalette.primary,
+                              size: 32.w),
                         ],
                       ),
                     ),
@@ -223,15 +240,19 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: SmartyColors.secondary10,
+                              backgroundColor: theme.isDark
+                                  ? BatPalette.white10
+                                  : BatPalette.secondary10,
                               child: Icon(Icons.wb_sunny,
-                                  color: SmartyColors.primary, size: 24.w),
+                                  color: theme.isDark
+                                      ? BatPalette.white
+                                      : BatPalette.primary,
+                                  size: 24.w),
                             ),
                             Text(
                               "Sleep",
-                              style: TextStyles.body.copyWith(
-                                color: SmartyColors.grey60,
-                              ),
+                              style:
+                                  BatThemeData.of(context).typography.bodyCopy,
                             ),
                           ],
                         ),
@@ -239,15 +260,19 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: SmartyColors.secondary10,
+                              backgroundColor: theme.isDark
+                                  ? BatPalette.white10
+                                  : BatPalette.secondary10,
                               child: Icon(Icons.wb_cloudy,
-                                  color: SmartyColors.primary, size: 24.w),
+                                  color: theme.isDark
+                                      ? BatPalette.white
+                                      : BatPalette.primary,
+                                  size: 24.w),
                             ),
                             Text(
                               "Cold",
-                              style: TextStyles.body.copyWith(
-                                color: SmartyColors.grey60,
-                              ),
+                              style:
+                                  BatThemeData.of(context).typography.bodyCopy,
                             ),
                           ],
                         ),
@@ -255,15 +280,19 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: SmartyColors.secondary10,
+                              backgroundColor: theme.isDark
+                                  ? BatPalette.white10
+                                  : BatPalette.secondary10,
                               child: Icon(Icons.refresh,
-                                  color: SmartyColors.primary, size: 24.w),
+                                  color: theme.isDark
+                                      ? BatPalette.white
+                                      : BatPalette.primary,
+                                  size: 24.w),
                             ),
                             Text(
                               "Routine",
-                              style: TextStyles.body.copyWith(
-                                color: SmartyColors.grey60,
-                              ),
+                              style:
+                                  BatThemeData.of(context).typography.bodyCopy,
                             ),
                           ],
                         ),
@@ -273,8 +302,11 @@ class _AcScreenState extends State<AcScreen> {
                 ),
               ),
               SizedBox(height: 80.h),
-              const ChipButton(
-                child: Icon(Icons.power_settings_new_rounded),
+              ChipButton(
+                child: Icon(
+                  Icons.power_settings_new_rounded,
+                  color: BatPalette.white,
+                ),
               ),
             ],
           ),

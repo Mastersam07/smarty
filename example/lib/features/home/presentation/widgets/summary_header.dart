@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/navigation/navigator.dart';
@@ -24,7 +25,10 @@ class SummaryHeader extends StatelessWidget {
             children: [
               Text(
                 'Temperature',
-                style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                style: BatThemeData.of(context)
+                    .typography
+                    .bodyCopy
+                    .copyWith(color: BatPalette.white),
               ),
               Row(
                 children: [
@@ -35,8 +39,10 @@ class SummaryHeader extends StatelessWidget {
                   ),
                   Text(
                     '25°C',
-                    style:
-                        TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                    style: BatThemeData.of(context)
+                        .typography
+                        .bodyCopy
+                        .copyWith(color: BatPalette.white),
                   ),
                 ],
               )
@@ -44,10 +50,11 @@ class SummaryHeader extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(
-                'Humidity',
-                style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
-              ),
+              Text('Humidity',
+                  style: BatThemeData.of(context)
+                      .typography
+                      .bodyCopy
+                      .copyWith(color: BatPalette.white)),
               Row(
                 children: [
                   Icon(
@@ -57,8 +64,10 @@ class SummaryHeader extends StatelessWidget {
                   ),
                   Text(
                     '80%',
-                    style:
-                        TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                    style: BatThemeData.of(context)
+                        .typography
+                        .bodyCopy
+                        .copyWith(color: BatPalette.white),
                   ),
                 ],
               ),
@@ -68,7 +77,10 @@ class SummaryHeader extends StatelessWidget {
             children: [
               Text(
                 'Energy Used',
-                style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                style: BatThemeData.of(context)
+                    .typography
+                    .bodyCopy
+                    .copyWith(color: BatPalette.white),
               ),
               Row(
                 children: [
@@ -79,8 +91,10 @@ class SummaryHeader extends StatelessWidget {
                   ),
                   Text(
                     '250 KWh',
-                    style:
-                        TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                    style: BatThemeData.of(context)
+                        .typography
+                        .bodyCopy
+                        .copyWith(color: BatPalette.white),
                   ),
                 ],
               )

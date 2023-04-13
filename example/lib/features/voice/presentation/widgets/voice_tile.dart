@@ -1,5 +1,8 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:smarty/main.dart';
 
 import '../../../../shared/res/res.dart';
 
@@ -16,10 +19,11 @@ class VoiceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Container(
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
-        color: SmartyColors.grey10,
+        color: theme.isDark ? BatPalette.white10 : SmartyColors.grey10,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
@@ -27,7 +31,8 @@ class VoiceTile extends StatelessWidget {
         children: [
           Text(
             name,
-            style: TextStyles.headline4.copyWith(color: SmartyColors.grey80),
+            style: BatThemeData.of(context).typography.headline4.copyWith(
+                color: theme.isDark ? BatPalette.white80 : BatPalette.grey80),
           ),
           Switch.adaptive(
             value: value,

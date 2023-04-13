@@ -1,9 +1,11 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../../main.dart';
 import '../../../../shared/widgets/power_btn.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../../../../utils/enums.dart';
 import '../../domain/models/devices.dart';
 
@@ -22,7 +24,9 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -41,7 +45,8 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                     child: Center(
                       child: Text(
                         'Smart TV',
-                        style: TextStyles.headline4,
+                        style:
+                            BatThemeData.of(context).typography.headline4Medium,
                       ),
                     ),
                   ),
@@ -53,12 +58,11 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                 children: [
                   Text(
                     'Smart TV',
-                    style:
-                        TextStyles.headline4.copyWith(color: SmartyColors.grey),
+                    style: BatThemeData.of(context).typography.headline4Medium,
                   ),
                   Text(
                     'Living Room',
-                    style: TextStyles.body.copyWith(color: SmartyColors.grey60),
+                    style: BatThemeData.of(context).typography.bodyCopy,
                   ),
                 ],
               ),
@@ -66,7 +70,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
               Container(
                 padding: EdgeInsets.all(24.r),
                 decoration: BoxDecoration(
-                  color: SmartyColors.grey10,
+                  color: theme.isDark ? BatPalette.white10 : BatPalette.grey10,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Column(
@@ -87,13 +91,19 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                               children: [
                                 Text(
                                   'Netflix',
-                                  style: TextStyles.body
-                                      .copyWith(color: SmartyColors.grey),
+                                  style: BatThemeData.of(context)
+                                      .typography
+                                      .bodyCopyMedium,
                                 ),
                                 Text(
                                   'Deadline 2022/07/20',
-                                  style: TextStyles.subtitle
-                                      .copyWith(color: SmartyColors.grey60),
+                                  style: BatThemeData.of(context)
+                                      .typography
+                                      .subtitle
+                                      .copyWith(
+                                          color: theme.isDark
+                                              ? BatPalette.white60
+                                              : BatPalette.grey60),
                                 )
                               ],
                             ),
@@ -104,12 +114,20 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                               horizontal: 8.w, vertical: 4.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            border: Border.all(color: SmartyColors.grey60),
+                            border: Border.all(
+                                color: theme.isDark
+                                    ? BatPalette.white60
+                                    : BatPalette.grey60),
                           ),
                           child: Text(
                             'Open App',
-                            style: TextStyles.subtitle
-                                .copyWith(color: SmartyColors.grey60),
+                            style: BatThemeData.of(context)
+                                .typography
+                                .subtitle
+                                .copyWith(
+                                    color: theme.isDark
+                                        ? BatPalette.white60
+                                        : BatPalette.grey60),
                           ),
                         )
                       ],
@@ -117,11 +135,11 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                     SizedBox(height: 24.h),
                     Text(
                       'TV Shows',
-                      style: TextStyles.subtitle,
+                      style: BatThemeData.of(context).typography.subtitle,
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: SmartyColors.primary,
+                        color: BatPalette.primary,
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Stack(children: [
@@ -135,12 +153,14 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  color: SmartyColors.black,
+                                  color: BatPalette.black,
                                 ),
                                 child: Text(
                                   'Off',
-                                  style: TextStyles.headline3
-                                      .copyWith(color: SmartyColors.tertiary),
+                                  style: BatThemeData.of(context)
+                                      .typography
+                                      .headline3
+                                      .copyWith(color: BatPalette.white),
                                 ),
                               ),
                             ),
@@ -158,11 +178,13 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                             children: [
                               Text(
                                 'Stranger Things',
-                                style: TextStyles.subtitle,
+                                style: BatThemeData.of(context)
+                                    .typography
+                                    .subtitle,
                               ),
                               Icon(
                                 Icons.keyboard_arrow_down_rounded,
-                                color: SmartyColors.primary,
+                                color: BatPalette.primary,
                               ),
                             ],
                           ),
@@ -171,8 +193,10 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(100.r)),
                             child: LinearProgressIndicator(
-                              color: SmartyColors.primary,
-                              backgroundColor: SmartyColors.grey10,
+                              color: BatPalette.primary,
+                              backgroundColor: theme.isDark
+                                  ? BatPalette.white10
+                                  : BatPalette.grey10,
                               value: 0.4,
                               minHeight: 8.h,
                             ),
@@ -186,8 +210,10 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100.r),
-                                  border:
-                                      Border.all(color: SmartyColors.grey30),
+                                  border: Border.all(
+                                      color: theme.isDark
+                                          ? BatPalette.white30
+                                          : BatPalette.grey30),
                                 ),
                                 child: Row(
                                   children: [
@@ -220,8 +246,10 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100.r),
-                                  border:
-                                      Border.all(color: SmartyColors.grey30),
+                                  border: Border.all(
+                                      color: theme.isDark
+                                          ? BatPalette.white30
+                                          : BatPalette.grey30),
                                 ),
                                 child: Row(
                                   children: [
@@ -229,8 +257,9 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                     SizedBox(width: 10.w),
                                     Text(
                                       '72%',
-                                      style: TextStyles.subtitle
-                                          .copyWith(color: SmartyColors.grey),
+                                      style: BatThemeData.of(context)
+                                          .typography
+                                          .subtitle,
                                     ),
                                   ],
                                 ),
@@ -239,8 +268,10 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 padding: EdgeInsets.all(8.r),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100.r),
-                                  border:
-                                      Border.all(color: SmartyColors.grey30),
+                                  border: Border.all(
+                                      color: theme.isDark
+                                          ? BatPalette.white30
+                                          : BatPalette.grey30),
                                 ),
                                 child: Icon(Icons.chat, size: 18.w),
                               )
@@ -262,11 +293,11 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                     padding: EdgeInsets.all(8.r),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100.r),
-                      border: Border.all(color: SmartyColors.grey30),
+                      border: Border.all(color: BatPalette.grey30),
                     ),
                     child: Icon(
                       Icons.close_rounded,
-                      color: SmartyColors.grey60,
+                      color: BatPalette.grey60,
                     ),
                   ),
                   Container(
@@ -275,18 +306,21 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                     padding: EdgeInsets.all(8.r),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100.r),
-                      border: Border.all(color: SmartyColors.grey30),
+                      border: Border.all(color: BatPalette.grey30),
                     ),
                     child: Icon(
                       Icons.cast_connected_rounded,
-                      color: SmartyColors.grey60,
+                      color: BatPalette.grey60,
                     ),
                   )
                 ],
               ),
               SizedBox(height: 51.h),
               ChipButton(
-                child: const Icon(Icons.power_settings_new_rounded),
+                child: Icon(
+                  Icons.power_settings_new_rounded,
+                  color: BatPalette.white,
+                ),
                 onPressed: () {
                   setState(() {
                     _isOn = !_isOn;

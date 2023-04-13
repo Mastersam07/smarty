@@ -1,8 +1,10 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:smarty/main.dart';
 import '../../../../utils/enums.dart';
 
-import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';
 
 class StatTile extends StatelessWidget {
@@ -14,6 +16,7 @@ class StatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,6 +28,7 @@ class StatTile extends StatelessWidget {
               device.type.icon!,
               width: 20.w,
               height: 20.h,
+              color: theme.isDark ? BatPalette.white60 : BatPalette.grey60,
             ),
             SizedBox(width: 10.w),
             Column(
@@ -32,14 +36,15 @@ class StatTile extends StatelessWidget {
               children: [
                 Text(
                   device.name!,
-                  style: TextStyles.body
-                      .copyWith(color: SmartyColors.grey, height: 1.0),
+                  style: BatThemeData.of(context).typography.bodyCopyMedium,
                 ),
                 Text(
                   'Living Room',
-                  style: TextStyles.subtitle.copyWith(
-                    color: SmartyColors.grey60,
-                  ),
+                  style: BatThemeData.of(context).typography.subtitle.copyWith(
+                        color: theme.isDark
+                            ? BatPalette.white60
+                            : BatPalette.grey60,
+                      ),
                 )
               ],
             ),
@@ -47,9 +52,9 @@ class StatTile extends StatelessWidget {
         ),
         Text(
           '250KWh',
-          style: TextStyles.subtitle.copyWith(
-            color: SmartyColors.grey60,
-          ),
+          style: BatThemeData.of(context).typography.subtitle.copyWith(
+                color: theme.isDark ? BatPalette.white60 : BatPalette.grey60,
+              ),
         ),
       ],
     );

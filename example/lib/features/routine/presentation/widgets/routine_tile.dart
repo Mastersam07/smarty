@@ -1,7 +1,6 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../shared/res/res.dart';
 
 class RoutineTile extends StatelessWidget {
   final String name;
@@ -17,7 +16,7 @@ class RoutineTile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
-        color: active ? SmartyColors.primary : SmartyColors.grey10,
+        color: active ? BatPalette.primary : BatPalette.grey10,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
@@ -28,14 +27,13 @@ class RoutineTile extends StatelessWidget {
               Icon(
                 Icons.sunny,
                 size: 24.w,
-                color: active ? SmartyColors.tertiary : SmartyColors.grey60,
+                color: active ? BatPalette.white : BatPalette.grey60,
               ),
               SizedBox(width: 4.w),
               Text(
                 name,
-                style: TextStyles.body.copyWith(
-                    color:
-                        active ? SmartyColors.tertiary : SmartyColors.grey60),
+                style: BatThemeData.of(context).typography.bodyCopy.copyWith(
+                    color: active ? BatPalette.white : BatPalette.grey60),
               ),
             ],
           ),
@@ -44,15 +42,13 @@ class RoutineTile extends StatelessWidget {
             children: [
               Text(
                 '6:00 AM',
-                style: TextStyles.subtitle.copyWith(
-                    color:
-                        active ? SmartyColors.tertiary80 : SmartyColors.grey60),
+                style: BatThemeData.of(context).typography.subtitle.copyWith(
+                    color: active ? BatPalette.white80 : BatPalette.grey60),
               ),
               Text(
                 '5 Devices',
-                style: TextStyles.subtitle.copyWith(
-                    color:
-                        active ? SmartyColors.tertiary80 : SmartyColors.grey60),
+                style: BatThemeData.of(context).typography.subtitle.copyWith(
+                    color: active ? BatPalette.white80 : BatPalette.grey60),
               ),
             ],
           )

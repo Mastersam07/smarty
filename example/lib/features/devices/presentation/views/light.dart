@@ -1,9 +1,11 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../../main.dart';
 import '../../../../utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../../../../shared/widgets/power_btn.dart';
 import '../../domain/models/devices.dart';
 import '../widgets/gradient_progress_indicator.dart';
@@ -22,7 +24,9 @@ class _LightScreenState extends State<LightScreen> {
   bool _isOn = false;
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -41,7 +45,8 @@ class _LightScreenState extends State<LightScreen> {
                     child: Center(
                       child: Text(
                         'Light',
-                        style: TextStyles.headline4,
+                        style:
+                            BatThemeData.of(context).typography.headline4Medium,
                       ),
                     ),
                   ),
@@ -56,8 +61,7 @@ class _LightScreenState extends State<LightScreen> {
                     children: [
                       Text(
                         'Living Room',
-                        style: TextStyles.headline4
-                            .copyWith(color: SmartyColors.grey),
+                        style: BatThemeData.of(context).typography.headline4,
                       ),
                       Switch.adaptive(
                         value: _isOn,
@@ -66,13 +70,19 @@ class _LightScreenState extends State<LightScreen> {
                             _isOn = v;
                           });
                         },
-                        activeColor: SmartyColors.primary,
+                        activeColor: BatPalette.primary,
                       )
                     ],
                   ),
                   Text(
                     'Light Intesity',
-                    style: TextStyles.body.copyWith(color: SmartyColors.grey60),
+                    style: BatThemeData.of(context)
+                        .typography
+                        .bodyCopy
+                        .copyWith(
+                            color: theme.isDark
+                                ? BatPalette.white60
+                                : BatPalette.grey60),
                   ),
                 ],
               ),
@@ -93,14 +103,17 @@ class _LightScreenState extends State<LightScreen> {
                 gradientColors: [
                   const Color(0XFFE89D0D),
                   const Color(0XFFFCFBC3),
-                  SmartyColors.primary,
-                  SmartyColors.secondary,
+                  BatPalette.primary,
+                  BatPalette.secondary,
                 ],
                 strokeWidth: 28.0.w,
               ),
               SizedBox(height: 80.h),
               ChipButton(
-                child: const Icon(Icons.power_settings_new_rounded),
+                child: Icon(
+                  Icons.power_settings_new_rounded,
+                  color: BatPalette.white,
+                ),
                 onPressed: () {
                   setState(() {
                     _isOn = !_isOn;

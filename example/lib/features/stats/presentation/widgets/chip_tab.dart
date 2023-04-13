@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,10 +29,10 @@ class ChipTab extends StatelessWidget {
       child: Center(
         child: Text(
           name,
-          style: TextStyles.subtitle.copyWith(
+          style: BatThemeData.of(context).typography.subtitle.copyWith(
               color: selectedIndex == index
-                  ? SmartyColors.tertiary
-                  : SmartyColors.primary60),
+                  ? BatPalette.white
+                  : BatPalette.primary60),
         ),
       ),
     );
