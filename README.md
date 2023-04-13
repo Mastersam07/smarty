@@ -1,39 +1,82 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# 🦇🦇 BatTheme
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<p align="center">
+  <a href="https://github.com/mastersam07/smarty" target="_blank">
+    <img src="./ss/batman.gif" alt="Bat Theme" width="200">
+  </a>
+</p>
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+[![Tests](https://github.com/Mastersam07/smarty/actions/workflows/tests.yaml/badge.svg)](https://github.com/Mastersam07/bat_theme/actions/workflows/tests.yaml)
+[![codecov](https://codecov.io/github/Mastersam07/smarty/branch/theming/graph/badge.svg?token=6TQ9VQfbms)](https://codecov.io/github/Mastersam07/smarty)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A repo showcasing how to work with theme extensions in flutter. For the code guide to the writeup <a href="https://github.com/mastersam07">Dressing your flutter widget with theme extension</a> and also the talk <a href="https://docs.google.com/presentation/d/1FWXvKfj6RJoSvFbdGjpX1EkOZi8zscnPwokh8R8Q3Us/edit?usp=sharing">Dressing your flutter widget with theme extension</a> you could check <a href="https://github.com/mastersam07/bat_theme">here</a>.
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+This library is an implementation of the design system available here: https://www.figma.com/file/igCMUoRobPORn168iE513B/Smart-hom-app?node-id=505-406
 
-## Getting started
+Star⭐ the repo if you like what you see😉.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Getting Started
 
-## Usage
+* Add the package to your `pubspec.yaml` file:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+    bat_theme: any
 ```
 
-## Additional information
+* Use the `BatCave` widget:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+import 'package:bat_theme/bat_theme.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BatCave(
+        home: Homepage(),
+    );
+  }
+}
+```
+
+Or you can also use the `BatThemeData` extension:
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: BatThemeData(colors: BatColors.light()),
+        home: Homepage(),
+    );
+  }
+}
+```
+
+## Full Usage
+
+You can check the [example](./example) to see this theming system in usage.
+
+## Roadmap
+
+Who knows whats next? 
+
+- [ ] 
+- [ ] 
+- [ ] 
+
+## Contributors
+
+[<img src="https://avatars3.githubusercontent.com/u/31275429?s=460&u=b935d608a06c1604bae1d971e69a731480a27d46&v=4" width="180" />](https://mastersam.tech)
+#### **Samuel Abada**
+<p>
+<a href="https://twitter.com/mastersam_"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
+<a href="https://linkedin.com/in/abada-samuel/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://medium.com/@sammytech"><img src="https://github.com/aritraroy/social-icons/blob/master/medium-icon.png?raw=true" width="60"></a>
+<a href="https://facebook.com/abada.samueloghenero"><img src="https://github.com/aritraroy/social-icons/blob/master/facebook-icon.png?raw=true" width="60"></a>
+</p>

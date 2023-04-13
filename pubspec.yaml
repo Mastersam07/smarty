@@ -1,7 +1,7 @@
 name: bat_theme
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: A flutter project implemention a design system using theme extension.
+version: 0.0.2
+homepage: https://github.com/mastersam07/smarty
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
