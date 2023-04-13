@@ -28,7 +28,8 @@ class AppButtonPrimary extends StatelessWidget {
           style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
         ),
         style: TextButton.styleFrom(
-          foregroundColor: effectiveBackgroundColor, backgroundColor: effectiveBackgroundColor,
+          foregroundColor: effectiveBackgroundColor,
+          backgroundColor: effectiveBackgroundColor,
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(
             side: BorderSide.none,
