@@ -6,8 +6,8 @@
   </a>
 </p>
 
-[![Tests](https://github.com/Mastersam07/smarty/actions/workflows/tests.yaml/badge.svg)](https://github.com/Mastersam07/bat_theme/actions/workflows/tests.yaml)
-[![codecov](https://codecov.io/github/Mastersam07/smarty/branch/theming/graph/badge.svg?token=6TQ9VQfbms)](https://codecov.io/github/Mastersam07/smarty)
+[![Tests](https://github.com/Mastersam07/smarty/actions/workflows/tests.yaml/badge.svg)](https://github.com/Mastersam07/smarty/actions/workflows/tests.yaml)
+[![codecov](https://codecov.io/github/Mastersam07/smarty/branch/dev/graph/badge.svg?token=6TQ9VQfbms)](https://codecov.io/github/Mastersam07/smarty)
 
 A repo showcasing how to work with theme extensions in flutter. For the code guide to the writeup <a href="https://github.com/mastersam07">Dressing your flutter widget with theme extension</a> and also the talk <a href="https://docs.google.com/presentation/d/1FWXvKfj6RJoSvFbdGjpX1EkOZi8zscnPwokh8R8Q3Us/edit?usp=sharing">Dressing your flutter widget with theme extension</a> you could check <a href="https://github.com/mastersam07/bat_theme">here</a>.
 
