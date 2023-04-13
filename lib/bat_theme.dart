@@ -1,7 +1,12 @@
 library bat_theme;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export './src/themes/button_style.dart';
+export './src/themes/colors.dart';
+export './src/themes/radius.dart';
+export './src/themes/sizes.dart';
+export './src/themes/spacing.dart';
+export './src/themes/theme_data.dart';
+export './src/themes/theme_widget.dart';
+export './src/themes/typography.dart';
+export './src/app.dart';
+export './src/themes/palette.dart';
