@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
+import 'package:smarty/main.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../../shared/res/res.dart';
@@ -35,7 +38,9 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = context.read<ThemeProvider>();
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(children: [
@@ -47,14 +52,21 @@ class _OtpScreenState extends State<OtpScreen> {
             child: Column(children: [
               Text(
                 'Enter OTP',
-                style:
-                    TextStyles.headline4.copyWith(fontWeight: FontWeight.w500),
+                style: BatThemeData.of(context)
+                    .typography
+                    .headline4
+                    .copyWith(color: SmartyColors.primary),
               ),
               SizedBox(height: 16.h),
               Text(
                 'Enter the 6 digits code sent to your email address for verification',
-                style: TextStyles.body.copyWith(
-                    color: SmartyColors.grey80, fontWeight: FontWeight.w500),
+                style: BatThemeData.of(context)
+                    .typography
+                    .bodyCopyMedium
+                    .copyWith(
+                      color:
+                          theme.isDark ? BatPalette.white80 : BatPalette.grey80,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ]),
@@ -69,15 +81,18 @@ class _OtpScreenState extends State<OtpScreen> {
               shape: PinCodeFieldShape.underline,
               fieldHeight: 50.h,
               fieldWidth: 50.w,
-              activeFillColor: SmartyColors.tertiary,
-              activeColor: SmartyColors.grey60,
-              inactiveFillColor: SmartyColors.tertiary,
-              inactiveColor: SmartyColors.error80,
-              selectedFillColor: SmartyColors.tertiary,
-              selectedColor: SmartyColors.grey60,
+              activeFillColor: BatThemeData.of(context).colors.background,
+              activeColor:
+                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
+              inactiveFillColor: BatThemeData.of(context).colors.background,
+              inactiveColor:
+                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
+              selectedFillColor: BatThemeData.of(context).colors.background,
+              selectedColor:
+                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
             ),
             animationDuration: const Duration(milliseconds: 300),
-            backgroundColor: SmartyColors.tertiary,
+            backgroundColor: BatThemeData.of(context).colors.background,
             enableActiveFill: true,
             errorAnimationController: errorController,
             controller: textEditingController,
@@ -86,6 +101,7 @@ class _OtpScreenState extends State<OtpScreen> {
             beforeTextPaste: (text) {
               return true;
             },
+            cursorColor: theme.isDark ? BatPalette.white60 : BatPalette.grey60,
           ),
           SizedBox(height: 51.h),
           AppButtonPrimary(
@@ -97,7 +113,7 @@ class _OtpScreenState extends State<OtpScreen> {
             onTap: () {},
             child: Text(
               'Didn\'t receive code? Resend code',
-              style: TextStyles.body,
+              style: BatThemeData.of(context).typography.bodyCopyMedium,
             ),
           ),
           SizedBox(height: MediaQuery.of(context).padding.bottom),

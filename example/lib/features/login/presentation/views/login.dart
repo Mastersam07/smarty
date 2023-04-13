@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/navigation/navigator.dart';
@@ -11,6 +12,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.h),
         child: Column(
@@ -63,7 +65,7 @@ class LoginScreen extends StatelessWidget {
               onTap: () => AppNavigator.pushNamed(registerRoute),
               child: Text(
                 'Don\'t have an account? Create account',
-                style: TextStyles.body,
+                style: BatThemeData.of(context).typography.bodyCopyMedium,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).padding.bottom * 2),
