@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,7 @@ class OnboardingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 46.w),
+      padding: EdgeInsets.symmetric(horizontal: 54.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -29,11 +30,13 @@ class OnboardingWidget extends StatelessWidget {
                 color: SmartyColors.primary, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 16.h),
-          Text(
-            subtitle,
-            style: TextStyles.body.copyWith(
-                color: SmartyColors.grey80, fontWeight: FontWeight.w500),
-            textAlign: TextAlign.center,
+          SizedBox(
+            width: 263.w,
+            child: Text(
+              subtitle,
+              style: BatThemeData.of(context).typography.bodyCopyMedium,
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),

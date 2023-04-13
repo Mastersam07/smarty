@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'core/navigation/navigator.dart';
 
-import 'shared/res/res.dart';
 import 'shared/widgets/onboarding_widget.dart';
 import 'shared/widgets/page_indicator.dart';
 import 'shared/widgets/widgets.dart';
@@ -23,21 +24,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
-    return ScreenUtilInit(
-      designSize: const Size(428, 926),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Smarty',
-          theme: SmartyThemeData.lightTheme,
-          darkTheme: SmartyThemeData.darkTheme,
-          home: const MyHomePage(),
-          onGenerateRoute: AppRouter.generateRoutes,
-          navigatorKey: AppNavigator.key,
+    return ChangeNotifierProvider<ThemeProvider>(
+      create: (context) => ThemeProvider(),
+      child: Consumer<ThemeProvider>(
+          builder: (BuildContext contxt, value, Widget? child) {
+        return ScreenUtilInit(
+          designSize: const Size(428, 926),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return BatCave(
+              debugShowCheckedModeBanner: false,
+              title: 'Smarty',
+              themeMode: value.theme,
+              home: const MyHomePage(),
+              onGenerateRoute: AppRouter.generateRoutes,
+              navigatorKey: AppNavigator.key,
+            );
+          },
         );
-      },
+      }),
     );
   }
 }
@@ -83,11 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: BatThemeData.of(context).colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 148.h),
             Expanded(
               flex: 9,
               child: PageView(
@@ -112,35 +120,43 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   OnboardingWidget(
                     image: 'assets/images/home3.png',
-                    title: 'Autoomate',
+                    title: 'Automate',
                     subtitle:
                         'Create routines and schedule devices to run along with your routine',
                   ),
                 ],
               ),
             ),
-            Expanded(
-                flex: 4,
-                child: Column(
-                  children: [
-                    SizedBox(height: 64.h),
-                    PageIndicatorWidget(
-                      count: 3,
-                      value: _page,
-                      size: 12.w,
-                    ),
-                    SizedBox(height: 64.h),
-                    AppButtonPrimary(
-                      label: 'Get Started',
-                      onPressed: () =>
-                          AppNavigator.pushNamedReplacement(loginRoute),
-                    ),
-                    // SizedBox(height: 42.h),
-                  ],
-                ))
+            Column(
+              children: [
+                PageIndicatorWidget(
+                  count: 3,
+                  value: _page,
+                  size: 12.w,
+                ),
+                SizedBox(height: 64.h),
+                AppButtonPrimary(
+                  label: 'Get Started',
+                  onPressed: () =>
+                      AppNavigator.pushNamedReplacement(loginRoute),
+                ),
+                SizedBox(height: 42.h),
+              ],
+            )
           ],
         ),
       ),
     );
+  }
+}
+
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode _theme = ThemeMode.dark;
+  ThemeMode get theme => _theme;
+  bool get isDark => _theme == ThemeMode.dark;
+
+  void changeMode() {
+    _theme = !isDark ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
   }
 }
