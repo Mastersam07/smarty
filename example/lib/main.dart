@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -157,6 +158,8 @@ class ThemeProvider extends ChangeNotifier {
 
   void changeMode() {
     _theme = !isDark ? ThemeMode.dark : ThemeMode.light;
+    SystemChrome.setSystemUIOverlayStyle(
+        isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark);
     notifyListeners();
   }
 }

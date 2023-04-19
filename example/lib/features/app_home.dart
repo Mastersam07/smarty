@@ -46,10 +46,12 @@ class _DashboardState extends State<Dashboard>
     var theme = context.read<ThemeProvider>();
     return Scaffold(
       backgroundColor: BatThemeData.of(context).colors.background,
-      body: TabBarView(
-        physics: const NeverScrollableScrollPhysics(),
-        children: _children,
-        controller: _tabController,
+      body: SafeArea(
+        child: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          children: _children,
+          controller: _tabController,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: BatThemeData.of(context).colors.background,
