@@ -1,6 +1,5 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../res/res.dart';
 
 enum BtnState { active, inactive }
 
@@ -18,14 +17,16 @@ class AppButtonPrimary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveBackgroundColor = btnColor ?? SmartyColors.primary;
+    var theme = BatThemeData.of(context);
+    final effectiveBackgroundColor = btnColor ?? theme.colors.primary;
     return SizedBox(
       width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
         child: Text(
           label,
-          style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
+          style:
+              theme.typography.bodyCopyMedium.copyWith(color: BatPalette.white),
         ),
         style: TextButton.styleFrom(
           foregroundColor: effectiveBackgroundColor,

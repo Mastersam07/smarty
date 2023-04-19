@@ -25,9 +25,10 @@ class _AcScreenState extends State<AcScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
+    var themeProvider = context.read<ThemeProvider>();
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -46,8 +47,7 @@ class _AcScreenState extends State<AcScreen> {
                     child: Center(
                       child: Text(
                         'Air Conditioner',
-                        style:
-                            BatThemeData.of(context).typography.headline4Medium,
+                        style: theme.typography.headline4Medium,
                       ),
                     ),
                   ),
@@ -62,12 +62,11 @@ class _AcScreenState extends State<AcScreen> {
                     children: [
                       Text(
                         'AC',
-                        style:
-                            BatThemeData.of(context).typography.headline4Medium,
+                        style: theme.typography.headline4Medium,
                       ),
                       Text(
                         widget.device.room,
-                        style: BatThemeData.of(context).typography.bodyCopy,
+                        style: theme.typography.bodyCopy,
                       ),
                     ],
                   ),
@@ -76,11 +75,11 @@ class _AcScreenState extends State<AcScreen> {
                     children: [
                       Text(
                         'Temperature',
-                        style: BatThemeData.of(context).typography.bodyCopy,
+                        style: theme.typography.bodyCopy,
                       ),
                       Text(
                         '25°C',
-                        style: BatThemeData.of(context).typography.bodyCopy,
+                        style: theme.typography.bodyCopy,
                       ),
                     ],
                   ),
@@ -95,8 +94,7 @@ class _AcScreenState extends State<AcScreen> {
                     size: 300.r,
                     customColors: CustomSliderColors(
                       progressBarColor: BatPalette.primary,
-                      trackColor:
-                          theme.isDark ? BatPalette.white30 : BatPalette.grey30,
+                      trackColor: theme.colors.tertiary.withOpacity(0.3),
                       dotColor: BatPalette.primary,
                     ),
                     customWidths: CustomSliderWidths(
@@ -125,7 +123,7 @@ class _AcScreenState extends State<AcScreen> {
                         children: [
                           Text(
                             "COOL",
-                            style: BatThemeData.of(context).typography.bodyCopy,
+                            style: theme.typography.bodyCopy,
                           ),
                           SizedBox(height: 20.h),
                           Row(
@@ -133,9 +131,7 @@ class _AcScreenState extends State<AcScreen> {
                             children: [
                               CircleAvatar(
                                 backgroundColor: temp.floor() <= 16
-                                    ? theme.isDark
-                                        ? BatPalette.white30
-                                        : BatPalette.grey30
+                                    ? theme.colors.tertiary.withOpacity(0.3)
                                     : BatPalette.primary,
                                 child: IconButton(
                                   icon: const Icon(Icons.remove),
@@ -151,16 +147,12 @@ class _AcScreenState extends State<AcScreen> {
                               SizedBox(width: 16.w),
                               Text(
                                 "${value.toStringAsFixed(1)}°C",
-                                style: BatThemeData.of(context)
-                                    .typography
-                                    .headline4Medium,
+                                style: theme.typography.headline4Medium,
                               ),
                               SizedBox(width: 16.w),
                               CircleAvatar(
                                 backgroundColor: temp.round() == 31
-                                    ? theme.isDark
-                                        ? BatPalette.white30
-                                        : BatPalette.grey30
+                                    ? theme.colors.tertiary.withOpacity(0.3)
                                     : BatPalette.primary,
                                 child: IconButton(
                                   icon: const Icon(Icons.add),
@@ -180,15 +172,12 @@ class _AcScreenState extends State<AcScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 27.5.w, vertical: 6.5.h),
                             decoration: BoxDecoration(
-                              color: theme.isDark
-                                  ? BatPalette.white10
-                                  : BatPalette.grey10,
+                              color: theme.colors.tertiary.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: Text(
                               "Auto Adjust",
-                              style:
-                                  BatThemeData.of(context).typography.subtitle,
+                              style: theme.typography.subtitle,
                             ),
                           ),
                           SizedBox(height: 20.h),
@@ -206,26 +195,24 @@ class _AcScreenState extends State<AcScreen> {
                       padding: EdgeInsets.symmetric(
                           horizontal: 48.w, vertical: 10.h),
                       decoration: BoxDecoration(
-                        color: theme.isDark
-                            ? BatPalette.white10
-                            : BatPalette.secondary10,
+                        color: theme.colors.secondary.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(100.r),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.sunny,
-                              color: theme.isDark
+                              color: themeProvider.isDark
                                   ? BatPalette.white
                                   : BatPalette.primary,
                               size: 32.w),
                           Icon(Icons.water_drop_outlined,
-                              color: theme.isDark
+                              color: themeProvider.isDark
                                   ? BatPalette.white
                                   : BatPalette.primary,
                               size: 32.w),
                           Icon(Icons.cloud_rounded,
-                              color: theme.isDark
+                              color: themeProvider.isDark
                                   ? BatPalette.white
                                   : BatPalette.primary,
                               size: 32.w),
@@ -240,19 +227,17 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: theme.isDark
-                                  ? BatPalette.white10
-                                  : BatPalette.secondary10,
+                              backgroundColor:
+                                  theme.colors.secondary.withOpacity(0.1),
                               child: Icon(Icons.wb_sunny,
-                                  color: theme.isDark
+                                  color: themeProvider.isDark
                                       ? BatPalette.white
                                       : BatPalette.primary,
                                   size: 24.w),
                             ),
                             Text(
                               "Sleep",
-                              style:
-                                  BatThemeData.of(context).typography.bodyCopy,
+                              style: theme.typography.bodyCopy,
                             ),
                           ],
                         ),
@@ -260,19 +245,17 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: theme.isDark
-                                  ? BatPalette.white10
-                                  : BatPalette.secondary10,
+                              backgroundColor:
+                                  theme.colors.secondary.withOpacity(0.1),
                               child: Icon(Icons.wb_cloudy,
-                                  color: theme.isDark
+                                  color: themeProvider.isDark
                                       ? BatPalette.white
                                       : BatPalette.primary,
                                   size: 24.w),
                             ),
                             Text(
                               "Cold",
-                              style:
-                                  BatThemeData.of(context).typography.bodyCopy,
+                              style: theme.typography.bodyCopy,
                             ),
                           ],
                         ),
@@ -280,19 +263,17 @@ class _AcScreenState extends State<AcScreen> {
                           children: [
                             CircleAvatar(
                               radius: 24.r,
-                              backgroundColor: theme.isDark
-                                  ? BatPalette.white10
-                                  : BatPalette.secondary10,
+                              backgroundColor:
+                                  theme.colors.secondary.withOpacity(0.1),
                               child: Icon(Icons.refresh,
-                                  color: theme.isDark
+                                  color: themeProvider.isDark
                                       ? BatPalette.white
                                       : BatPalette.primary,
                                   size: 24.w),
                             ),
                             Text(
                               "Routine",
-                              style:
-                                  BatThemeData.of(context).typography.bodyCopy,
+                              style: theme.typography.bodyCopy,
                             ),
                           ],
                         ),

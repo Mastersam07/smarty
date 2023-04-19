@@ -12,8 +12,9 @@ class DevicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -30,14 +31,14 @@ class DevicesScreen extends StatelessWidget {
                     ),
                   Text(
                     'Devices',
-                    style: BatThemeData.of(context).typography.headline4,
+                    style: theme.typography.headline4,
                   ),
                 ],
               ),
               SizedBox(height: 16.h),
               Text(
                 'Living Room',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               ),
               SizedBox(height: 16.h),
               SingleChildScrollView(
@@ -50,7 +51,7 @@ class DevicesScreen extends StatelessWidget {
               SizedBox(height: 16.h),
               Text(
                 'Bed Room',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               ),
               SizedBox(height: 16.h),
               SingleChildScrollView(
@@ -63,7 +64,7 @@ class DevicesScreen extends StatelessWidget {
               SizedBox(height: 16.h),
               Text(
                 'Kitchen',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               ),
               SizedBox(height: 16.h),
               SingleChildScrollView(
@@ -76,7 +77,7 @@ class DevicesScreen extends StatelessWidget {
               SizedBox(height: 16.h),
               Text(
                 'Dining Room',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               ),
               SizedBox(height: 16.h),
               SingleChildScrollView(

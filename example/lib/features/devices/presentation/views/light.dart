@@ -1,8 +1,6 @@
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import '../../../../main.dart';
 import '../../../../utils/enums.dart';
 
 import '../../../../core/navigation/navigator.dart';
@@ -24,9 +22,9 @@ class _LightScreenState extends State<LightScreen> {
   bool _isOn = false;
   @override
   Widget build(BuildContext context) {
-    var theme = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -45,8 +43,7 @@ class _LightScreenState extends State<LightScreen> {
                     child: Center(
                       child: Text(
                         'Light',
-                        style:
-                            BatThemeData.of(context).typography.headline4Medium,
+                        style: theme.typography.headline4Medium,
                       ),
                     ),
                   ),
@@ -61,7 +58,7 @@ class _LightScreenState extends State<LightScreen> {
                     children: [
                       Text(
                         'Living Room',
-                        style: BatThemeData.of(context).typography.headline4,
+                        style: theme.typography.headline4,
                       ),
                       Switch.adaptive(
                         value: _isOn,
@@ -76,13 +73,9 @@ class _LightScreenState extends State<LightScreen> {
                   ),
                   Text(
                     'Light Intesity',
-                    style: BatThemeData.of(context)
-                        .typography
-                        .bodyCopy
-                        .copyWith(
-                            color: theme.isDark
-                                ? BatPalette.white60
-                                : BatPalette.grey60),
+                    style: theme.typography.bodyCopy.copyWith(
+                      color: theme.colors.tertiary.withOpacity(0.6),
+                    ),
                   ),
                 ],
               ),

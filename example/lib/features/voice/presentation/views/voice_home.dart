@@ -1,10 +1,6 @@
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:smarty/main.dart';
-
-import '../../../../shared/res/res.dart';
 import '../widgets/painter.dart';
 import '../widgets/voice_tile.dart';
 
@@ -45,7 +41,7 @@ class _VoiceHomeScreenState extends State<VoiceHomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    var theme = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
@@ -54,7 +50,7 @@ class _VoiceHomeScreenState extends State<VoiceHomeScreen>
           SizedBox(height: 32.h + MediaQuery.of(context).padding.top),
           Text(
             'Voice',
-            style: BatThemeData.of(context).typography.headline4,
+            style: theme.typography.headline4,
           ),
           SizedBox(height: 32.h),
           VoiceTile(
@@ -70,15 +66,15 @@ class _VoiceHomeScreenState extends State<VoiceHomeScreen>
           ),
           SizedBox(height: 200.h),
           CustomPaint(
-            painter: SpritePainter(_controller, SmartyColors.primary),
+            painter: SpritePainter(_controller, theme.colors.primary),
             child: Icon(Icons.keyboard_voice_rounded,
-                color: SmartyColors.tertiary, size: 76.w),
+                color: BatPalette.white, size: 76.w),
           ),
           const Spacer(),
           Text(
             "Listening${_controller.value > 2 / 3 ? '...' : _controller.value > 1 / 3 ? '..' : '.'}",
-            style: BatThemeData.of(context).typography.headline4.copyWith(
-                color: theme.isDark ? BatPalette.white : BatPalette.grey),
+            style: theme.typography.headline4
+                .copyWith(color: theme.colors.tertiary),
           ),
         ],
       ),
