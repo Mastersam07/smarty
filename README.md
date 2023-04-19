@@ -66,9 +66,9 @@ You can check the [example](./example) to see this theming system in usage.
 
 Who knows whats next? 
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] map 1
+- [ ] map 2
+- [ ] map 3
 
 ## Contributors
 
