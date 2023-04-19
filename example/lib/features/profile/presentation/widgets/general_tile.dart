@@ -1,7 +1,6 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../shared/res/res.dart';
 
 class GeneralTile extends StatelessWidget {
   final Widget leading;
@@ -18,13 +17,16 @@ class GeneralTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            border: Border.all(color: SmartyColors.grey10)),
+            border: Border.all(
+              color: theme.colors.tertiary.withOpacity(0.1),
+            )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,7 +36,8 @@ class GeneralTile extends StatelessWidget {
                 SizedBox(width: 6.w),
                 Text(
                   title,
-                  style: TextStyles.body.copyWith(color: SmartyColors.grey60),
+                  style: theme.typography.subtitle
+                      .copyWith(color: theme.colors.tertiary.withOpacity(0.6)),
                 ),
               ],
             ),

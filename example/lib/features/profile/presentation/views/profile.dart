@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../widgets/general_tile.dart';
 import '../widgets/member_tile.dart';
 import '../widgets/summary_tile.dart';
@@ -14,8 +13,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -50,12 +50,13 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(height: 8.h),
                     Text(
                       'Tosin',
-                      style: TextStyles.body.copyWith(color: SmartyColors.grey),
+                      style: theme.typography.bodyCopyMedium
+                          .copyWith(color: theme.colors.tertiary),
                     ),
                     Text(
                       'Owodunnialive@gmail.com',
-                      style:
-                          TextStyles.body.copyWith(color: SmartyColors.grey60),
+                      style: theme.typography.bodyCopy.copyWith(
+                          color: theme.colors.tertiary.withOpacity(0.6)),
                     )
                   ],
                 ),
@@ -71,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                       subTitle: '2500KWH/Day',
                       icon: Icon(
                         Icons.bolt_sharp,
-                        color: SmartyColors.tertiary,
+                        color: BatPalette.white,
                       ),
                     ),
                   ),
@@ -82,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
                       subTitle: '25 Devices',
                       icon: Icon(
                         Icons.phone_iphone_rounded,
-                        color: SmartyColors.tertiary,
+                        color: BatPalette.white,
                       ),
                     ),
                   ),
@@ -91,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 48.h),
               Text(
                 'General Settings',
-                style: TextStyles.body,
+                style: theme.typography.bodyCopyMedium,
               ),
               SizedBox(height: 16.h),
               GeneralTile(
@@ -99,12 +100,12 @@ class ProfileScreen extends StatelessWidget {
                 leading: Icon(
                   Icons.settings_outlined,
                   size: 24.w,
-                  color: SmartyColors.grey,
+                  color: theme.colors.tertiary,
                 ),
                 title: 'Settings',
                 trailing: Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: SmartyColors.grey60,
+                  color: theme.colors.tertiary.withOpacity(0.6),
                 ),
               ),
               SizedBox(height: 16.h),
@@ -112,12 +113,12 @@ class ProfileScreen extends StatelessWidget {
                 leading: Icon(
                   Icons.explore_outlined,
                   size: 24.w,
-                  color: SmartyColors.grey,
+                  color: theme.colors.tertiary,
                 ),
                 title: 'My Activity',
                 trailing: Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: SmartyColors.grey60,
+                  color: theme.colors.tertiary.withOpacity(0.6),
                 ),
               ),
               SizedBox(height: 52.h),
@@ -126,16 +127,13 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Home members',
-                    style: TextStyles.body.copyWith(
-                      color: SmartyColors.grey,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: theme.typography.bodyCopyMedium
+                        .copyWith(color: theme.colors.tertiary),
                   ),
                   Text(
                     'Add',
-                    style: TextStyles.body.copyWith(
-                      color: SmartyColors.grey80,
-                    ),
+                    style: theme.typography.bodyCopy.copyWith(
+                        color: theme.colors.tertiary.withOpacity(0.8)),
                   )
                 ],
               ),
@@ -144,22 +142,23 @@ class ProfileScreen extends StatelessWidget {
                 context: context,
                 removeTop: true,
                 child: ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      var names = ['Jay', 'Posi', 'Kike'];
-                      if (index == names.length - 1) {
-                        return Column(
-                          children: [
-                            MemberTile(name: names[index]),
-                            SizedBox(height: 24.h)
-                          ],
-                        );
-                      }
-                      return MemberTile(name: names[index]);
-                    },
-                    separatorBuilder: (_, __) => SizedBox(height: 8.h),
-                    itemCount: 3),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    var names = ['Jay', 'Posi', 'Kike'];
+                    if (index == names.length - 1) {
+                      return Column(
+                        children: [
+                          MemberTile(name: names[index]),
+                          SizedBox(height: 24.h)
+                        ],
+                      );
+                    }
+                    return MemberTile(name: names[index]);
+                  },
+                  separatorBuilder: (_, __) => SizedBox(height: 8.h),
+                  itemCount: 3,
+                ),
               )
             ],
           ),

@@ -18,7 +18,7 @@ class BatColors extends ThemeExtension<BatColors> {
       : this._(
           background: BatPalette.white,
           primary: BatPalette.primary,
-          secondary: BatPalette.secondary,
+          secondary: BatPalette.secondary10,
           tertiary: BatPalette.grey,
         );
 
@@ -26,7 +26,7 @@ class BatColors extends ThemeExtension<BatColors> {
       : this._(
           background: BatPalette.grey,
           primary: BatPalette.primary,
-          secondary: BatPalette.secondary,
+          secondary: BatPalette.white,
           tertiary: BatPalette.white,
         );
 

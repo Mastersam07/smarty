@@ -1,6 +1,5 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../res/res.dart';
 
 class PageIndicatorWidget extends StatelessWidget {
   const PageIndicatorWidget({
@@ -18,6 +17,7 @@ class PageIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +34,9 @@ class PageIndicatorWidget extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: i == value ? SmartyColors.primary : SmartyColors.grey30,
+              color: i == value
+                  ? theme.colors.primary
+                  : theme.colors.tertiary.withOpacity(0.3),
             ),
             duration: const Duration(milliseconds: 900),
           )

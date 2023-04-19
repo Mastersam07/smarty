@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:bat_theme/bat_theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
-import 'package:smarty/main.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../../../../shared/widgets/widgets.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -38,9 +36,9 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(children: [
@@ -52,21 +50,15 @@ class _OtpScreenState extends State<OtpScreen> {
             child: Column(children: [
               Text(
                 'Enter OTP',
-                style: BatThemeData.of(context)
-                    .typography
-                    .headline4
-                    .copyWith(color: SmartyColors.primary),
+                style: theme.typography.headline4
+                    .copyWith(color: theme.colors.primary),
               ),
               SizedBox(height: 16.h),
               Text(
                 'Enter the 6 digits code sent to your email address for verification',
-                style: BatThemeData.of(context)
-                    .typography
-                    .bodyCopyMedium
-                    .copyWith(
-                      color:
-                          theme.isDark ? BatPalette.white80 : BatPalette.grey80,
-                    ),
+                style: theme.typography.bodyCopyMedium.copyWith(
+                  color: theme.colors.tertiary.withOpacity(0.8),
+                ),
                 textAlign: TextAlign.center,
               ),
             ]),
@@ -81,18 +73,15 @@ class _OtpScreenState extends State<OtpScreen> {
               shape: PinCodeFieldShape.underline,
               fieldHeight: 50.h,
               fieldWidth: 50.w,
-              activeFillColor: BatThemeData.of(context).colors.background,
-              activeColor:
-                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
-              inactiveFillColor: BatThemeData.of(context).colors.background,
-              inactiveColor:
-                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
-              selectedFillColor: BatThemeData.of(context).colors.background,
-              selectedColor:
-                  theme.isDark ? BatPalette.white60 : BatPalette.grey60,
+              activeFillColor: theme.colors.background,
+              activeColor: theme.colors.tertiary.withOpacity(0.6),
+              inactiveFillColor: theme.colors.background,
+              inactiveColor: theme.colors.tertiary.withOpacity(0.6),
+              selectedFillColor: theme.colors.background,
+              selectedColor: theme.colors.tertiary.withOpacity(0.6),
             ),
             animationDuration: const Duration(milliseconds: 300),
-            backgroundColor: BatThemeData.of(context).colors.background,
+            backgroundColor: theme.colors.background,
             enableActiveFill: true,
             errorAnimationController: errorController,
             controller: textEditingController,
@@ -101,7 +90,7 @@ class _OtpScreenState extends State<OtpScreen> {
             beforeTextPaste: (text) {
               return true;
             },
-            cursorColor: theme.isDark ? BatPalette.white60 : BatPalette.grey60,
+            cursorColor: theme.colors.tertiary.withOpacity(0.6),
           ),
           SizedBox(height: 51.h),
           AppButtonPrimary(
@@ -109,14 +98,22 @@ class _OtpScreenState extends State<OtpScreen> {
             onPressed: () => AppNavigator.pushNamedReplacement(loginRoute),
           ),
           const Spacer(),
-          GestureDetector(
-            onTap: () {},
-            child: Text(
-              'Didn\'t receive code? Resend code',
-              style: BatThemeData.of(context).typography.bodyCopyMedium,
+          RichText(
+            text: TextSpan(
+              text: 'Didn\'t receive code? ',
+              style: theme.typography.bodyCopyMedium
+                  .copyWith(color: theme.colors.tertiary.withOpacity(0.6)),
+              children: [
+                TextSpan(
+                  text: 'Resend code',
+                  style: theme.typography.bodyCopyMedium
+                      .copyWith(color: theme.colors.primary),
+                  recognizer: TapGestureRecognizer()..onTap = () {},
+                ),
+              ],
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).padding.bottom),
+          SizedBox(height: MediaQuery.of(context).padding.bottom * 2),
         ]),
       ),
     );

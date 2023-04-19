@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +21,7 @@ class ProfileSummaryTile extends StatelessWidget {
       width: 181.w,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: SmartyColors.primary,
+        color: BatPalette.primary,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
@@ -28,7 +29,7 @@ class ProfileSummaryTile extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 24.r,
-            backgroundColor: SmartyColors.secondary60,
+            backgroundColor: BatPalette.secondary60,
             child: icon,
           ),
           SizedBox(width: 16.w),
@@ -38,12 +39,12 @@ class ProfileSummaryTile extends StatelessWidget {
               Text(
                 title,
                 style: TextStyles.body.copyWith(
-                    color: SmartyColors.tertiary, fontWeight: FontWeight.w500),
+                    color: BatPalette.white, fontWeight: FontWeight.w500),
               ),
               Text(
                 subTitle,
                 style: TextStyles.subtitle.copyWith(
-                  color: SmartyColors.tertiary60,
+                  color: BatPalette.white60,
                 ),
               ),
             ],

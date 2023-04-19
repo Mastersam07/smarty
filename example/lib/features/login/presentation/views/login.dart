@@ -1,4 +1,5 @@
 import 'package:bat_theme/bat_theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/navigation/navigator.dart';
@@ -11,8 +12,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.h),
         child: Column(
@@ -20,18 +22,22 @@ class LoginScreen extends StatelessWidget {
           children: [
             SizedBox(height: 109.h),
             Image.asset("assets/images/logo.png",
-                color: SmartyColors.primary, width: 174.w),
+                color: theme.colors.primary, width: 174.w),
             SizedBox(height: 64.h),
             Text(
               'Login to your account',
               style: TextStyles.headline4.copyWith(
-                  color: SmartyColors.primary, fontWeight: FontWeight.w500),
+                  color: theme.colors.primary, fontWeight: FontWeight.w500),
             ),
             SizedBox(height: 48.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Email'),
+                Text(
+                  'Email',
+                  style: theme.typography.bodyCopyMedium
+                      .copyWith(color: theme.colors.tertiary),
+                ),
                 SizedBox(height: 8.h),
                 const TextField(
                   decoration: InputDecoration(
@@ -45,7 +51,11 @@ class LoginScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Password'),
+                Text(
+                  'Password',
+                  style: theme.typography.bodyCopyMedium
+                      .copyWith(color: theme.colors.tertiary),
+                ),
                 SizedBox(height: 8.h),
                 const TextField(
                   decoration: InputDecoration(
@@ -61,11 +71,20 @@ class LoginScreen extends StatelessWidget {
               onPressed: () => AppNavigator.pushNamedAndClear(dashboardRoute),
             ),
             const Spacer(),
-            GestureDetector(
-              onTap: () => AppNavigator.pushNamed(registerRoute),
-              child: Text(
-                'Don\'t have an account? Create account',
-                style: BatThemeData.of(context).typography.bodyCopyMedium,
+            RichText(
+              text: TextSpan(
+                text: 'Don\'t have an account? ',
+                style: theme.typography.bodyCopyMedium
+                    .copyWith(color: theme.colors.tertiary.withOpacity(0.6)),
+                children: [
+                  TextSpan(
+                    text: 'Create account',
+                    style: theme.typography.bodyCopyMedium
+                        .copyWith(color: theme.colors.primary),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => AppNavigator.pushNamed(registerRoute),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: MediaQuery.of(context).padding.bottom * 2),
