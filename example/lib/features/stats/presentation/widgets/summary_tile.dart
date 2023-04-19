@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,10 +17,11 @@ class SummaryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Container(
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
-        color: SmartyColors.primary,
+        color: theme.colors.primary,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
@@ -27,7 +29,7 @@ class SummaryTile extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 24.r,
-            backgroundColor: SmartyColors.secondary60,
+            backgroundColor: BatPalette.secondary60,
             child: icon,
           ),
           SizedBox(width: 16.w),
@@ -37,12 +39,12 @@ class SummaryTile extends StatelessWidget {
               Text(
                 title,
                 style: TextStyles.headline4.copyWith(
-                    color: SmartyColors.tertiary, fontWeight: FontWeight.w500),
+                    color: BatPalette.white, fontWeight: FontWeight.w500),
               ),
               Text(
                 subTitle,
                 style: TextStyles.body.copyWith(
-                  color: SmartyColors.tertiary60,
+                  color: BatPalette.white60,
                 ),
               ),
             ],

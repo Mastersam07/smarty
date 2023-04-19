@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:smarty/main.dart';
 import '../../../../core/navigation/navigator.dart';
 
-import '../../../../shared/res/res.dart';
 import '../../../devices/domain/models/devices.dart';
 import '../widgets/widgets.dart';
 
@@ -15,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   'Good Morning, Tosin',
-                  style: BatThemeData.of(context).typography.headline4,
+                  style: theme.typography.headline4,
                 ),
               ),
               Row(
@@ -39,10 +39,10 @@ class HomeScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () => AppNavigator.pushNamed(
                       profileRoute,
-                      arguments: Icon(
-                        Icons.notifications_outlined,
-                        color: SmartyColors.grey,
-                      ),
+                      // arguments: Icon(
+                      //   Icons.notifications_outlined,
+                      //   color: color.tertiary,
+                      // ),
                     ),
                     child: const CircleAvatar(
                       radius: 24,
@@ -61,11 +61,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Quick Action',
-                style: BatThemeData.of(context).typography.bodyCopyMedium,
+                style: theme.typography.bodyCopyMedium,
               ),
               Text(
                 'Edit',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               )
             ],
           ),
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 32.h),
           Text(
             'Active Devices',
-            style: BatThemeData.of(context).typography.bodyCopyMedium,
+            style: theme.typography.bodyCopyMedium,
           ),
           SizedBox(height: 16.h),
           SingleChildScrollView(
@@ -96,11 +96,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Rooms',
-                style: BatThemeData.of(context).typography.bodyCopyMedium,
+                style: theme.typography.bodyCopyMedium,
               ),
               Text(
                 'Edit',
-                style: BatThemeData.of(context).typography.bodyCopy,
+                style: theme.typography.bodyCopy,
               )
             ],
           ),

@@ -1,7 +1,6 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../shared/res/res.dart';
 
 class MemberTile extends StatelessWidget {
   final String name;
@@ -12,10 +11,11 @@ class MemberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Container(
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
-        color: SmartyColors.secondary10,
+        color: theme.colors.secondary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Row(
@@ -35,14 +35,14 @@ class MemberTile extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyles.subtitle.copyWith(
-                        color: SmartyColors.grey, fontWeight: FontWeight.w500),
+                    style: theme.typography.subtitleMedium
+                        .copyWith(color: theme.colors.tertiary),
                   ),
                   SizedBox(height: 3.h),
                   Text(
                     'Guest',
-                    style: TextStyles.subtitle
-                        .copyWith(color: SmartyColors.grey60),
+                    style: theme.typography.subtitle.copyWith(
+                        color: theme.colors.tertiary.withOpacity(0.6)),
                   )
                 ],
               ),
@@ -53,11 +53,13 @@ class MemberTile extends StatelessWidget {
             children: [
               Text(
                 '$name\'s Iphone',
-                style: TextStyles.subtitle.copyWith(color: SmartyColors.grey),
+                style: theme.typography.subtitleMedium
+                    .copyWith(color: theme.colors.tertiary),
               ),
               Text(
                 '192.168.137.19',
-                style: TextStyles.subtitle.copyWith(color: SmartyColors.grey60),
+                style: theme.typography.subtitle
+                    .copyWith(color: theme.colors.tertiary.withOpacity(0.6)),
               )
             ],
           )

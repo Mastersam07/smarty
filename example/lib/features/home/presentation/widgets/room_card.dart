@@ -1,4 +1,6 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../shared/res/res.dart';
 
@@ -9,9 +11,9 @@ class RoomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-      height: 100,
+      height: 100.h,
       decoration: BoxDecoration(
-        color: SmartyColors.primary,
+        color: BatPalette.primary,
         borderRadius: BorderRadius.circular(6.0),
         image: const DecorationImage(
           image: AssetImage("assets/images/bg.png"),
@@ -21,8 +23,8 @@ class RoomCard extends StatelessWidget {
           begin: Alignment.bottomRight,
           end: Alignment.bottomLeft,
           colors: [
-            SmartyColors.black,
-            SmartyColors.black.withOpacity(0.1),
+            BatPalette.black,
+            BatPalette.black.withOpacity(0.1),
           ],
         ),
       ),
@@ -32,12 +34,12 @@ class RoomCard extends StatelessWidget {
         children: [
           Text(
             'Living Room',
-            style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
+            style: TextStyles.body.copyWith(color: BatPalette.white),
           ),
           const SizedBox(height: 4),
           Text(
             '10 Devices',
-            style: TextStyles.body.copyWith(color: SmartyColors.tertiary80),
+            style: TextStyles.body.copyWith(color: BatPalette.white80),
           )
         ],
       ),

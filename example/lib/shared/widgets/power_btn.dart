@@ -1,6 +1,5 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../res/res.dart';
 
 class ChipButton extends StatelessWidget {
   final Function()? onPressed;
@@ -13,9 +12,10 @@ class ChipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Center(
       child: FloatingActionButton(
-        backgroundColor: SmartyColors.primary,
+        backgroundColor: theme.colors.primary,
         onPressed: onPressed ?? () {},
         child: child,
       ),

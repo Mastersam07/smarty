@@ -1,9 +1,9 @@
 import 'package:bat_theme/bat_theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/res/res.dart';
 import '../../../../shared/widgets/widgets.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -11,8 +11,9 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.h),
         child: Column(
@@ -20,22 +21,24 @@ class RegisterScreen extends StatelessWidget {
           children: [
             SizedBox(height: 109.h),
             Image.asset("assets/images/logo.png",
-                color: SmartyColors.primary, width: 174.w),
+                color: theme.colors.primary, width: 174.w),
             SizedBox(height: 64.h),
             Text(
               'Create an account',
-              style: BatThemeData.of(context)
-                  .typography
-                  .headline4
-                  .copyWith(color: SmartyColors.primary),
+              style: theme.typography.headline4
+                  .copyWith(color: theme.colors.primary),
             ),
             SizedBox(height: 48.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Email'),
-                SizedBox(height: 8),
-                TextField(
+              children: [
+                Text(
+                  'Email',
+                  style: theme.typography.bodyCopyMedium
+                      .copyWith(color: theme.colors.tertiary),
+                ),
+                SizedBox(height: 8.h),
+                const TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter your email',
@@ -47,7 +50,11 @@ class RegisterScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Password'),
+                Text(
+                  'Password',
+                  style: theme.typography.bodyCopyMedium
+                      .copyWith(color: theme.colors.tertiary),
+                ),
                 SizedBox(height: 8.h),
                 const TextField(
                   decoration: InputDecoration(
@@ -63,14 +70,23 @@ class RegisterScreen extends StatelessWidget {
               onPressed: () => AppNavigator.pushNamed(otpRoute),
             ),
             const Spacer(),
-            GestureDetector(
-              onTap: () => AppNavigator.pushNamed(loginRoute),
-              child: Text(
-                'Already have an account? Log in',
-                style: BatThemeData.of(context).typography.bodyCopyMedium,
+            RichText(
+              text: TextSpan(
+                text: 'Already have an account? ',
+                style: theme.typography.bodyCopyMedium
+                    .copyWith(color: theme.colors.tertiary.withOpacity(0.6)),
+                children: [
+                  TextSpan(
+                    text: 'Log in',
+                    style: theme.typography.bodyCopyMedium
+                        .copyWith(color: theme.colors.primary),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => AppNavigator.pushNamed(loginRoute),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).padding.bottom),
+            SizedBox(height: MediaQuery.of(context).padding.bottom * 2),
           ],
         ),
       ),

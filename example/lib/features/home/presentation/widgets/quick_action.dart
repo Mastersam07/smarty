@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +16,7 @@ class QuickAction extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: SmartyColors.primary,
+        color: BatPalette.primary,
         borderRadius: BorderRadius.circular(6.r),
       ),
       child: Column(
@@ -23,23 +24,23 @@ class QuickAction extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.sunny, size: 24.w, color: SmartyColors.tertiary),
+              Icon(Icons.sunny, size: 24.w, color: BatPalette.white),
               SizedBox(width: 4.w),
               Text(
                 action,
-                style: TextStyles.body.copyWith(color: SmartyColors.tertiary),
+                style: TextStyles.body.copyWith(color: BatPalette.white),
               )
             ],
           ),
           SizedBox(height: 4.h),
           Text(
             '6:00 AM',
-            style: TextStyles.body.copyWith(color: SmartyColors.tertiary80),
+            style: TextStyles.body.copyWith(color: BatPalette.white80),
           ),
           SizedBox(height: 4.h),
           Text(
             '5 Devices',
-            style: TextStyles.body.copyWith(color: SmartyColors.tertiary80),
+            style: TextStyles.body.copyWith(color: BatPalette.white80),
           )
         ],
       ),

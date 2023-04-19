@@ -13,6 +13,7 @@ class RoutineTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Container(
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
@@ -32,7 +33,7 @@ class RoutineTile extends StatelessWidget {
               SizedBox(width: 4.w),
               Text(
                 name,
-                style: BatThemeData.of(context).typography.bodyCopy.copyWith(
+                style: theme.typography.bodyCopy.copyWith(
                     color: active ? BatPalette.white : BatPalette.grey60),
               ),
             ],
@@ -42,12 +43,12 @@ class RoutineTile extends StatelessWidget {
             children: [
               Text(
                 '6:00 AM',
-                style: BatThemeData.of(context).typography.subtitle.copyWith(
+                style: theme.typography.subtitle.copyWith(
                     color: active ? BatPalette.white80 : BatPalette.grey60),
               ),
               Text(
                 '5 Devices',
-                style: BatThemeData.of(context).typography.subtitle.copyWith(
+                style: theme.typography.subtitle.copyWith(
                     color: active ? BatPalette.white80 : BatPalette.grey60),
               ),
             ],

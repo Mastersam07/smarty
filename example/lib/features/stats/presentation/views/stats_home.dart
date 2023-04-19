@@ -1,12 +1,9 @@
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import '../../../../core/navigation/navigator.dart';
-import '../../../../main.dart';
 import '../../../devices/domain/models/devices.dart';
 
-import '../../../../shared/res/res.dart';
 import '../widgets/chip_tab.dart';
 import '../widgets/power_chart.dart';
 import '../widgets/stats_tile.dart';
@@ -33,9 +30,10 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    var theme = context.read<ThemeProvider>();
+    // var theme = context.read<ThemeProvider>();
+    var theme = BatThemeData.of(context);
     return Scaffold(
-      backgroundColor: BatThemeData.of(context).colors.background,
+      backgroundColor: theme.colors.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -54,7 +52,7 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                     child: Center(
                       child: Text(
                         'Power Usage',
-                        style: BatThemeData.of(context).typography.headline4,
+                        style: theme.typography.headline4,
                       ),
                     ),
                   ),
@@ -102,9 +100,7 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
               Container(
                 padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
                 decoration: BoxDecoration(
-                  color: theme.isDark
-                      ? BatPalette.white10
-                      : BatPalette.secondary10,
+                  color: theme.colors.secondary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Column(
@@ -112,13 +108,8 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                   children: [
                     Text(
                       'Summary for June 2022',
-                      style: BatThemeData.of(context)
-                          .typography
-                          .bodyCopyMedium
-                          .copyWith(
-                              color: theme.isDark
-                                  ? BatPalette.white30
-                                  : BatPalette.grey60),
+                      style: theme.typography.bodyCopyMedium.copyWith(
+                          color: theme.colors.tertiary.withOpacity(0.6)),
                     ),
                     SizedBox(height: 8.h),
                     Row(
@@ -129,7 +120,7 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                           subTitle: 'KWh used',
                           icon: Icon(
                             Icons.bolt_outlined,
-                            color: SmartyColors.tertiary,
+                            color: BatPalette.white,
                           ),
                         ),
                         SummaryTile(
@@ -137,7 +128,7 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                           subTitle: 'USD spent',
                           icon: Icon(
                             Icons.currency_pound_sharp,
-                            color: SmartyColors.tertiary,
+                            color: BatPalette.white,
                           ),
                         ),
                       ],
@@ -152,20 +143,21 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                 children: [
                   Text(
                     'Devices',
-                    style: TextStyles.body.copyWith(
-                        color: SmartyColors.grey, fontWeight: FontWeight.w500),
+                    style: theme.typography.bodyCopyMedium.copyWith(
+                      color: theme.colors.tertiary,
+                    ),
                   ),
                   Row(
                     children: [
                       Text(
                         'January',
-                        style: TextStyles.body.copyWith(
-                          color: SmartyColors.grey,
+                        style: theme.typography.bodyCopyMedium.copyWith(
+                          color: theme.colors.tertiary,
                         ),
                       ),
                       Icon(
                         Icons.keyboard_arrow_down_rounded,
-                        color: SmartyColors.grey60,
+                        color: theme.colors.tertiary.withOpacity(0.6),
                       )
                     ],
                   )

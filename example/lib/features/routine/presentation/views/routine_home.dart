@@ -2,9 +2,8 @@ import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/navigation/navigator.dart';
-import '../../../../shared/widgets/power_btn.dart';
 
-import '../../../../shared/res/res.dart';
+import '../../../../shared/widgets/widgets.dart';
 import '../widgets/routine_tile.dart';
 
 class RoutineHomeScreen extends StatelessWidget {
@@ -12,6 +11,7 @@ class RoutineHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -30,7 +30,7 @@ class RoutineHomeScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Routine',
-                      style: BatThemeData.of(context).typography.headline4,
+                      style: theme.typography.headline4,
                     ),
                   ),
                 ),
@@ -39,7 +39,7 @@ class RoutineHomeScreen extends StatelessWidget {
             SizedBox(height: 36.h),
             Text(
               'Active Routines',
-              style: BatThemeData.of(context).typography.bodyCopy,
+              style: theme.typography.bodyCopy,
             ),
             SizedBox(height: 16.h),
             const RoutineTile(name: 'Wake up', active: true),
@@ -54,13 +54,9 @@ class RoutineHomeScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             const RoutineTile(name: 'Gym'),
             SizedBox(height: 40.h),
-            ChipButton(
+            AppButtonPrimary(
+              label: 'Add Routine',
               onPressed: () {},
-              child: Icon(
-                Icons.add,
-                size: 48.w,
-                color: SmartyColors.tertiary,
-              ),
             ),
           ],
         ),
