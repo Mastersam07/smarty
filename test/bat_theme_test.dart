@@ -11,18 +11,6 @@ void main() {
     expect(BatColors, isNotNull);
   });
 
-  test('Imports radius.dart', () {
-    expect(BatRadius, isNotNull);
-  });
-
-  test('Imports sizes.dart', () {
-    expect(BatSizes, isNotNull);
-  });
-
-  test('Imports spacing.dart', () {
-    expect(BatSpacing, isNotNull);
-  });
-
   test('Imports theme_data.dart', () {
     expect(BatThemeData, isNotNull);
   });
