@@ -62,6 +62,42 @@ class MyApp extends StatelessWidget {
 
 You can check the [example](./example) to see this theming system in usage.
 
+## 📸 ScreenShots
+
+<img src="example/ss/smarty_light.png"/>
+
+| Image| Image|
+|------|-------|
+|<img src="example/ss/1.png" width="250" height="400">|<img src="example/ss/2.png" width="250" height="400">|
+|<img src="example/ss/3.png" width="250" height="400">|<img src="example/ss/4.png" width="250" height="400">|
+|<img src="example/ss/5.png" width="250" height="400">|<img src="example/ss/6.png" width="250" height="400">|
+|<img src="example/ss/7.png" width="250" height="400">|<img src="example/ss/8.png" width="250" height="400">|
+|<img src="example/ss/9.png" width="250" height="400">|<img src="example/ss/10.png" width="250" height="400">|
+|<img src="example/ss/11.png" width="250" height="400">|<img src="example/ss/12.png" width="250" height="400">|
+|<img src="example/ss/13.png" width="250" height="400">|<img src="example/ss/14.png" width="250" height="400">|
+
+
+## 🌗 Dark theme
+
+<img src="example/ss/smarty_light.png"/>
+
+| Image| Image|
+|------|-------|
+|<img src="example/ss/dark1.png" width="250" height="400">|<img src="example/ss/dark2.png" width="250" height="400">|
+|<img src="example/ss/dark3.png" width="250" height="400">|<img src="example/ss/dark4.png" width="250" height="400">|
+|<img src="example/ss/dark5.png" width="250" height="400">|<img src="example/ss/dark6.png" width="250" height="400">|
+|<img src="example/ss/dark7.png" width="250" height="400">|<img src="example/ss/dark8.png" width="250" height="400">|
+|<img src="example/ss/dark9.png" width="250" height="400">|<img src="example/ss/dark10.png" width="250" height="400">|
+|<img src="example/ss/dark11.png" width="250" height="400">|<img src="example/ss/dark12.png" width="250" height="400">|
+|<img src="example/ss/dark13.png" width="250" height="400">|<img src="example/ss/dark14.png" width="250" height="400">|
+
+## 🤓 Designer(s)
+**Tosin** [![Twitter Follow](https://img.shields.io/twitter/follow/tohsin_vibes.svg?style=social)](https://twitter.com/tohsin_vibes)
+
+## 🤓 Author(s)
+**Samuel Abada** [![Twitter Follow](https://img.shields.io/twitter/follow/mastersam_.svg?style=social)](https://twitter.com/mastersam_)
+
+
 ## Roadmap
 
 Who knows whats next? 

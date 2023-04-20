@@ -36,7 +36,6 @@ Star⭐ the repo if you like what you see😉.
 
 
 ## 🌗 Dark theme
->>> WIP
 
 <img src="ss/smarty_light.png"/>
 
