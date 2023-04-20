@@ -170,5 +170,24 @@ void main() {
             height: 1.4,
           ));
     });
+
+    test('copyWith should return a new BatTypography with updated properties',
+        () {
+      const original = BatTypography.regular();
+      final updated = original.copyWith(
+        headline1: const TextStyle(fontSize: 72),
+        headline1Bold:
+            const TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
+      );
+
+      expect(updated.headline1.fontSize, equals(72));
+      expect(updated.headline1Bold.fontSize, equals(72));
+      expect(updated.headline1Bold.fontWeight, equals(FontWeight.bold));
+
+      // Ensure original instance was not modified
+      expect(original.headline1.fontSize, isNot(equals(72)));
+      expect(original.headline1Bold.fontSize, isNot(equals(72)));
+      expect(original.headline1Bold.fontWeight, isNot(equals(FontWeight.bold)));
+    });
   });
 }
