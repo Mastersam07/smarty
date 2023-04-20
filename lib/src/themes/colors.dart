@@ -7,7 +7,7 @@ class BatColors extends ThemeExtension<BatColors> {
   final Color primary;
   final Color secondary;
   final Color tertiary;
-  const BatColors._({
+  const BatColors({
     required this.background,
     required this.primary,
     required this.secondary,
@@ -15,7 +15,7 @@ class BatColors extends ThemeExtension<BatColors> {
   });
 
   BatColors.light()
-      : this._(
+      : this(
           background: BatPalette.white,
           primary: BatPalette.primary,
           secondary: BatPalette.secondary10,
@@ -23,7 +23,7 @@ class BatColors extends ThemeExtension<BatColors> {
         );
 
   BatColors.dark()
-      : this._(
+      : this(
           background: BatPalette.grey,
           primary: BatPalette.primary,
           secondary: BatPalette.white,
@@ -40,7 +40,7 @@ class BatColors extends ThemeExtension<BatColors> {
     if (other is! BatColors) {
       return this;
     }
-    return BatColors._(
+    return BatColors(
       background: Color.lerp(background, other.background, t)!,
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
