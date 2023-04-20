@@ -2,8 +2,6 @@ import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../shared/res/res.dart';
-
 class SettingsTile extends StatelessWidget {
   final String title;
   final Widget trailing;
