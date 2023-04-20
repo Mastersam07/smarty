@@ -47,6 +47,9 @@ class BatCave extends StatefulWidget {
   /// {@macro flutter.widgets.widgetsApp.backButtonDispatcher}
   final BackButtonDispatcher? backButtonDispatcher;
 
+  /// {@macro flutter.widgets.widgetsApp.routerConfig}
+  final RouterConfig<Object>? routerConfig;
+
   /// {@macro flutter.widgets.widgetsApp.builder}
   final TransitionBuilder? builder;
 
@@ -165,8 +168,10 @@ class BatCave extends StatefulWidget {
     this.themeMode,
     this.theme,
     this.darkTheme,
+    this.routeInformationParser,
+    this.routerConfig,
   })  : routeInformationProvider = null,
-        routeInformationParser = null,
+        // routeInformationParser = null,
         routerDelegate = null,
         backButtonDispatcher = null;
 
@@ -174,8 +179,8 @@ class BatCave extends StatefulWidget {
   BatCave.router({
     super.key,
     this.routeInformationProvider,
-    required RouteInformationParser<Object> this.routeInformationParser,
-    required RouterDelegate<Object> this.routerDelegate,
+    this.routeInformationParser,
+    this.routerDelegate,
     this.backButtonDispatcher,
     this.builder,
     this.title = '',
@@ -198,7 +203,9 @@ class BatCave extends StatefulWidget {
     this.themeMode,
     this.theme,
     this.darkTheme,
+    this.routerConfig,
   })  : assert(supportedLocales.isNotEmpty),
+        assert(routerDelegate != null || routerConfig != null),
         navigatorObservers = null,
         navigatorKey = null,
         onGenerateRoute = null,
@@ -213,7 +220,8 @@ class BatCave extends StatefulWidget {
 }
 
 class _BatCaveState extends State<BatCave> {
-  bool get _usesRouter => widget.routerDelegate != null;
+  bool get _usesRouter =>
+      widget.routerDelegate != null || widget.routerConfig != null;
 
   @override
   Widget build(BuildContext context) {
@@ -299,9 +307,10 @@ class _BatCaveState extends State<BatCave> {
       return MaterialApp.router(
         key: GlobalObjectKey(this),
         routeInformationProvider: widget.routeInformationProvider,
-        routeInformationParser: widget.routeInformationParser!,
-        routerDelegate: widget.routerDelegate!,
+        routeInformationParser: widget.routeInformationParser,
+        routerDelegate: widget.routerDelegate,
         backButtonDispatcher: widget.backButtonDispatcher,
+        routerConfig: widget.routerConfig,
         builder: _batBuilder,
         title: widget.title,
         onGenerateTitle: widget.onGenerateTitle,

@@ -124,5 +124,38 @@ void main() {
 
       expect(ofResult, equals(batTheme));
     });
+
+    test('copyWith', () {
+      final original = BatThemeData(
+        colors: const BatColors(
+          primary: Colors.red,
+          secondary: Colors.blue,
+          background: Colors.white,
+          tertiary: Colors.green,
+        ),
+        buttonStyle: const BatButtonStyle(elevation: 2.0),
+        typography: const BatTypography.regular(),
+      );
+
+      final copy = original.copyWith(
+        colors: const BatColors(
+          primary: Colors.green,
+          secondary: Colors.yellow,
+          background: Colors.black,
+          tertiary: Colors.green,
+        ),
+        buttonStyle: const BatButtonStyle(elevation: 1.0),
+        typography: const BatTypography.regular().copyWith(
+            headline1: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        )),
+      );
+
+      expect(copy.colors.primary, Colors.green);
+      expect(copy.buttonStyle.elevation, 1.0);
+      expect(copy.typography.headline1.fontWeight, FontWeight.bold);
+      expect(copy.typography.headline1.fontSize, 20);
+    });
   });
 }
