@@ -66,13 +66,11 @@ You can check the [example](./example) to see this theming system in usage.
 
 Who knows whats next? 
 
-- [ ] map 1
-- [ ] map 2
-- [ ] map 3
+- [ ] Better ways to do it?
 
 ## Contributors
 
-[<img src="https://avatars3.githubusercontent.com/u/31275429?s=460&u=b935d608a06c1604bae1d971e69a731480a27d46&v=4" width="180" />](https://mastersam.tech)
+[<img src="https://avatars3.githubusercontent.com/u/31275429?s=460&u=b935d608a06c1604bae1d971e69a731480a27d46&v=4" width="180" />](https://twitter.com/mastersam_)
 #### **Samuel Abada**
 <p>
 <a href="https://twitter.com/mastersam_"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
