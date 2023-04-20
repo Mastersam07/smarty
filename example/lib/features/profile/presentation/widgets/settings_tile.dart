@@ -1,3 +1,4 @@
+import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,6 +20,7 @@ class SettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = BatThemeData.of(context);
     return Column(
       children: [
         ListTile(
@@ -26,7 +28,7 @@ class SettingsTile extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           title: Text(
             title,
-            style: TextStyles.body,
+            style: theme.typography.bodyCopy,
           ),
           trailing: trailing,
         ),
