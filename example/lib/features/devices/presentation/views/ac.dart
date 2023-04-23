@@ -283,7 +283,7 @@ class _AcScreenState extends State<AcScreen> {
                 ),
               ),
               SizedBox(height: 80.h),
-              ChipButton(
+              const ChipButton(
                 child: Icon(
                   Icons.power_settings_new_rounded,
                   color: BatPalette.white,

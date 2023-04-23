@@ -248,7 +248,7 @@ class _BatCaveState extends State<BatCave> {
     late final BatColors colors;
     late final BatButtonStyle buttonStyle;
     if (useDarkTheme) {
-      colors = BatColors.dark();
+      colors = const BatColors.dark();
       buttonStyle = const BatButtonStyle.dark();
       var darkTheme = widget.darkTheme
               ?.copyWith(colors: colors, buttonStyle: buttonStyle) ??
@@ -261,7 +261,7 @@ class _BatCaveState extends State<BatCave> {
         ],
       );
     } else {
-      colors = BatColors.light();
+      colors = const BatColors.light();
       buttonStyle = const BatButtonStyle.light();
       var lightTheme =
           widget.theme?.copyWith(colors: colors, buttonStyle: buttonStyle) ??

@@ -60,7 +60,7 @@ class _DashboardState extends State<Dashboard>
         currentIndex: _tabController.index,
         unselectedFontSize: 14,
         elevation: 2.0,
-        selectedIconTheme: IconThemeData(color: BatPalette.primary),
+        selectedIconTheme: const IconThemeData(color: BatPalette.primary),
         unselectedIconTheme: IconThemeData(
             color: theme.isDark ? BatPalette.white60 : BatPalette.grey60),
         selectedLabelStyle: BatThemeData.of(context).typography.bodyCopyMedium,

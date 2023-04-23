@@ -114,7 +114,7 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                     SizedBox(height: 8.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         SummaryTile(
                           title: '2500',
                           subTitle: 'KWh used',

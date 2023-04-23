@@ -18,20 +18,20 @@ class AppButtonPrimary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = BatThemeData.of(context);
-    final effectiveBackgroundColor = btnColor ?? theme.colors.primary;
+    final effectiveBackgroundColor = btnColor ?? theme.buttonStyle.color;
     return SizedBox(
       width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
         child: Text(
           label,
-          style:
-              theme.typography.bodyCopyMedium.copyWith(color: BatPalette.white),
+          style: theme.typography.bodyCopyMedium
+              .copyWith(color: theme.buttonStyle.childColor),
         ),
         style: TextButton.styleFrom(
-          foregroundColor: effectiveBackgroundColor,
+          foregroundColor: theme.buttonStyle.childColor,
           backgroundColor: effectiveBackgroundColor,
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: theme.buttonStyle.padding,
           shape: RoundedRectangleBorder(
             side: BorderSide.none,
             borderRadius: BorderRadius.circular(8),

@@ -5,27 +5,27 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('BatColors', () {
     test('light() returns correct background color', () {
-      final batColors = BatColors.light();
+      const batColors = BatColors.light();
       expect(batColors.background, equals(BatPalette.white));
     });
 
     test('dark() returns correct background color', () {
-      final batColors = BatColors.dark();
+      const batColors = BatColors.dark();
       expect(batColors.background, equals(BatPalette.grey));
     });
 
     test('lerp() returns correct value when given another BatColors object',
         () {
-      final batColors1 = BatColors.light();
-      final batColors2 = BatColors.dark();
+      const batColors1 = BatColors.light();
+      const batColors2 = BatColors.dark();
       final lerpValue = batColors1.lerp(batColors2, 0.5);
       expect(lerpValue.background,
           equals(Color.lerp(BatPalette.white, BatPalette.grey, 0.5)));
     });
 
     test('lerp() interpolates the background color', () {
-      final colors1 = BatColors.light();
-      final colors2 = BatColors.dark();
+      const colors1 = BatColors.light();
+      const colors2 = BatColors.dark();
 
       final colorsLerp1 = colors1.lerp(colors2, 0.5);
       final colorsLerp2 = colors2.lerp(colors1, 0.5);

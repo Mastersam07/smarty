@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () => AppNavigator.pushNamed(statsRoute),
-                      child: ProfileSummaryTile(
+                      child: const ProfileSummaryTile(
                         title: 'Power',
                         subTitle: '2500KWH/Day',
                         icon: Icon(
@@ -79,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () => AppNavigator.pushNamed(devicesRoute),
-                      child: ProfileSummaryTile(
+                      child: const ProfileSummaryTile(
                         title: 'Devices',
                         subTitle: '25 Devices',
                         icon: Icon(

@@ -14,15 +14,15 @@ class BatColors extends ThemeExtension<BatColors> {
     required this.tertiary,
   });
 
-  BatColors.light()
+  const BatColors.light()
       : this(
           background: BatPalette.white,
           primary: BatPalette.primary,
-          secondary: BatPalette.secondary10,
+          secondary: BatPalette.secondary,
           tertiary: BatPalette.grey,
         );
 
-  BatColors.dark()
+  const BatColors.dark()
       : this(
           background: BatPalette.grey,
           primary: BatPalette.primary,
