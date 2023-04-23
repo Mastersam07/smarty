@@ -1,6 +1,8 @@
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:smarty/main.dart';
 
 import '../../../../core/navigation/navigator.dart';
 import '../../../devices/domain/models/devices.dart';
@@ -21,6 +23,7 @@ class _DeviceCardState extends State<DeviceCard> {
   @override
   Widget build(BuildContext context) {
     var theme = BatThemeData.of(context);
+    var provider = context.read<ThemeProvider>();
     return GestureDetector(
       onTap: () => AppNavigator.pushNamed(widget.device.type.routeName,
           arguments: widget.device),
@@ -28,7 +31,7 @@ class _DeviceCardState extends State<DeviceCard> {
         padding: EdgeInsets.all(16.r),
         margin: EdgeInsets.only(right: 16.w),
         decoration: BoxDecoration(
-          color: theme.colors.secondary,
+          color: theme.colors.secondary.withOpacity(provider.isDark ? 1 : 0.1),
           borderRadius: BorderRadius.circular(6.r),
         ),
         child: Column(
