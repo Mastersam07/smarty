@@ -164,7 +164,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
                                 'Stranger Things',
                                 style: theme.typography.subtitle,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color: BatPalette.primary,
                               ),
@@ -293,7 +293,7 @@ class _SmartTvScreenState extends State<SmartTvScreen> {
               ),
               SizedBox(height: 51.h),
               ChipButton(
-                child: Icon(
+                child: const Icon(
                   Icons.power_settings_new_rounded,
                   color: BatPalette.white,
                 ),

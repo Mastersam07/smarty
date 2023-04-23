@@ -14,15 +14,15 @@ class BatColors extends ThemeExtension<BatColors> {
     required this.tertiary,
   });
 
-  BatColors.light()
+  const BatColors.light()
       : this(
           background: BatPalette.white,
           primary: BatPalette.primary,
-          secondary: BatPalette.secondary10,
+          secondary: BatPalette.secondary,
           tertiary: BatPalette.grey,
         );
 
-  BatColors.dark()
+  const BatColors.dark()
       : this(
           background: BatPalette.grey,
           primary: BatPalette.primary,
@@ -31,8 +31,18 @@ class BatColors extends ThemeExtension<BatColors> {
         );
 
   @override
-  BatColors copyWith() {
-    return this;
+  BatColors copyWith({
+    Color? background,
+    Color? primary,
+    Color? secondary,
+    Color? tertiary,
+  }) {
+    return BatColors(
+      background: background ?? this.background,
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      tertiary: tertiary ?? this.tertiary,
+    );
   }
 
   @override

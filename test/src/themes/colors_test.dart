@@ -5,27 +5,27 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('BatColors', () {
     test('light() returns correct background color', () {
-      final batColors = BatColors.light();
+      const batColors = BatColors.light();
       expect(batColors.background, equals(BatPalette.white));
     });
 
     test('dark() returns correct background color', () {
-      final batColors = BatColors.dark();
+      const batColors = BatColors.dark();
       expect(batColors.background, equals(BatPalette.grey));
     });
 
     test('lerp() returns correct value when given another BatColors object',
         () {
-      final batColors1 = BatColors.light();
-      final batColors2 = BatColors.dark();
+      const batColors1 = BatColors.light();
+      const batColors2 = BatColors.dark();
       final lerpValue = batColors1.lerp(batColors2, 0.5);
       expect(lerpValue.background,
           equals(Color.lerp(BatPalette.white, BatPalette.grey, 0.5)));
     });
 
     test('lerp() interpolates the background color', () {
-      final colors1 = BatColors.light();
-      final colors2 = BatColors.dark();
+      const colors1 = BatColors.light();
+      const colors2 = BatColors.dark();
 
       final colorsLerp1 = colors1.lerp(colors2, 0.5);
       final colorsLerp2 = colors2.lerp(colors1, 0.5);
@@ -34,6 +34,26 @@ void main() {
           equals(Color.lerp(BatPalette.white, BatPalette.grey, 0.5)));
       expect(colorsLerp2.background,
           equals(Color.lerp(BatPalette.grey, BatPalette.white, 0.5)));
+    });
+
+    test('copyWith should return new instance with expected colors', () {
+      const theme = BatColors.light();
+      final newTheme = theme.copyWith(primary: Colors.red);
+      expect(newTheme.background, equals(theme.background));
+      expect(newTheme.primary, equals(Colors.red));
+      expect(newTheme.secondary, equals(theme.secondary));
+      expect(newTheme.tertiary, equals(theme.tertiary));
+    });
+
+    test(
+        'copyWith should return new instance with same colors on nothing to copy',
+        () {
+      const theme = BatColors.light();
+      final newTheme = theme.copyWith();
+      expect(newTheme.background, equals(theme.background));
+      expect(newTheme.primary, equals(theme.primary));
+      expect(newTheme.secondary, equals(theme.secondary));
+      expect(newTheme.tertiary, equals(theme.tertiary));
     });
   });
 }

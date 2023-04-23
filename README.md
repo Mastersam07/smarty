@@ -104,6 +104,11 @@ Who knows whats next?
 
 - [ ] Better ways to do it?
 
+## Credits
+
+- [Flutter](https://github.com/flutter/flutter)
+- [Flutter DSFR](https://github.com/Floating-Dartists/flutter_dsfr)
+
 ## Contributors
 
 [<img src="https://avatars3.githubusercontent.com/u/31275429?s=460&u=b935d608a06c1604bae1d971e69a731480a27d46&v=4" width="180" />](https://twitter.com/mastersam_)

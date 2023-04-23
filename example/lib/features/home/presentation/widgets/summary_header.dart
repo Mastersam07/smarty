@@ -30,7 +30,7 @@ class SummaryHeader extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.thermostat,
                     size: 24,
                     color: BatPalette.white,
@@ -51,7 +51,7 @@ class SummaryHeader extends StatelessWidget {
                       .copyWith(color: BatPalette.white)),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.water_drop_outlined,
                     size: 24,
                     color: BatPalette.white,
@@ -74,7 +74,7 @@ class SummaryHeader extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.bolt_sharp,
                     size: 24,
                     color: BatPalette.white,

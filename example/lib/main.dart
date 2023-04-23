@@ -15,6 +15,7 @@ import 'shared/widgets/widgets.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(const MyApp());
 }
 
@@ -133,7 +134,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 PageIndicatorWidget(
                   count: 3,
                   value: _page,
-                  size: 12.w,
                 ),
                 SizedBox(height: 64.h),
                 AppButtonPrimary(

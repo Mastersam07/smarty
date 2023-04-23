@@ -1,12 +1,13 @@
 import 'package:bat_theme/bat_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageIndicatorWidget extends StatelessWidget {
   const PageIndicatorWidget({
     Key? key,
     required this.count,
     required this.value,
-    this.size = 8,
+    this.size = 24,
     this.spacing = 16,
   }) : super(key: key);
 
@@ -18,29 +19,27 @@ class PageIndicatorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = BatThemeData.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        for (int i = 0; i < count; i++)
-          AnimatedContainer(
-            height: size,
-            width: size,
-            margin: EdgeInsets.fromLTRB(
-              0,
-              spacing,
-              i == count - 1 ? 0 : spacing,
-              spacing,
-            ),
+      children: List.generate(
+        count,
+        (index) => Padding(
+          padding: EdgeInsets.symmetric(horizontal: 6.w),
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 500),
+            width: index == value ? (size * 1.5).w : size.w,
+            height: 12.h,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: i == value
+              color: index == value
                   ? theme.colors.primary
                   : theme.colors.tertiary.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(20.r),
             ),
-            duration: const Duration(milliseconds: 900),
-          )
-      ],
+          ),
+        ),
+      ),
     );
   }
 }

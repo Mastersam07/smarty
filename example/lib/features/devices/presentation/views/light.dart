@@ -93,9 +93,9 @@ class _LightScreenState extends State<LightScreen> {
               SizedBox(height: 40.h),
               GradientCircularProgressIndicator(
                 radius: 100.r,
-                gradientColors: [
-                  const Color(0XFFE89D0D),
-                  const Color(0XFFFCFBC3),
+                gradientColors: const [
+                  Color(0XFFE89D0D),
+                  Color(0XFFFCFBC3),
                   BatPalette.primary,
                   BatPalette.secondary,
                 ],
@@ -103,7 +103,7 @@ class _LightScreenState extends State<LightScreen> {
               ),
               SizedBox(height: 80.h),
               ChipButton(
-                child: Icon(
+                child: const Icon(
                   Icons.power_settings_new_rounded,
                   color: BatPalette.white,
                 ),
