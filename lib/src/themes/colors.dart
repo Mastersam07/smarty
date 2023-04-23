@@ -31,8 +31,18 @@ class BatColors extends ThemeExtension<BatColors> {
         );
 
   @override
-  BatColors copyWith() {
-    return this;
+  BatColors copyWith({
+    Color? background,
+    Color? primary,
+    Color? secondary,
+    Color? tertiary,
+  }) {
+    return BatColors(
+      background: background ?? this.background,
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      tertiary: tertiary ?? this.tertiary,
+    );
   }
 
   @override

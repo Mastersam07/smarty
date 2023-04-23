@@ -35,5 +35,25 @@ void main() {
       expect(colorsLerp2.background,
           equals(Color.lerp(BatPalette.grey, BatPalette.white, 0.5)));
     });
+
+    test('copyWith should return new instance with expected colors', () {
+      const theme = BatColors.light();
+      final newTheme = theme.copyWith(primary: Colors.red);
+      expect(newTheme.background, equals(theme.background));
+      expect(newTheme.primary, equals(Colors.red));
+      expect(newTheme.secondary, equals(theme.secondary));
+      expect(newTheme.tertiary, equals(theme.tertiary));
+    });
+
+    test(
+        'copyWith should return new instance with same colors on nothing to copy',
+        () {
+      const theme = BatColors.light();
+      final newTheme = theme.copyWith();
+      expect(newTheme.background, equals(theme.background));
+      expect(newTheme.primary, equals(theme.primary));
+      expect(newTheme.secondary, equals(theme.secondary));
+      expect(newTheme.tertiary, equals(theme.tertiary));
+    });
   });
 }
