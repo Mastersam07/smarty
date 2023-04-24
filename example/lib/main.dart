@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Smarty',
               themeMode: value.theme,
+              theme: BatThemeData(),
               home: const MyHomePage(),
               onGenerateRoute: AppRouter.generateRoutes,
               navigatorKey: AppNavigator.key,

@@ -21,6 +21,17 @@ class BatButtonStyle extends ThemeExtension<BatButtonStyle> {
     this.elevation,
   });
 
+  /// Default for the button style.
+  const BatButtonStyle.fallback()
+      : this(
+          shape: const RoundedRectangleBorder(),
+          elevation: 0.0,
+          childColor: BatPalette.white,
+          color: BatPalette.primary,
+          height: 53,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+        );
+
   /// Default for the light button style.
   const BatButtonStyle.light()
       : this(

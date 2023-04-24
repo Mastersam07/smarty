@@ -10,8 +10,8 @@ class BatThemeData extends ThemeExtension<BatThemeData> {
   final BatTypography typography;
 
   BatThemeData({
-    required this.colors,
-    required this.buttonStyle,
+    this.colors = const BatColors.fallback(),
+    this.buttonStyle = const BatButtonStyle.fallback(),
     this.typography = const BatTypography.regular(),
   });
 

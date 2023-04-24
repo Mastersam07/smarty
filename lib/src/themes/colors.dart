@@ -14,6 +14,14 @@ class BatColors extends ThemeExtension<BatColors> {
     required this.tertiary,
   });
 
+  const BatColors.fallback()
+      : this(
+          background: BatPalette.white,
+          primary: BatPalette.primary,
+          secondary: BatPalette.secondary,
+          tertiary: BatPalette.grey,
+        );
+
   const BatColors.light()
       : this(
           background: BatPalette.white,
