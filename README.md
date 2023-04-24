@@ -58,6 +58,23 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+Or you can also use the `BatThemeData` light/dark constructors:
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: BatThemeData.light(),
+        darkTheme: BatThemeData.dark(),
+        home: Homepage(),
+    );
+  }
+}
+```
+
 ## Full Usage
 
 You can check the [example](./example) to see this theming system in usage.
