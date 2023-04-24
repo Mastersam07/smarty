@@ -9,11 +9,25 @@ class BatThemeData extends ThemeExtension<BatThemeData> {
   final BatColors colors;
   final BatTypography typography;
 
-  BatThemeData({
+  const BatThemeData({
     this.colors = const BatColors.fallback(),
     this.buttonStyle = const BatButtonStyle.fallback(),
     this.typography = const BatTypography.regular(),
   });
+
+  const BatThemeData.light()
+      : this(
+          colors: const BatColors.light(),
+          buttonStyle: const BatButtonStyle.light(),
+          typography: const BatTypography.regular(),
+        );
+
+  const BatThemeData.dark()
+      : this(
+          colors: const BatColors.dark(),
+          buttonStyle: const BatButtonStyle.dark(),
+          typography: const BatTypography.regular(),
+        );
 
   static BatThemeData of(BuildContext context) =>
       Theme.of(context).extension<BatThemeData>()!;
