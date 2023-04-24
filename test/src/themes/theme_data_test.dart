@@ -14,7 +14,7 @@ void main() {
       const buttonStyle = BatButtonStyle();
       const typography = BatTypography.regular();
 
-      final batTheme = BatThemeData(
+      const batTheme = BatThemeData(
         colors: colors,
         buttonStyle: buttonStyle,
         typography: typography,
@@ -26,15 +26,15 @@ void main() {
     });
 
     test('copyWith() creates a new instance with updated properties', () {
-      final batTheme = BatThemeData(
-        colors: const BatColors(
+      const batTheme = BatThemeData(
+        colors: BatColors(
           primary: Colors.red,
           secondary: Colors.blue,
           background: Colors.white,
           tertiary: Colors.green,
         ),
-        buttonStyle: const BatButtonStyle(),
-        typography: const BatTypography.regular(),
+        buttonStyle: BatButtonStyle(),
+        typography: BatTypography.regular(),
       );
 
       const updatedColors = BatColors(
@@ -58,26 +58,26 @@ void main() {
     });
 
     test('lerp() interpolates properties of two BatThemeData instances', () {
-      final batTheme1 = BatThemeData(
-        colors: const BatColors(
+      const batTheme1 = BatThemeData(
+        colors: BatColors(
           primary: Colors.red,
           secondary: Colors.blue,
           background: Colors.white,
           tertiary: Colors.green,
         ),
-        buttonStyle: const BatButtonStyle(),
-        typography: const BatTypography.regular(),
+        buttonStyle: BatButtonStyle(),
+        typography: BatTypography.regular(),
       );
 
-      final batTheme2 = BatThemeData(
-        colors: const BatColors(
+      const batTheme2 = BatThemeData(
+        colors: BatColors(
           primary: Colors.green,
           secondary: Colors.yellow,
           background: Colors.black,
           tertiary: Colors.green,
         ),
-        buttonStyle: const BatButtonStyle(),
-        typography: const BatTypography.regular(),
+        buttonStyle: BatButtonStyle(),
+        typography: BatTypography.regular(),
       );
 
       final interpolatedBatTheme = batTheme1.lerp(batTheme2, 0);
@@ -100,7 +100,7 @@ void main() {
       const typography = BatTypography.regular();
 
       final themeData = ThemeData();
-      final batTheme = BatThemeData(
+      const batTheme = BatThemeData(
         colors: colors,
         buttonStyle: buttonStyle,
         typography: typography,
@@ -126,15 +126,15 @@ void main() {
     });
 
     test('copyWith', () {
-      final original = BatThemeData(
-        colors: const BatColors(
+      const original = BatThemeData(
+        colors: BatColors(
           primary: Colors.red,
           secondary: Colors.blue,
           background: Colors.white,
           tertiary: Colors.green,
         ),
-        buttonStyle: const BatButtonStyle(elevation: 2.0),
-        typography: const BatTypography.regular(),
+        buttonStyle: BatButtonStyle(elevation: 2.0),
+        typography: BatTypography.regular(),
       );
 
       final copy = original.copyWith(

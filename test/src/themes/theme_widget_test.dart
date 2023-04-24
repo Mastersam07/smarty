@@ -10,9 +10,9 @@ void main() {
           (WidgetTester tester) async {
         await tester.pumpWidget(
           BatThemeWidget(
-            data: BatThemeData(
-              buttonStyle: const BatButtonStyle(),
-              colors: const BatColors(
+            data: const BatThemeData(
+              buttonStyle: BatButtonStyle(),
+              colors: BatColors(
                 background: Colors.white,
                 primary: Colors.blue,
                 secondary: Colors.green,
@@ -27,9 +27,9 @@ void main() {
       });
       testWidgets('BatThemeWidget applies BatThemeData to Theme',
           (WidgetTester tester) async {
-        final batThemeData = BatThemeData(
-          buttonStyle: const BatButtonStyle(),
-          colors: const BatColors(
+        const batThemeData = BatThemeData(
+          buttonStyle: BatButtonStyle(),
+          colors: BatColors(
             background: Colors.white,
             primary: Colors.blue,
             secondary: Colors.green,
@@ -56,9 +56,9 @@ void main() {
         final existingThemeData = ThemeData(
             colorScheme:
                 ColorScheme.fromSwatch().copyWith(secondary: Colors.green));
-        final batThemeData = BatThemeData(
-          buttonStyle: const BatButtonStyle(),
-          colors: const BatColors(
+        const batThemeData = BatThemeData(
+          buttonStyle: BatButtonStyle(),
+          colors: BatColors(
             background: Colors.white,
             primary: Colors.blue,
             secondary: Colors.green,
