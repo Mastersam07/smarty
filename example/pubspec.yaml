@@ -41,7 +41,6 @@ dependencies:
   bat_theme:
     path: ../
   provider: ^6.0.5
-  opay_online_flutter_sdk:
 
 dev_dependencies:
   flutter_lints: ^1.0.0
