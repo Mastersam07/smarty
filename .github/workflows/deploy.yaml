@@ -64,8 +64,8 @@ jobs:
         run: shorebird doctor
         working-directory: ./example
       
-      - name: Run shorebird init
-        run: shorebird init
+      - name: Run shorebird login
+        run: shorebird login
         working-directory: ./example
 
       - name: Shorebird release
