@@ -43,6 +43,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
+      - name: Setup shorebird
+        run: |
+          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
+      
       - name: Setup credentials
         run: |
           mkdir -p "$HOME/Library/Application Support/shorebird"
@@ -55,10 +60,9 @@ jobs:
           }
           EOF
       
-      - name: Setup shorebird
+      - name: Check if credential exists
         run: |
-          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
+          test -f "$HOME/Library/Application Support/shorebird/credentials.json" && echo “FILE exists.” || echo “File does not exist”
       
       - name: Run shorebird doctor
         run: shorebird doctor
