@@ -10,30 +10,30 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
     
 jobs:
-  getversion:
-    name: Get Version
-    runs-on: ubuntu-latest
-    outputs:
-      target_version: ${{ steps.setoutput.outputs.target_version }}
+  # getversion:
+  #   name: Get Version
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     target_version: ${{ steps.setoutput.outputs.target_version }}
 
-    steps:
+  #   steps:
 
-      - name: Get current tag
-        id: ctag
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+  #     - name: Get current tag
+  #       id: ctag
+  #       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
-      - uses: jungwinter/split@v2
-        id: stag
-        with:
-          msg: ${{ steps.ctag.outputs.tag }}
-          separator: "v"
+  #     - uses: jungwinter/split@v2
+  #       id: stag
+  #       with:
+  #         msg: ${{ steps.ctag.outputs.tag }}
+  #         separator: "v"
 
-      - name: Set Output 
-        id: setoutput
-        env:
-          TAG_VER: $(cut -d'+' -f1 <<<"${{steps.splittag.outputs._1}}")
-        run: |
-          echo "::set-output name=target_version::$TAG_VER"
+  #     - name: Set Output 
+  #       id: setoutput
+  #       env:
+  #         TAG_VER: $(cut -d'+' -f1 <<<"${{steps.splittag.outputs._1}}")
+  #       run: |
+  #         echo "::set-output name=target_version::$TAG_VER"
 
   update-android:
     name: Update Android
@@ -47,14 +47,12 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
           ls $HOME
-          ls $GITHUB_PATH
-          ls $GITHUB_WORKSPACE
           echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
       
       - name: Setup credentials
         run: |
-          mkdir -p "$HOME/Library/Application Support/shorebird"
-          cat <<EOF > "$HOME/Library/Application Support/shorebird/credentials.json"
+          mkdir -p ~/Library/Application\ Support/shorebird
+          cat <<EOF > ~/Library/Application\ Support/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -65,7 +63,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f "$HOME/Library/Application Support/shorebird/credentials.json" && echo “FILE exists.” || echo “File does not exist”
+          test -f ~/Library/Application\ Support/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
       
       - name: Run shorebird doctor
         run: shorebird doctor
