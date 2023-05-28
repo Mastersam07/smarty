@@ -8,7 +8,7 @@ on:
 jobs:
   getversion:
     name: Get Version
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       target_version: ${{ steps.setoutput.outputs.target_version }}
 
