@@ -1,4 +1,4 @@
-name: Codepush-TEST
+name: Codepush Deployment
 
 on:
   create:
