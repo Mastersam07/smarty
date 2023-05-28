@@ -46,15 +46,15 @@ jobs:
       - name: Setup shorebird
         run: |
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo $HOME
-          echo $GITHUB_PATH
-          echo $GITHUB_WORKSPACE
+          ls $HOME
+          ls $GITHUB_PATH
+          ls $GITHUB_WORKSPACE
           echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
       
       - name: Setup credentials
         run: |
-          mkdir -p "$GITHUB_WORKSPACE/Library/Application Support/shorebird"
-          cat <<EOF > "$GITHUB_WORKSPACE/Library/Application Support/shorebird/credentials.json"
+          mkdir -p "$HOME/Library/Application Support/shorebird"
+          cat <<EOF > "$HOME/Library/Application Support/shorebird/credentials.json"
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -65,7 +65,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f "$GITHUB_WORKSPACE/Library/Application Support/shorebird/credentials.json" && echo “FILE exists.” || echo “File does not exist”
+          test -f "$HOME/Library/Application Support/shorebird/credentials.json" && echo “FILE exists.” || echo “File does not exist”
       
       - name: Run shorebird doctor
         run: shorebird doctor
