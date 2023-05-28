@@ -3,7 +3,7 @@ name: Codepush-TEST
 on:
   push:
     tags:
-      - v[0-9]+.[0-9]+.[0-9]++[A-Za-z0-9]+
+      - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
     
 jobs:
   getversion:
