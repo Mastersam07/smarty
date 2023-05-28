@@ -21,3 +21,6 @@ doc/api/
 *.js.map
 coverage/
 .DS_Store
+
+.vscode/
+.fvm/

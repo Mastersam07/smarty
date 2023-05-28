@@ -5,7 +5,6 @@ import 'package:smarty/main.dart';
 
 import 'devices/presentation/views/device_home.dart';
 import 'home/presentation/views/home.dart';
-import 'routine/presentation/views/routine_home.dart';
 import 'stats/presentation/views/stats_home.dart';
 import 'voice/presentation/views/voice_home.dart';
 
@@ -25,7 +24,7 @@ class _DashboardState extends State<Dashboard>
     HomeScreen(),
     DevicesScreen(),
     VoiceHomeScreen(),
-    RoutineHomeScreen(),
+    // RoutineHomeScreen(),
     StatsHomeScreen(),
   ];
 
@@ -82,10 +81,10 @@ class _DashboardState extends State<Dashboard>
               icon: Icon(Icons.keyboard_voice_outlined),
               activeIcon: Icon(Icons.keyboard_voice_outlined),
               label: "Voice"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.replay_rounded),
-              activeIcon: Icon(Icons.replay_rounded),
-              label: "Routine"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.replay_rounded),
+          //     activeIcon: Icon(Icons.replay_rounded),
+          //     label: "Routine"),
           BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart_rounded),
               activeIcon: Icon(Icons.bar_chart_rounded),

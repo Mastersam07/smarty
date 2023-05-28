@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Good Morning, Tosin',
+                  'Good Morning, Codefarmer',
                   style: theme.typography.headline4,
                 ),
               ),

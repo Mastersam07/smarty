@@ -112,9 +112,9 @@ class _StatsHomeScreenState extends State<StatsHomeScreen>
                           color: theme.colors.tertiary.withOpacity(0.6)),
                     ),
                     SizedBox(height: 8.h),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         SummaryTile(
                           title: '2500',
                           subTitle: 'KWh used',
