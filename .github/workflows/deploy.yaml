@@ -55,7 +55,9 @@ jobs:
           EOF
       
       - name: Setup shorebird
-        run: curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+        run: |
+          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+          export PATH="$HOME/.shorebird/bin:$PATH"
       
       - name: Run shorebird doctor
         run: shorebird doctor
