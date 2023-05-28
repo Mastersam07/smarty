@@ -3,7 +3,7 @@ name: Codepush-TEST
 on:
   push:
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+-[A-Za-z0-9]++'
+      - v[0-9]+.[0-9]+.[0-9]++[A-Za-z0-9]+
     
 jobs:
   getversion:
@@ -27,7 +27,7 @@ jobs:
       - name: Set Output 
         id: setoutput
         env:
-          TAG_VER: $(cut -d'-' -f1 <<<"${{steps.splittag.outputs._1}}")
+          TAG_VER: $(cut -d'+' -f1 <<<"${{steps.splittag.outputs._1}}")
         run: |
           echo "::set-output name=target_version::$TAG_VER"
 
