@@ -38,7 +38,7 @@ jobs:
   update-android:
     name: Update Android
     needs: getversion
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -46,13 +46,12 @@ jobs:
       - name: Setup shorebird
         run: |
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          ls $HOME
           echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
       
       - name: Setup credentials
         run: |
-          mkdir -p ~/Library/Application\ Support/shorebird
-          cat <<EOF > ~/Library/Application\ Support/shorebird/credentials.json
+          mkdir -p $HOME/.config/shorebird
+          cat <<EOF > ~/.config/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -63,7 +62,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f ~/Library/Application\ Support/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+          test -f $HOME/.config/credentials.json && echo “FILE exists.” || echo “File does not exist”
       
       - name: Run shorebird doctor
         run: shorebird doctor
