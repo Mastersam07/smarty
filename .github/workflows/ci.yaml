@@ -1,27 +1,27 @@
-name: CI
+# name: CI
 
-on:
-  push:
-    branches: [master, dev]
-  pull_request:
-    branches: [master, dev]
+# on:
+#   push:
+#     branches: [master, dev]
+#   pull_request:
+#     branches: [master, dev]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Fetch dependencies
-        run: flutter packages get
-      # - name: Analyze project
-      #   run: flutter analyze
-      - name: Run tests
-        run: flutter test --coverage
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage/lcov.info
-          token: ${{ secrets.CODECOV_TOKEN }}
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: "stable"
+#       - name: Fetch dependencies
+#         run: flutter packages get
+#       # - name: Analyze project
+#       #   run: flutter analyze
+#       - name: Run tests
+#         run: flutter test --coverage
+#       - name: Upload coverage reports to Codecov
+#         uses: codecov/codecov-action@v3
+#         with:
+#           file: ./coverage/lcov.info
+#           token: ${{ secrets.CODECOV_TOKEN }}

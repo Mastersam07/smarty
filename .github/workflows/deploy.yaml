@@ -45,8 +45,8 @@ jobs:
       
       - name: Setup credentials
         run: |
-          mkdir -p "$HOME/Library/Application Support"
-          cat <<EOF > "$HOME/Library/Application Support/credentials.json"
+          mkdir -p "$HOME/Library/Application Support/shorebird"
+          cat <<EOF > "$HOME/Library/Application Support/shorebird/credentials.json"
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -62,10 +62,6 @@ jobs:
       
       - name: Run shorebird doctor
         run: shorebird doctor
-        working-directory: ./example
-      
-      - name: Run shorebird login
-        run: shorebird login
         working-directory: ./example
 
       - name: Shorebird release
