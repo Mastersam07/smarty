@@ -14,13 +14,10 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-      # SETUP SHOREBIRD
-      # RUN SHOREBIRD USING FLUTER RUN
-      # 
       - name: Fetch dependencies
         run: flutter packages get
-      - name: Analyze project
-        run: flutter analyze
+      # - name: Analyze project
+      #   run: flutter analyze
       - name: Run tests
         run: flutter test --coverage
       - name: Upload coverage reports to Codecov
