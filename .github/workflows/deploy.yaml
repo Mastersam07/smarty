@@ -63,10 +63,6 @@ jobs:
         run: shorebird doctor
         working-directory: ./example
 
-      - name: Install dependencies
-        run: flutter packages get
-        working-directory: ./example
-
       - name: Shorebird release
         run: shorebird release android
         working-directory: ./example
