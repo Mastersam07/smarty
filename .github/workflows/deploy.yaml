@@ -44,7 +44,7 @@ jobs:
       
       - name: Setup credentials
         run: |
-          mkdir -p ""$HOME/Library/Application Support"
+          mkdir -p "$HOME/Library/Application Support"
           cat <<EOF > "$HOME/Library/Application Support/credentials.json"
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
