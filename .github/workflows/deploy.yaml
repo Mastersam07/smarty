@@ -95,7 +95,9 @@ jobs:
             "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
           }
           EOF
-          shorebird release android
+
+      - name: Shorebird release
+        run: shorebird release android
         working-directory: ./example
 
       # - name: Shorebird patch
