@@ -46,7 +46,7 @@ jobs:
       - name: Setup shorebird
         run: |
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
+          echo "/home/runner/.shorebird/bin" >> $GITHUB_PATH
       
       - name: Setup credentials
         run: |
@@ -62,11 +62,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f $HOME/.config/credentials.json && echo “FILE exists.” || echo “File does not exist”
-      
-      - name: Run shorebird doctor
-        run: shorebird doctor
-        working-directory: ./example
+          test -f ~/.config/credentials.json && echo “FILE exists.” || echo “File does not exist”
 
       - name: Shorebird release
         run: shorebird release android
