@@ -45,17 +45,16 @@ jobs:
       
       - name: Setup shorebird
         run: |
-          [ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.shorebird" || printf %s "${XDG_CONFIG_HOME}/shorebird"
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "/home/runner/.config/shorebird/bin" >> $GITHUB_PATH
-          printenv
-          cd ${HOME}/shorebird
-          ls -a
+          echo "${XDG_CONFIG_HOME}/shorebird/bin" >> $GITHUB_PATH
       
       - name: Setup credentials
         run: |
-          mkdir -p ${HOME}/shorebird
-          cat <<EOF > ${HOME}/shorebird/credentials.json
+          if [ ! -d "${XDG_CONFIG_HOME}/shorebird" ]; then
+              echo "Creating dir..."
+              mkdir -p "${XDG_CONFIG_HOME}/shorebird"
+          fi
+          cat <<EOF > ${XDG_CONFIG_HOME}/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -66,7 +65,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f ${HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+          test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
 
       - name: Shorebird release
         run: shorebird release android
