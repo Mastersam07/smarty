@@ -12,7 +12,7 @@ on:
 jobs:
   getversion:
     name: Get Version
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       target_version: ${{ steps.setoutput.outputs.target_version }}
 
@@ -35,26 +35,54 @@ jobs:
         run: |
           echo "::set-output name=target_version::$TAG_VER"
 
+  # update-android:
+  #   name: Update Android
+  #   needs: getversion
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+      
+  #     - name: Setup shorebird
+  #       run: |
+  #         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+  #         echo "${XDG_CONFIG_HOME}/shorebird/bin" >> $GITHUB_PATH
+      
+  #     - name: Setup credentials
+  #       run: |
+  #         if [ ! -d "${XDG_CONFIG_HOME}/shorebird" ]; then
+  #             echo "Creating dir..."
+  #             mkdir -p "${XDG_CONFIG_HOME}/shorebird"
+  #         fi
+  #         cat <<EOF > ${XDG_CONFIG_HOME}/shorebird/credentials.json
+  #         {
+  #           "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
+  #           "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+  #           "idToken":"${{ secrets.OAUTH_ID_TOKEN }}",
+  #           "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+  #         }
+  #         EOF
+      
+  #     - name: Check if credential exists
+  #       run: |
+  #         test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+
+  #     - name: Shorebird release
+  #       run: shorebird release android
+  #       working-directory: ./example
+
   update-android:
     name: Update Android
     needs: getversion
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Setup shorebird
-        run: |
-          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "${XDG_CONFIG_HOME}/shorebird/bin" >> $GITHUB_PATH
-      
       - name: Setup credentials
         run: |
-          if [ ! -d "${XDG_CONFIG_HOME}/shorebird" ]; then
-              echo "Creating dir..."
-              mkdir -p "${XDG_CONFIG_HOME}/shorebird"
-          fi
-          cat <<EOF > ${XDG_CONFIG_HOME}/shorebird/credentials.json
+          mkdir -p "$HOME/Library/Application Support/shorebird"
+          cat <<EOF > "$HOME/Library/Application Support/shorebird/credentials.json"
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -63,9 +91,10 @@ jobs:
           }
           EOF
       
-      - name: Check if credential exists
+      - name: Setup shorebird
         run: |
-          test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
 
       - name: Shorebird release
         run: shorebird release android
