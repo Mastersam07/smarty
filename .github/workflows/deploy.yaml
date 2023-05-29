@@ -50,11 +50,11 @@ jobs:
       
       - name: Setup credentials
         run: |
-          if [ ! -d "~/.config/shorebird" ]; then
+          if [ ! -d "${XDG_CONFIG_HOME}/shorebird" ]; then
               echo "Creating dir..."
-              mkdir -p "~/.config/shorebird"
+              mkdir -p "${XDG_CONFIG_HOME}/shorebird"
           fi
-          cat <<EOF > ~/.config/shorebird/credentials.json
+          cat <<EOF > ${XDG_CONFIG_HOME}/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -65,7 +65,7 @@ jobs:
       
       - name: Check if credential exists
         run: |
-          test -f ~/.config/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+          test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
 
       - name: Shorebird release
         run: shorebird release android
