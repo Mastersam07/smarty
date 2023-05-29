@@ -95,6 +95,11 @@ jobs:
             "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
           }
           EOF
+      
+      - name: Check dir
+        run: |
+          cd ~/Library/Application\ Support/shorebird
+          ls -a
 
       - name: Shorebird release
         run: shorebird release android
