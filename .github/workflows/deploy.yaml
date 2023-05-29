@@ -79,6 +79,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
+      - name: Setup shorebird
+        run: |
+          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
+      
       - name: Setup credentials
         run: |
           mkdir -p "$HOME/Library/Application Support/shorebird"
@@ -90,14 +95,7 @@ jobs:
             "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
           }
           EOF
-      
-      - name: Setup shorebird
-        run: |
-          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
-
-      - name: Shorebird release
-        run: shorebird release android
+          shorebird release android
         working-directory: ./example
 
       # - name: Shorebird patch
