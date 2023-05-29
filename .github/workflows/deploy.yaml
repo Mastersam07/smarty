@@ -45,7 +45,7 @@ jobs:
       
       - name: Setup shorebird
         run: |
-          echo printenv
+          printenv
           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
           echo "/home/runner/.config/shorebird/bin" >> $GITHUB_PATH
       
