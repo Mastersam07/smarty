@@ -87,7 +87,7 @@ jobs:
       - name: Setup credentials
         run: |
           mkdir -p ~/Library/Application\ Support/shorebird
-          cat <<EOF > "~/Library/Application\ Support/shorebird/credentials.json"
+          cat <<EOF > ~/Library/Application\ Support/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
