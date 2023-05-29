@@ -50,11 +50,11 @@ jobs:
       
       - name: Setup credentials
         run: |
-          if [ ! -d "${XDG_CONFIG_HOME}/.config/shorebird" ]; then
+          if [ ! -d "${HOME}/.config/shorebird" ]; then
               echo "Creating dir..."
-              mkdir -p "${XDG_CONFIG_HOME}/.config/shorebird"
+              mkdir -p "${HOME}/.config/shorebird"
           fi
-          cat <<EOF > ${XDG_CONFIG_HOME}/.config/shorebird/credentials.json
+          cat <<EOF > ${HOME}/.config/shorebird/credentials.json
           {
             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
@@ -69,7 +69,7 @@ jobs:
       
       - name: Check dir
         run: |
-          cd ${XDG_CONFIG_HOME}/.config/shorebird
+          cd ${HOME}/.config/shorebird
           ls -a
 
       - name: Shorebird release
