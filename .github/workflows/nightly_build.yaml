@@ -36,6 +36,7 @@ jobs:
           else
             CHANGES_COUNT=$(git ls-files | wc -l)
           fi
+          echo "$CHANGES_COUNT number of changes"
           echo "::set-output name=changes::${CHANGES_COUNT}"
           
       - name: Nightly Build
