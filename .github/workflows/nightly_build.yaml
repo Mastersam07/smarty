@@ -1,0 +1,27 @@
+name: Nightly Build
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Run every day at 1 AM UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check for code changes
+        id: code_changes
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          
+      - name: Determine code changes
+        id: determine_changes
+        run: |
+          CHANGES_COUNT=$(git diff --name-only HEAD~1 | wc -l)
+          echo "::set-output name=changes::${CHANGES_COUNT}"
+          
+      - name: Nightly Build
+        if: ${{ steps.determine_changes.outputs.changes > 0 }}
+        run: |
+          # Your build commands here
