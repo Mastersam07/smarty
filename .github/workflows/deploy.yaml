@@ -1,117 +1,117 @@
-name: Codepush Deployment
+# name: Codepush Deployment
 
-on:
-  create:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
-  push:
-    branches: [master, dev]
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
+# on:
+#   create:
+#     tags:
+#       - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
+#   push:
+#     branches: [master, dev]
+#     tags:
+#       - 'v[0-9]+.[0-9]+.[0-9]+([0-9]+)'
     
-jobs:
-  getversion:
-    name: Get Version
-    runs-on: ubuntu-latest
-    outputs:
-      target_version: ${{ steps.setoutput.outputs.target_version }}
+# jobs:
+#   getversion:
+#     name: Get Version
+#     runs-on: ubuntu-latest
+#     outputs:
+#       target_version: ${{ steps.setoutput.outputs.target_version }}
 
-    steps:
+#     steps:
 
-      - name: Get current tag
-        id: ctag
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+#       - name: Get current tag
+#         id: ctag
+#         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
-      - uses: jungwinter/split@v2
-        id: stag
-        with:
-          msg: ${{ steps.ctag.outputs.tag }}
-          separator: "v"
+#       - uses: jungwinter/split@v2
+#         id: stag
+#         with:
+#           msg: ${{ steps.ctag.outputs.tag }}
+#           separator: "v"
 
-      - name: Set Output 
-        id: setoutput
-        env:
-          TAG_VER: $(cut -d'+' -f1 <<<"${{steps.splittag.outputs._1}}")
-        run: |
-          echo "::set-output name=target_version::$TAG_VER"
+#       - name: Set Output 
+#         id: setoutput
+#         env:
+#           TAG_VER: $(cut -d'+' -f1 <<<"${{steps.splittag.outputs._1}}")
+#         run: |
+#           echo "::set-output name=target_version::$TAG_VER"
 
-  update-android:
-    name: Update Android
-    needs: getversion
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+#   update-android:
+#     name: Update Android
+#     needs: getversion
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
       
-      - name: Setup shorebird
-        run: |
-          curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-          echo "${HOME}/shorebird/bin" >> $GITHUB_PATH
+#       - name: Setup shorebird
+#         run: |
+#           curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+#           echo "${HOME}/shorebird/bin" >> $GITHUB_PATH
       
-      - name: Setup credentials
-        run: |
-          if [ ! -d "${HOME}/.config/shorebird" ]; then
-              echo "Creating dir..."
-              mkdir -p "${HOME}/.config/shorebird"
-          fi
-          cat <<EOF > ${HOME}/.config/shorebird/credentials.json
-          {
-            "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
-            "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
-            "idToken":"${{ secrets.OAUTH_ID_TOKEN }}",
-            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-          }
-          EOF
+#       - name: Setup credentials
+#         run: |
+#           if [ ! -d "${HOME}/.config/shorebird" ]; then
+#               echo "Creating dir..."
+#               mkdir -p "${HOME}/.config/shorebird"
+#           fi
+#           cat <<EOF > ${HOME}/.config/shorebird/credentials.json
+#           {
+#             "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
+#             "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+#             "idToken":"${{ secrets.OAUTH_ID_TOKEN }}",
+#             "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+#           }
+#           EOF
       
-      # - name: Check if credential exists
-      #   run: |
-      #     test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
+#       # - name: Check if credential exists
+#       #   run: |
+#       #     test -f ${XDG_CONFIG_HOME}/shorebird/credentials.json && echo “FILE exists.” || echo “File does not exist”
       
-      - name: Check dir
-        run: |
-          cd ${HOME}/.config/shorebird
-          ls -a
+#       - name: Check dir
+#         run: |
+#           cd ${HOME}/.config/shorebird
+#           ls -a
 
-      - name: Shorebird release
-        run: shorebird release android
-        working-directory: ./example
+#       - name: Shorebird release
+#         run: shorebird release android
+#         working-directory: ./example
 
-  # update-android:
-  #   name: Update Android
-  #   needs: getversion
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+#   # update-android:
+#   #   name: Update Android
+#   #   needs: getversion
+#   #   runs-on: macos-latest
+#   #   steps:
+#   #     - name: Checkout
+#   #       uses: actions/checkout@v2
       
-  #     - name: Setup shorebird
-  #       run: |
-  #         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
-  #         echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
+#   #     - name: Setup shorebird
+#   #       run: |
+#   #         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+#   #         echo "$HOME/.shorebird/bin" >> $GITHUB_PATH
       
-  #     - name: Setup credentials
-  #       run: |
-  #         mkdir -p ~/Library/Application\ Support/shorebird
-  #         cat <<EOF > ~/Library/Application\ Support/shorebird/credentials.json
-  #         {
-  #           "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
-  #           "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
-  #           "idToken":"${{ secrets.OAUTH_ID_TOKEN }}",
-  #           "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-  #         }
-  #         EOF
+#   #     - name: Setup credentials
+#   #       run: |
+#   #         mkdir -p ~/Library/Application\ Support/shorebird
+#   #         cat <<EOF > ~/Library/Application\ Support/shorebird/credentials.json
+#   #         {
+#   #           "accessToken": {"type": "Bearer", "data": ${{ secrets.OAUTH_ACCESS_TOKEN }}, "expiry": ${{ secrets.EXPIRATION }} },
+#   #           "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+#   #           "idToken":"${{ secrets.OAUTH_ID_TOKEN }}",
+#   #           "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+#   #         }
+#   #         EOF
       
-  #     - name: Check dir
-  #       run: |
-  #         cd ~/Library/Application\ Support/shorebird
-  #         ls -a
+#   #     - name: Check dir
+#   #       run: |
+#   #         cd ~/Library/Application\ Support/shorebird
+#   #         ls -a
 
-  #     - name: Shorebird release
-  #       run: shorebird release android
-  #       working-directory: ./example
+#   #     - name: Shorebird release
+#   #       run: shorebird release android
+#   #       working-directory: ./example
 
-  #     # - name: Shorebird patch
-  #     #   run: shorebird patch android --release-version ${{needs.getversion.outputs.target_version}}
-  #     #   working-directory: ./example
-  #     - name: Git Diff
-  #       run: git diff --exit-code
+#   #     # - name: Shorebird patch
+#   #     #   run: shorebird patch android --release-version ${{needs.getversion.outputs.target_version}}
+#   #     #   working-directory: ./example
+#   #     - name: Git Diff
+#   #       run: git diff --exit-code
