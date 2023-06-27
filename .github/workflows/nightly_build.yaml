@@ -1,6 +1,8 @@
 name: Nightly Build
 
 on:
+  push:
+    branches: [master, dev]
   schedule:
 #     - cron: '0 1 * * *'  # Run every day at 1 AM UTC
     - cron: '*/5 1-23 * * *'  # Run every 5 minutes from 1 AM to 11 PM UTC
