@@ -11,9 +11,20 @@ jobs:
     steps:
       - name: Check for code changes
         id: code_changes
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
+          
+      - name: Setup flutter engine
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          
+      - name: Fetch dependencies
+        run: flutter packages get
+      
+      - name: Run tests
+        run: flutter test --coverage
           
       - name: Determine code changes
         id: determine_changes
