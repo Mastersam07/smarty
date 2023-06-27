@@ -1,5 +1,4 @@
 # 🦇🦇 BatTheme
-
 <p align="center">
   <a href="https://github.com/mastersam07/smarty" target="_blank">
     <img src="./ss/batman.gif" alt="Bat Theme" width="200">
