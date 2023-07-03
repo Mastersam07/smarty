@@ -10,7 +10,7 @@ workflows:
         - smarty-key
     triggering:
       events:
-        - "push"
+        - push
       branch_patterns:
         - pattern: master
           include: true
