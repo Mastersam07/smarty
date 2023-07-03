@@ -29,7 +29,9 @@ workflows:
       script: |
         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash -s -- --force
         install_path=$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.shorebird" || printf %s "${XDG_CONFIG_HOME}/shorebird")
-        export PATH="$install_path/bin:$PATH"
+        echo 'PATH="$install_path/bin:$PATH"' >> ~/.profile
+        echo 'export PATH' >> ~/.profile
+        source ~/.profile
         echo "added $install_path/bin to PATH"
       ignore_failure: true
     - name: Shorebird doctor
