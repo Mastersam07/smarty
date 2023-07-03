@@ -36,6 +36,7 @@ workflows:
       ignore_failure: true
     - name: Shorebird doctor
       script: |
+        ls -a $HOME
         shorebird doctor
       ignore_failure: true
     - name: Set up local.properties
