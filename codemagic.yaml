@@ -8,6 +8,11 @@ workflows:
       xcode: latest
       android_signing:
         - smarty-key
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - $HOME/.gradle/caches
+        - $HOME/Library/Caches/CocoaPods
     triggering:
       events:
         - push
@@ -24,7 +29,7 @@ workflows:
     - name: Set up local.properties
       working_directory: example
       script: | 
-        echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+        echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/example/android/local.properties"
     - name: Get Flutter packages
       working_directory: example
       script: | 
