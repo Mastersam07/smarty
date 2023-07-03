@@ -45,7 +45,7 @@ workflows:
       script: | 
         flutter build apk --release
     artifacts:
-      - build/**/outputs/**/*.apk
+      - example/build/**/outputs/**/*.apk
     publishing:
       email:
         notify:
