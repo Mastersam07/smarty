@@ -35,9 +35,8 @@ workflows:
     - name: 🐦 Install Shorebird
       script: |
         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash -s -- --force
-        install_path=$(printf %s "${HOME}/.shorebird")
-        echo $install_path/bin >> $PATH
-        echo "added $install_path/bin to PATH"
+        echo ${HOME}/.shorebird/bin >> $PATH
+        echo "added shorebird to PATH"
       ignore_failure: true
     - name: Shorebird doctor
       script: |
