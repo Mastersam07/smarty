@@ -22,10 +22,6 @@ workflows:
           source: true
       cancel_previous_builds: true
     scripts:
-    - name: Echo envs
-      script: |
-        echo $HOME
-        echo $CM_BUILD_DIR
     - name: Set up local.properties
       working_directory: example
       script: | 
@@ -39,7 +35,7 @@ workflows:
       script: | 
         flutter build apk --release
     artifacts:
-      - build/**/outputs/apk/**/*.apk
+      - build/**/outputs/**/*.apk
     publishing:
       email:
         notify:
