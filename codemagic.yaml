@@ -25,6 +25,24 @@ workflows:
           source: true
       cancel_previous_builds: true
     scripts:
+    - name: Echo envs
+      script: |
+        echo $FLUTTER_ROOT
+        echo $HOME
+        echo $HOME/programs/flutter
+        echo $PATH
+      ignore_failure: true
+    - name: 🐦 Install Shorebird
+      script: |
+        curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash -s -- --force
+        install_path=$(printf %s "${HOME}/.shorebird")
+        echo $install_path/bin >> $PATH
+        echo "added $install_path/bin to PATH"
+      ignore_failure: true
+    - name: Shorebird doctor
+      script: |
+        shorebird doctor
+      ignore_failure: true
     - name: Set up local.properties
       working_directory: example
       script: | 
