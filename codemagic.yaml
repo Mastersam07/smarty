@@ -3,7 +3,6 @@ workflows:
     name: A demo workflow
     instance_type: mac_mini_m1
     max_build_duration: 60
-    working_directory: example
     environment:
       flutter: stable
       xcode: latest
@@ -16,15 +15,18 @@ workflows:
         - pattern: master
           include: true
           source: true
-      cancel_previous_builds: false
+      cancel_previous_builds: true
     scripts:
     - name: Set up local.properties
+      working_directory: example
       script: | 
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
     - name: Get Flutter packages
+      working_directory: example
       script: | 
         flutter packages pub get
     - name: Build APK with Flutter
+      working_directory: example
       script: | 
         flutter build apk --release
     artifacts:
