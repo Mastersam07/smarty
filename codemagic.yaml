@@ -17,6 +17,9 @@ workflows:
       events:
         - push
       branch_patterns:
+        - pattern: "*"
+          include: true
+          source: true
         - pattern: master
           include: true
           source: true
@@ -27,9 +30,16 @@ workflows:
       script: | 
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/example/android/local.properties"
     - name: Get Flutter packages
-      working_directory: example
       script: | 
         flutter packages pub get
+    - name: Run Flutter lint and analysis
+      script: | 
+        flutter analyze .
+      ignore_failure: true
+    - name: Run Flutter tests
+      script: | 
+        flutter test
+      ignore_failure: true
     - name: Build APK with Flutter
       working_directory: example
       script: | 
