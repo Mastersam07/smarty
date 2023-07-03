@@ -22,7 +22,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
@@ -99,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 148.h),
+            Expanded(child: SizedBox(height: 148.h)),
             Expanded(
               flex: 9,
               child: PageView(
