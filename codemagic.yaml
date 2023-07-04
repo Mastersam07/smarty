@@ -19,10 +19,7 @@ workflows:
       events:
         - push
       branch_patterns:
-        - pattern: "*"
-          include: true
-          source: true
-        - pattern: master
+        - pattern: 'master'
           include: true
           source: true
       cancel_previous_builds: true
@@ -32,7 +29,7 @@ workflows:
         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash -s -- --force
         install_path=$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.shorebird" || printf %s "${XDG_CONFIG_HOME}/shorebird")
         echo PATH="$PATH":"$install_path/bin" >> $CM_ENV
-      ignore_failure: true
+      ignore_failure: false
     - name: Set up local.properties
       working_directory: example
       script: | 
