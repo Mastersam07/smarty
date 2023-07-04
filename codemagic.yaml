@@ -4,6 +4,8 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 60
     environment:
+      groups:
+        - smarty-vars
       flutter: stable
       xcode: latest
       android_signing:
@@ -25,19 +27,11 @@ workflows:
           source: true
       cancel_previous_builds: true
     scripts:
-    - name: Add Shorebird path to env
-      script: | 
-        install_path=$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.shorebird" || printf %s "${XDG_CONFIG_HOME}/shorebird")
-        echo "SHOREBIRD_ROOT=$install_path/bin" >> $CM_ENV
-    - name: 🐦 Install Shorebird
+    - name: Install Shorebird
       script: |
         curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash -s -- --force
         install_path=$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.shorebird" || printf %s "${XDG_CONFIG_HOME}/shorebird")
-      ignore_failure: true
-    - name: Shorebird doctor
-      script: |
-        ls -a $HOME
-        $SHOREBIRD_ROOT/shorebird doctor
+        echo PATH="$PATH":"$install_path/bin" >> $CM_ENV
       ignore_failure: true
     - name: Set up local.properties
       working_directory: example
@@ -54,12 +48,18 @@ workflows:
       script: | 
         flutter test
       ignore_failure: true
-    - name: Build APK with Flutter
+    - name: Shorebird release
       working_directory: example
-      script: | 
-        flutter build apk --release
-    artifacts:
-      - example/build/**/outputs/**/*.apk
+      script: |
+        shorebird build apk
+      ignore_failure: false
+    # - name: Build APK with Flutter
+    #   working_directory: example
+    #   script: | 
+    #     flutter build apk --release
+    #   ignore_failure: false
+    # artifacts:
+    #   - example/build/**/outputs/**/*.apk
     publishing:
       email:
         notify:
