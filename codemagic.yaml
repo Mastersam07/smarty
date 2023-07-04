@@ -58,8 +58,8 @@ workflows:
     #   script: | 
     #     flutter build apk --release
     #   ignore_failure: false
-    # artifacts:
-    #   - example/build/**/outputs/**/*.apk
+    artifacts:
+      - example/build/**/outputs/**/*.apk
     publishing:
       email:
         notify:
