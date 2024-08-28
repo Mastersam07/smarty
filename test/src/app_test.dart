@@ -87,7 +87,7 @@ void main() {
     final SimpleNavigatorRouterDelegate delegate =
         SimpleNavigatorRouterDelegate(
       builder: (BuildContext context, RouteInformation information) {
-        return Text(information.location!);
+        return Text(information.location);
       },
       onPopPage: (Route<void> route, void result,
           SimpleNavigatorRouterDelegate delegate) {
@@ -118,7 +118,7 @@ void main() {
     final SimpleNavigatorRouterDelegate delegate =
         SimpleNavigatorRouterDelegate(
       builder: (BuildContext context, RouteInformation information) {
-        return Text(information.location!);
+        return Text(information.location);
       },
       onPopPage: (Route<void> route, void result,
           SimpleNavigatorRouterDelegate delegate) {
@@ -149,7 +149,7 @@ void main() {
     final SimpleNavigatorRouterDelegate delegate =
         SimpleNavigatorRouterDelegate(
       builder: (BuildContext context, RouteInformation information) {
-        return Text(information.location!);
+        return Text(information.location);
       },
       onPopPage: (Route<void> route, void result,
           SimpleNavigatorRouterDelegate delegate) {
@@ -179,7 +179,7 @@ void main() {
     final SimpleNavigatorRouterDelegate delegate =
         SimpleNavigatorRouterDelegate(
       builder: (BuildContext context, RouteInformation information) {
-        return Text(information.location!);
+        return Text(information.location);
       },
       onPopPage: (Route<void> route, void result,
           SimpleNavigatorRouterDelegate delegate) {
@@ -211,7 +211,7 @@ void main() {
             routeInformationParser: SimpleRouteInformationParser(),
             routerDelegate: SimpleNavigatorRouterDelegate(
               builder: (BuildContext context, RouteInformation information) {
-                return Text(information.location!);
+                return Text(information.location);
               },
               onPopPage: (Route<void> route, void result,
                   SimpleNavigatorRouterDelegate delegate) {
@@ -311,7 +311,7 @@ class SimpleNavigatorRouterDelegate extends RouterDelegate<RouteInformation>
           child: Text('base'),
         ),
         MaterialPage<void>(
-          key: ValueKey<String>(routeInformation.location!),
+          key: ValueKey<String>(routeInformation.location),
           child: builder(context, routeInformation),
         ),
       ],
